@@ -5,8 +5,6 @@ package sqladmin;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import org.jdesktop.application.SingleFrameApplication;
 import org.jdesktop.application.FrameView;
@@ -417,8 +415,10 @@ public class SQLAdminView extends FrameView {
     }//GEN-LAST:event_EditUserButtonActionPerformed
 
     private void AddUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddUserButtonActionPerformed
-        //TODO Add user
-        System.out.println("Add New User");
+        
+        AddUserName.setText("");
+        AddUserHost.setText("%");
+        AddUserPass.setText("");
 
         //Swap to add user form
         UserListPanel.setVisible(false);
@@ -431,9 +431,25 @@ public class SQLAdminView extends FrameView {
         editUser = getUserListValue();
         //TODO Delete user; not root
         if (!editUser.equals("root") && !editUser.isEmpty()) {
-            System.out.println("Delete: " + editUser);
+            int canDel = JOptionPane.showConfirmDialog(UserListPanel, "Delete User: " + editUser + "?", "Delete " + editUser, JOptionPane.YES_NO_OPTION);
+            if (canDel == JOptionPane.YES_OPTION) {
+                try {
+                    Statement update = connection.createStatement();
+
+                    //Check for username in database already
+                    int ret = update.executeUpdate("DROP USER '" + editUser + "'");
+                    if (ret == 0) {
+                        JOptionPane.showMessageDialog(UserListPanel, "User Deleted.");
+                    } else {
+                        JOptionPane.showMessageDialog(UserListPanel, "User Not Deleted.");
+                    }
+
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(UserListPanel, ex);
+                }
+            }
         } else if (editUser.equals("root")) {
-            JOptionPane.showMessageDialog(mainPanel, "Can't delete root account!");
+            JOptionPane.showMessageDialog(UserListPanel, "Can't delete root account!");
         }
         //Refresh user list
         updateUsers();
@@ -448,15 +464,15 @@ public class SQLAdminView extends FrameView {
         boolean added = true;
 
         if (username.isEmpty()) {
-            JOptionPane.showMessageDialog(mainPanel, "Username is blank.");
+            JOptionPane.showMessageDialog(AddUserPanel, "Username is blank.");
             added = false;
         }
         if (host.isEmpty()) {
-            JOptionPane.showMessageDialog(mainPanel, "Host is blank.");
+            JOptionPane.showMessageDialog(AddUserPanel, "Host is blank.");
             added = false;
         }
         if (pass.isEmpty()) {
-            JOptionPane.showMessageDialog(mainPanel, "Password is blank.");
+            JOptionPane.showMessageDialog(AddUserPanel, "Password is blank.");
             added = false;
         }
         if (added) {
@@ -466,14 +482,15 @@ public class SQLAdminView extends FrameView {
                 //Check for username in database already
                 int ret = update.executeUpdate("CREATE USER '" + username + "'@'" + host + "' IDENTIFIED BY '" + pass + "'");
                 if (ret == 0) {
-                    JOptionPane.showMessageDialog(mainPanel, "User Added.");
+                    JOptionPane.showMessageDialog(AddUserPanel, "User Added.");
                     added = true;
                 } else {
-                    JOptionPane.showMessageDialog(mainPanel, "User Not Added.");
+                    JOptionPane.showMessageDialog(AddUserPanel, "User Not Added.");
                     added = false;
                 }
 
             } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(AddUserPanel, ex);
                 added = false;
             }
         }
