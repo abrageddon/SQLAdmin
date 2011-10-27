@@ -14,11 +14,19 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+<<<<<<< HEAD
+                      <Component id="ServerField" alignment="1" pref="376" max="32767" attributes="0"/>
+                      <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="UserField" alignment="0" pref="376" max="32767" attributes="0"/>
+                      <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="PasswordField" alignment="0" pref="376" max="32767" attributes="0"/>
+=======
                       <Component id="ServerField" alignment="1" pref="360" max="32767" attributes="0"/>
                       <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="UserField" alignment="0" pref="360" max="32767" attributes="0"/>
                       <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="PasswordField" alignment="0" pref="360" max="32767" attributes="0"/>
+>>>>>>> 647369273226a7fec7c7d1377081e9cbbf5f60b1
                       <Component id="ConnectButton" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
