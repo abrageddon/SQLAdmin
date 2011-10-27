@@ -32,16 +32,16 @@ public class SQLAdminView extends FrameView {
             connection = DriverManager.getConnection("jdbc:mysql://" + server + ":3306/mysql", username, password);
             mainPanel.setVisible(false);
             updateUsers();
-            setComponent(userListPanel);
-            userListPanel.setVisible(true);
+            setComponent(UserListPanel);
+            UserListPanel.setVisible(true);
         } catch (SQLException ex) {
             System.err.println(ex);
         }
     }
 
     private String getUserListValue() {
-        if (UserListDisplay.getSelectedIndex() != -1){
-            return UserListDisplay.getSelectedValue().toString();
+        if (UserListjList.getSelectedIndex() != -1){
+            return UserListjList.getSelectedValue().toString();
         }
         return "";
     }
@@ -70,13 +70,14 @@ public class SQLAdminView extends FrameView {
         javax.swing.JSeparator statusPanelSeparator = new javax.swing.JSeparator();
         statusMessageLabel = new javax.swing.JLabel();
         statusAnimationLabel = new javax.swing.JLabel();
-        userListPanel = new javax.swing.JPanel();
+        UserListPanel = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         EditUserButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        UserListDisplay = new javax.swing.JList();
+        UserListjList = new javax.swing.JList();
         AddUserButton = new javax.swing.JButton();
         DeleteUserButton = new javax.swing.JButton();
+        AddUserPanel = new javax.swing.JPanel();
 
         mainPanel.setName("mainPanel"); // NOI18N
 
@@ -206,7 +207,7 @@ public class SQLAdminView extends FrameView {
                 .addGap(3, 3, 3))
         );
 
-        userListPanel.setName("userListPanel"); // NOI18N
+        UserListPanel.setName("UserListPanel"); // NOI18N
 
         jLabel4.setText(resourceMap.getString("jLabel4.text")); // NOI18N
         jLabel4.setName("jLabel4"); // NOI18N
@@ -221,13 +222,13 @@ public class SQLAdminView extends FrameView {
 
         jScrollPane1.setName("jScrollPane1"); // NOI18N
 
-        UserListDisplay.setModel(new javax.swing.AbstractListModel() {
+        UserListjList.setModel(new javax.swing.AbstractListModel() {
             ArrayList<String> strings = users;
             public int getSize() { return strings.size(); }
             public Object getElementAt(int i) { return strings.get(i); }
         });
-        UserListDisplay.setName("UserListDisplay"); // NOI18N
-        jScrollPane1.setViewportView(UserListDisplay);
+        UserListjList.setName("UserListjList"); // NOI18N
+        jScrollPane1.setViewportView(UserListjList);
 
         AddUserButton.setText(resourceMap.getString("AddUserButton.text")); // NOI18N
         AddUserButton.setName("AddUserButton"); // NOI18N
@@ -245,39 +246,52 @@ public class SQLAdminView extends FrameView {
             }
         });
 
-        javax.swing.GroupLayout userListPanelLayout = new javax.swing.GroupLayout(userListPanel);
-        userListPanel.setLayout(userListPanelLayout);
-        userListPanelLayout.setHorizontalGroup(
-            userListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(userListPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout UserListPanelLayout = new javax.swing.GroupLayout(UserListPanel);
+        UserListPanel.setLayout(UserListPanelLayout);
+        UserListPanelLayout.setHorizontalGroup(
+            UserListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(UserListPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(userListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(userListPanelLayout.createSequentialGroup()
+                .addGroup(UserListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(UserListPanelLayout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(181, 181, 181))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, userListPanelLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, UserListPanelLayout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
                         .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, userListPanelLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, UserListPanelLayout.createSequentialGroup()
                         .addComponent(AddUserButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(DeleteUserButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
                         .addComponent(EditUserButton))))
         );
-        userListPanelLayout.setVerticalGroup(
-            userListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(userListPanelLayout.createSequentialGroup()
+        UserListPanelLayout.setVerticalGroup(
+            UserListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(UserListPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(userListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(UserListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(EditUserButton)
                     .addComponent(AddUserButton)
                     .addComponent(DeleteUserButton))
                 .addContainerGap())
+        );
+
+        AddUserPanel.setName("AddUserPanel"); // NOI18N
+
+        javax.swing.GroupLayout AddUserPanelLayout = new javax.swing.GroupLayout(AddUserPanel);
+        AddUserPanel.setLayout(AddUserPanelLayout);
+        AddUserPanelLayout.setHorizontalGroup(
+            AddUserPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        AddUserPanelLayout.setVerticalGroup(
+            AddUserPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
         );
 
         setComponent(mainPanel);
@@ -301,7 +315,7 @@ public class SQLAdminView extends FrameView {
         }catch(SQLException e){
             System.err.println(e);
         }
-        UserListDisplay.setModel(new javax.swing.AbstractListModel() {
+        UserListjList.setModel(new javax.swing.AbstractListModel() {
             ArrayList<String> strings = users;
             public int getSize() { return strings.size(); }
             public Object getElementAt(int i) { return strings.get(i); }
@@ -325,6 +339,11 @@ public class SQLAdminView extends FrameView {
         //TODO Add user
         System.out.println("Add New User");
 
+        //Swap to add user form
+        UserListPanel.setVisible(false);
+        setComponent(AddUserPanel);
+        AddUserPanel.setVisible(true);
+        
         //Refresh user list
         updateUsers();
     }//GEN-LAST:event_AddUserButtonActionPerformed
@@ -343,13 +362,15 @@ public class SQLAdminView extends FrameView {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddUserButton;
+    private javax.swing.JPanel AddUserPanel;
     private javax.swing.JButton ConnectButton;
     private javax.swing.JButton DeleteUserButton;
     private javax.swing.JButton EditUserButton;
     private javax.swing.JPasswordField PasswordField;
     private javax.swing.JTextField ServerField;
     private javax.swing.JTextField UserField;
-    private javax.swing.JList UserListDisplay;
+    private javax.swing.JPanel UserListPanel;
+    private javax.swing.JList UserListjList;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -360,7 +381,6 @@ public class SQLAdminView extends FrameView {
     private javax.swing.JLabel statusAnimationLabel;
     private javax.swing.JLabel statusMessageLabel;
     private javax.swing.JPanel statusPanel;
-    private javax.swing.JPanel userListPanel;
     // End of variables declaration//GEN-END:variables
     private Connection connection;
     private ArrayList<String> users;
