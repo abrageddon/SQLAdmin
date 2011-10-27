@@ -348,6 +348,9 @@
     </Container>
     <Container class="javax.swing.JPanel" name="DBListPanel">
       <Properties>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[700, 460]"/>
+        </Property>
         <Property name="name" type="java.lang.String" value="DBListPanel" noResource="true"/>
       </Properties>
 
@@ -501,10 +504,10 @@
                               <Component id="GlobalFileCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="GlobalReplSlaveCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="51" max="32767" attributes="0"/>
+                          <EmptySpace pref="62" max="32767" attributes="0"/>
                           <Component id="GlobalPrivilegeSubmitButton" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="dbListPane" alignment="0" pref="389" max="32767" attributes="0"/>
+                      <Component id="dbListPane" alignment="0" pref="400" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
