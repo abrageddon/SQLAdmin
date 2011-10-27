@@ -14,11 +14,11 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="ServerField" alignment="1" pref="360" max="32767" attributes="0"/>
+                      <Component id="ServerField" alignment="1" pref="376" max="32767" attributes="0"/>
                       <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="UserField" alignment="0" pref="360" max="32767" attributes="0"/>
+                      <Component id="UserField" alignment="0" pref="376" max="32767" attributes="0"/>
                       <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="PasswordField" alignment="0" pref="360" max="32767" attributes="0"/>
+                      <Component id="PasswordField" alignment="0" pref="376" max="32767" attributes="0"/>
                       <Component id="ConnectButton" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -42,7 +42,7 @@
                   <Component id="PasswordField" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="ConnectButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="33" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -133,69 +133,6 @@
         </Menu>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="statusPanel">
-      <Properties>
-        <Property name="name" type="java.lang.String" value="statusPanel" noResource="true"/>
-      </Properties>
-
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="statusPanelSeparator" alignment="0" pref="400" max="32767" attributes="0"/>
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="statusMessageLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="360" max="32767" attributes="0"/>
-                  <Component id="statusAnimationLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Component id="statusPanelSeparator" min="-2" pref="2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="statusMessageLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="statusAnimationLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-      </Layout>
-      <SubComponents>
-        <Component class="javax.swing.JSeparator" name="statusPanelSeparator">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="statusPanelSeparator" noResource="true"/>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
-            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JLabel" name="statusMessageLabel">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="statusMessageLabel" noResource="true"/>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="false"/>
-            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="2"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JLabel" name="statusAnimationLabel">
-          <Properties>
-            <Property name="horizontalAlignment" type="int" value="2"/>
-            <Property name="name" type="java.lang.String" value="statusAnimationLabel" noResource="true"/>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="false"/>
-            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="2"/>
-          </AuxValues>
-        </Component>
-      </SubComponents>
-    </Container>
     <Container class="javax.swing.JPanel" name="UserListPanel">
       <Properties>
         <Property name="name" type="java.lang.String" value="UserListPanel" noResource="true"/>
@@ -219,7 +156,7 @@
                           <Component id="AddUserButton" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="DeleteUserButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="93" max="32767" attributes="0"/>
+                          <EmptySpace pref="159" max="32767" attributes="0"/>
                           <Component id="EditUserButton" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -418,33 +355,62 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="backToUsers" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="147" max="32767" attributes="0"/>
-                          <Component id="SelectDB" min="-2" max="-2" attributes="0"/>
+                      <Component id="GlobalPrivilegeSubmitButton" min="-2" max="-2" attributes="0"/>
+                      <Component id="backToUsers" min="-2" max="-2" attributes="0"/>
+                      <Component id="GlobalPrivilegeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="GlobalSelectCheckbox" min="-2" max="-2" attributes="0"/>
+                              <Component id="GlobalInsertCheckbox" min="-2" max="-2" attributes="0"/>
+                              <Component id="GlobalUpdateCheckbox" min="-2" max="-2" attributes="0"/>
+                              <Component id="GlobalDeleteCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="GlobalCreateCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="GlobalDropCheckbox" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <Component id="dbListPane" alignment="0" pref="357" max="32767" attributes="0"/>
-                      <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace pref="115" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="SelectDB" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                      <Component id="dbListPane" alignment="1" min="-2" pref="230" max="-2" attributes="0"/>
+                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="GlobalPrivilegeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="dbListPane" min="-2" pref="183" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="GlobalSelectCheckbox" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="GlobalInsertCheckbox" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="GlobalUpdateCheckbox" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="GlobalDeleteCheckbox" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="GlobalCreateCheckbox" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="GlobalDropCheckbox" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="197" max="32767" attributes="0"/>
+                          <Component id="GlobalPrivilegeSubmitButton" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="dbListPane" pref="389" max="32767" attributes="0"/>
+                  </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="SelectDB" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="backToUsers" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="SelectDB" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -488,6 +454,54 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backToUsersActionPerformed"/>
           </Events>
         </Component>
+        <Component class="javax.swing.JLabel" name="GlobalPrivilegeLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="GlobalPrivilegeLabel.text"/>
+            <Property name="name" type="java.lang.String" value="GlobalPrivilegeLabel" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="GlobalCreateCheckbox">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="GlobalCreateCheckbox.text"/>
+            <Property name="name" type="java.lang.String" value="GlobalCreateCheckbox" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="GlobalPrivilegeSubmitButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="GlobalPrivilegeSubmitButton.text"/>
+            <Property name="name" type="java.lang.String" value="GlobalPrivilegeSubmitButton" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="GlobalSelectCheckbox">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="GlobalSelectCheckbox.text"/>
+            <Property name="name" type="java.lang.String" value="GlobalSelectCheckbox" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="GlobalInsertCheckbox">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="GlobalInsertCheckbox.text"/>
+            <Property name="name" type="java.lang.String" value="GlobalInsertCheckbox" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="GlobalUpdateCheckbox">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="GlobalUpdateCheckbox.text"/>
+            <Property name="name" type="java.lang.String" value="GlobalUpdateCheckbox" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="GlobalDeleteCheckbox">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="GlobalDeleteCheckbox.text"/>
+            <Property name="name" type="java.lang.String" value="GlobalDeleteCheckbox" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="GlobalDropCheckbox">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="GlobalDropCheckbox.text"/>
+            <Property name="name" type="java.lang.String" value="GlobalDropCheckbox" noResource="true"/>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
   </NonVisualComponents>
@@ -499,7 +513,7 @@
       <ComponentRef name="menuBar"/>
     </Property>
     <Property name="statusBar" type="javax.swing.JComponent" editor="org.netbeans.modules.form.ComponentChooserEditor">
-      <ComponentRef name="statusPanel"/>
+      <ComponentRef name="default"/>
     </Property>
   </Properties>
   <AuxValues>

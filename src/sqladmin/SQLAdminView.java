@@ -40,14 +40,14 @@ public class SQLAdminView extends FrameView {
             JOptionPane.showMessageDialog(mainPanel, ex);
         }
     }
-    
+
     private void getDatabases() {
         try {
-        Statement getDatabases = connection.createStatement();
-        ResultSet dbSet = getDatabases.executeQuery("show databases");
-        while (dbSet.next()) {
-            databases.add(dbSet.getString(1));
-        }
+            Statement getDatabases = connection.createStatement();
+            ResultSet dbSet = getDatabases.executeQuery("show databases");
+            while (dbSet.next()) {
+                databases.add(dbSet.getString(1));
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -80,10 +80,6 @@ public class SQLAdminView extends FrameView {
         menuBar = new javax.swing.JMenuBar();
         javax.swing.JMenu fileMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem exitMenuItem = new javax.swing.JMenuItem();
-        statusPanel = new javax.swing.JPanel();
-        javax.swing.JSeparator statusPanelSeparator = new javax.swing.JSeparator();
-        statusMessageLabel = new javax.swing.JLabel();
-        statusAnimationLabel = new javax.swing.JLabel();
         UserListPanel = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         EditUserButton = new javax.swing.JButton();
@@ -106,6 +102,14 @@ public class SQLAdminView extends FrameView {
         databaseList = new javax.swing.JList();
         SelectDB = new javax.swing.JButton();
         backToUsers = new javax.swing.JButton();
+        GlobalPrivilegeLabel = new javax.swing.JLabel();
+        GlobalCreateCheckbox = new javax.swing.JCheckBox();
+        GlobalPrivilegeSubmitButton = new javax.swing.JButton();
+        GlobalSelectCheckbox = new javax.swing.JCheckBox();
+        GlobalInsertCheckbox = new javax.swing.JCheckBox();
+        GlobalUpdateCheckbox = new javax.swing.JCheckBox();
+        GlobalDeleteCheckbox = new javax.swing.JCheckBox();
+        GlobalDropCheckbox = new javax.swing.JCheckBox();
 
         mainPanel.setName("mainPanel"); // NOI18N
 
@@ -149,11 +153,11 @@ public class SQLAdminView extends FrameView {
                 .addContainerGap()
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(ServerField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
+                    .addComponent(ServerField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
                     .addComponent(jLabel2)
-                    .addComponent(UserField, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
+                    .addComponent(UserField, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
                     .addComponent(jLabel3)
-                    .addComponent(PasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
+                    .addComponent(PasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
                     .addComponent(ConnectButton, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
@@ -174,7 +178,7 @@ public class SQLAdminView extends FrameView {
                 .addComponent(PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ConnectButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         menuBar.setName("menuBar"); // NOI18N
@@ -188,38 +192,6 @@ public class SQLAdminView extends FrameView {
         fileMenu.add(exitMenuItem);
 
         menuBar.add(fileMenu);
-
-        statusPanel.setName("statusPanel"); // NOI18N
-
-        statusPanelSeparator.setName("statusPanelSeparator"); // NOI18N
-
-        statusMessageLabel.setName("statusMessageLabel"); // NOI18N
-
-        statusAnimationLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        statusAnimationLabel.setName("statusAnimationLabel"); // NOI18N
-
-        javax.swing.GroupLayout statusPanelLayout = new javax.swing.GroupLayout(statusPanel);
-        statusPanel.setLayout(statusPanelLayout);
-        statusPanelLayout.setHorizontalGroup(
-            statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(statusPanelSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
-            .addGroup(statusPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(statusMessageLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 360, Short.MAX_VALUE)
-                .addComponent(statusAnimationLabel)
-                .addContainerGap())
-        );
-        statusPanelLayout.setVerticalGroup(
-            statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(statusPanelLayout.createSequentialGroup()
-                .addComponent(statusPanelSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(statusMessageLabel)
-                    .addComponent(statusAnimationLabel))
-                .addGap(3, 3, 3))
-        );
 
         UserListPanel.setName("UserListPanel"); // NOI18N
 
@@ -277,7 +249,7 @@ public class SQLAdminView extends FrameView {
                         .addComponent(AddUserButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(DeleteUserButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)
                         .addComponent(EditUserButton))))
         );
         UserListPanelLayout.setVerticalGroup(
@@ -398,38 +370,85 @@ public class SQLAdminView extends FrameView {
             }
         });
 
+        GlobalPrivilegeLabel.setText(resourceMap.getString("GlobalPrivilegeLabel.text")); // NOI18N
+        GlobalPrivilegeLabel.setName("GlobalPrivilegeLabel"); // NOI18N
+
+        GlobalCreateCheckbox.setText(resourceMap.getString("GlobalCreateCheckbox.text")); // NOI18N
+        GlobalCreateCheckbox.setName("GlobalCreateCheckbox"); // NOI18N
+
+        GlobalPrivilegeSubmitButton.setText(resourceMap.getString("GlobalPrivilegeSubmitButton.text")); // NOI18N
+        GlobalPrivilegeSubmitButton.setName("GlobalPrivilegeSubmitButton"); // NOI18N
+
+        GlobalSelectCheckbox.setText(resourceMap.getString("GlobalSelectCheckbox.text")); // NOI18N
+        GlobalSelectCheckbox.setName("GlobalSelectCheckbox"); // NOI18N
+
+        GlobalInsertCheckbox.setText(resourceMap.getString("GlobalInsertCheckbox.text")); // NOI18N
+        GlobalInsertCheckbox.setName("GlobalInsertCheckbox"); // NOI18N
+
+        GlobalUpdateCheckbox.setText(resourceMap.getString("GlobalUpdateCheckbox.text")); // NOI18N
+        GlobalUpdateCheckbox.setName("GlobalUpdateCheckbox"); // NOI18N
+
+        GlobalDeleteCheckbox.setText(resourceMap.getString("GlobalDeleteCheckbox.text")); // NOI18N
+        GlobalDeleteCheckbox.setName("GlobalDeleteCheckbox"); // NOI18N
+
+        GlobalDropCheckbox.setText(resourceMap.getString("GlobalDropCheckbox.text")); // NOI18N
+        GlobalDropCheckbox.setName("GlobalDropCheckbox"); // NOI18N
+
         javax.swing.GroupLayout DBListPanelLayout = new javax.swing.GroupLayout(DBListPanel);
         DBListPanel.setLayout(DBListPanelLayout);
         DBListPanelLayout.setHorizontalGroup(
             DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(DBListPanelLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DBListPanelLayout.createSequentialGroup()
-                        .addComponent(backToUsers)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
-                        .addComponent(SelectDB))
-                    .addComponent(dbListPane, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
-                    .addComponent(jLabel8))
-                .addContainerGap())
+                    .addComponent(GlobalPrivilegeSubmitButton)
+                    .addComponent(backToUsers)
+                    .addComponent(GlobalPrivilegeLabel)
+                    .addGroup(DBListPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(GlobalSelectCheckbox)
+                            .addComponent(GlobalInsertCheckbox)
+                            .addComponent(GlobalUpdateCheckbox)
+                            .addComponent(GlobalDeleteCheckbox)
+                            .addComponent(GlobalCreateCheckbox)
+                            .addComponent(GlobalDropCheckbox))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
+                .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(SelectDB)
+                    .addComponent(jLabel8)
+                    .addComponent(dbListPane, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         DBListPanelLayout.setVerticalGroup(
             DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(DBListPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel8)
+                .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(GlobalPrivilegeLabel)
+                    .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(dbListPane, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DBListPanelLayout.createSequentialGroup()
+                        .addComponent(GlobalSelectCheckbox)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(GlobalInsertCheckbox)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(GlobalUpdateCheckbox)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(GlobalDeleteCheckbox)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(GlobalCreateCheckbox)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(GlobalDropCheckbox)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 197, Short.MAX_VALUE)
+                        .addComponent(GlobalPrivilegeSubmitButton))
+                    .addComponent(dbListPane, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(SelectDB)
-                    .addComponent(backToUsers))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(backToUsers)
+                    .addComponent(SelectDB)))
         );
 
         setComponent(mainPanel);
         setMenuBar(menuBar);
-        setStatusBar(statusPanel);
     }// </editor-fold>//GEN-END:initComponents
 
     private void ConnectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConnectButtonActionPerformed
@@ -471,18 +490,17 @@ public class SQLAdminView extends FrameView {
     private void EditUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditUserButtonActionPerformed
         editUser = getUserListValue();
         //TODO Edit User
-        System.out.println("Edit: " + editUser);
-        
+
         // Switch to database panel
         UserListPanel.setVisible(false);
-        statusMessageLabel.setText("Editing User: "+editUser);
+//        statusMessageLabel.setText("Editing User: "+editUser);
         setComponent(DBListPanel);
+        updateGlobalPrivileges();
         DBListPanel.setVisible(true);
-
     }//GEN-LAST:event_EditUserButtonActionPerformed
 
     private void AddUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddUserButtonActionPerformed
-        
+
         AddUserName.setText("");
         AddUserHost.setText("%");
         AddUserPass.setText("");
@@ -590,7 +608,6 @@ private void backToUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     setComponent(UserListPanel);
     UserListPanel.setVisible(true);
 }//GEN-LAST:event_backToUsersActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddUserButton;
     private javax.swing.JButton AddUserCancel;
@@ -602,6 +619,14 @@ private void backToUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private javax.swing.JPanel DBListPanel;
     private javax.swing.JButton DeleteUserButton;
     private javax.swing.JButton EditUserButton;
+    private javax.swing.JCheckBox GlobalCreateCheckbox;
+    private javax.swing.JCheckBox GlobalDeleteCheckbox;
+    private javax.swing.JCheckBox GlobalDropCheckbox;
+    private javax.swing.JCheckBox GlobalInsertCheckbox;
+    private javax.swing.JLabel GlobalPrivilegeLabel;
+    private javax.swing.JButton GlobalPrivilegeSubmitButton;
+    private javax.swing.JCheckBox GlobalSelectCheckbox;
+    private javax.swing.JCheckBox GlobalUpdateCheckbox;
     private javax.swing.JPasswordField PasswordField;
     private javax.swing.JButton SelectDB;
     private javax.swing.JTextField ServerField;
@@ -623,13 +648,39 @@ private void backToUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenuBar menuBar;
-    private javax.swing.JLabel statusAnimationLabel;
-    private javax.swing.JLabel statusMessageLabel;
-    private javax.swing.JPanel statusPanel;
     // End of variables declaration//GEN-END:variables
     private Connection connection;
     private ArrayList<String> users;
     private String editUser;
+    private ArrayList<String> hosts;
+    private String editHost;
     private ArrayList<String> databases;
     private String editDatabase;
+
+    private void updateGlobalPrivileges() {
+        try {
+            //DEBUG
+            editHost = "localhost"; // Replace with combo box
+            //END DEBUG
+
+            GlobalPrivilegeLabel.setText("Global Privileges for " + editUser);
+            Statement globPriv = connection.createStatement();
+            ResultSet privs = globPriv.executeQuery("SELECT * FROM mysql.`user` WHERE User = '" + editUser + "' AND Host = '" + editHost + "'");
+            privs.next();
+
+            GlobalSelectCheckbox.setSelected(privs.getBoolean("Select_priv"));
+            GlobalInsertCheckbox.setSelected(privs.getBoolean("Insert_priv"));
+            GlobalUpdateCheckbox.setSelected(privs.getBoolean("Update_priv"));
+            GlobalDeleteCheckbox.setSelected(privs.getBoolean("Delete_priv"));
+            GlobalCreateCheckbox.setSelected(privs.getBoolean("Create_priv"));
+            GlobalDropCheckbox.setSelected(privs.getBoolean("Drop_priv"));
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(UserListPanel, ex);
+        }
+    }
+
+    public static String cleanSQL(String arg) {
+        arg = arg.replace("\\", "\\\\");
+        return arg.replace("'", "''");
+    }
 }
