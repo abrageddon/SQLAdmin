@@ -53,6 +53,13 @@ public class SQLAdminView extends FrameView {
         }
     }
 
+	private String getDatabaseListValue() {
+		if (databaseList.getSelectedIndex() != -1)
+			return databaseList.getSelectedValue().toString();
+		else
+			return "";
+	}
+			
     private String getUserListValue() {
         if (UserListjList.getSelectedIndex() != -1) {
             return UserListjList.getSelectedValue().toString();
@@ -107,6 +114,7 @@ public class SQLAdminView extends FrameView {
         SelectDB = new javax.swing.JButton();
         backToUsers = new javax.swing.JButton();
         DBPanel = new javax.swing.JPanel();
+        DBPanelTitle = new javax.swing.JLabel();
 
         mainPanel.setName("mainPanel"); // NOI18N
 
@@ -390,6 +398,11 @@ public class SQLAdminView extends FrameView {
 
         SelectDB.setText(resourceMap.getString("SelectDB.text")); // NOI18N
         SelectDB.setName("SelectDB"); // NOI18N
+        SelectDB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SelectDBActionPerformed(evt);
+            }
+        });
 
         backToUsers.setText(resourceMap.getString("backToUsers.text")); // NOI18N
         backToUsers.setName("backToUsers"); // NOI18N
@@ -430,15 +443,24 @@ public class SQLAdminView extends FrameView {
 
         DBPanel.setName("DBPanel"); // NOI18N
 
+        DBPanelTitle.setText(resourceMap.getString("DBPanelTitle.text")); // NOI18N
+        DBPanelTitle.setName("DBPanelTitle"); // NOI18N
+
         javax.swing.GroupLayout DBPanelLayout = new javax.swing.GroupLayout(DBPanel);
         DBPanel.setLayout(DBPanelLayout);
         DBPanelLayout.setHorizontalGroup(
             DBPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(DBPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(DBPanelTitle)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         DBPanelLayout.setVerticalGroup(
             DBPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(DBPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(DBPanelTitle)
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
         setComponent(mainPanel);
@@ -605,6 +627,17 @@ private void backToUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     UserListPanel.setVisible(true);
 }//GEN-LAST:event_backToUsersActionPerformed
 
+	private void SelectDBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectDBActionPerformed
+		// TODO add your handling code here:
+		editDatabase = getDatabaseListValue();
+		statusMessageLabel.setText("User: " + editUser + "\tDatabase: " + editDatabase);
+		DBPanelTitle.setText(editUser + "'s Privileges on " + editDatabase);
+		
+		DBListPanel.setVisible(false);
+		setComponent(DBPanel);
+		DBPanel.setVisible(true);
+	}//GEN-LAST:event_SelectDBActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddUserButton;
     private javax.swing.JButton AddUserCancel;
@@ -615,6 +648,7 @@ private void backToUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private javax.swing.JButton ConnectButton;
     private javax.swing.JPanel DBListPanel;
     private javax.swing.JPanel DBPanel;
+    private javax.swing.JLabel DBPanelTitle;
     private javax.swing.JButton DeleteUserButton;
     private javax.swing.JButton EditUserButton;
     private javax.swing.JPasswordField PasswordField;
