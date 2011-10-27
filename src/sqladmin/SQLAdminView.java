@@ -5,6 +5,8 @@ package sqladmin;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import org.jdesktop.application.SingleFrameApplication;
 import org.jdesktop.application.FrameView;
@@ -110,6 +112,29 @@ public class SQLAdminView extends FrameView {
         GlobalUpdateCheckbox = new javax.swing.JCheckBox();
         GlobalDeleteCheckbox = new javax.swing.JCheckBox();
         GlobalDropCheckbox = new javax.swing.JCheckBox();
+        HostComboBox = new javax.swing.JComboBox();
+        GlobalReloadCheckbox = new javax.swing.JCheckBox();
+        GlobalShutdownCheckbox = new javax.swing.JCheckBox();
+        GlobalProcessCheckbox = new javax.swing.JCheckBox();
+        GlobalFileCheckbox = new javax.swing.JCheckBox();
+        GlobalGrantCheckbox = new javax.swing.JCheckBox();
+        GlobalReferencesCheckbox = new javax.swing.JCheckBox();
+        GlobalIndexCheckbox = new javax.swing.JCheckBox();
+        GlobalAlterCheckbox = new javax.swing.JCheckBox();
+        GlobalShowDbCheckbox = new javax.swing.JCheckBox();
+        GlobalSuperCheckbox = new javax.swing.JCheckBox();
+        GlobalCreateTmpTableCheckbox = new javax.swing.JCheckBox();
+        GlobalLockTablesCheckbox = new javax.swing.JCheckBox();
+        GlobalExecuteCheckbox = new javax.swing.JCheckBox();
+        GlobalReplSlaveCheckbox = new javax.swing.JCheckBox();
+        GlobalReplClientCheckbox = new javax.swing.JCheckBox();
+        GlobalCreateViewCheckbox = new javax.swing.JCheckBox();
+        GlobalShowViewCheckbox = new javax.swing.JCheckBox();
+        GlobalCreateRoutineCheckbox = new javax.swing.JCheckBox();
+        GlobalAlterRoutineCheckbox = new javax.swing.JCheckBox();
+        GlobalCreateUserCheckbox = new javax.swing.JCheckBox();
+        GlobalEventCheckbox = new javax.swing.JCheckBox();
+        GlobalTriggerCheckbox = new javax.swing.JCheckBox();
 
         mainPanel.setName("mainPanel"); // NOI18N
 
@@ -394,25 +419,140 @@ public class SQLAdminView extends FrameView {
         GlobalDropCheckbox.setText(resourceMap.getString("GlobalDropCheckbox.text")); // NOI18N
         GlobalDropCheckbox.setName("GlobalDropCheckbox"); // NOI18N
 
+        HostComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        HostComboBox.setName("HostComboBox"); // NOI18N
+        HostComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HostComboBoxActionPerformed(evt);
+            }
+        });
+
+        GlobalReloadCheckbox.setText(resourceMap.getString("GlobalReloadCheckbox.text")); // NOI18N
+        GlobalReloadCheckbox.setName("GlobalReloadCheckbox"); // NOI18N
+
+        GlobalShutdownCheckbox.setText(resourceMap.getString("GlobalShutdownCheckbox.text")); // NOI18N
+        GlobalShutdownCheckbox.setName("GlobalShutdownCheckbox"); // NOI18N
+
+        GlobalProcessCheckbox.setText(resourceMap.getString("GlobalProcessCheckbox.text")); // NOI18N
+        GlobalProcessCheckbox.setName("GlobalProcessCheckbox"); // NOI18N
+
+        GlobalFileCheckbox.setText(resourceMap.getString("GlobalFileCheckbox.text")); // NOI18N
+        GlobalFileCheckbox.setName("GlobalFileCheckbox"); // NOI18N
+
+        GlobalGrantCheckbox.setText(resourceMap.getString("GlobalGrantCheckbox.text")); // NOI18N
+        GlobalGrantCheckbox.setName("GlobalGrantCheckbox"); // NOI18N
+
+        GlobalReferencesCheckbox.setText(resourceMap.getString("GlobalReferencesCheckbox.text")); // NOI18N
+        GlobalReferencesCheckbox.setName("GlobalReferencesCheckbox"); // NOI18N
+
+        GlobalIndexCheckbox.setText(resourceMap.getString("GlobalIndexCheckbox.text")); // NOI18N
+        GlobalIndexCheckbox.setName("GlobalIndexCheckbox"); // NOI18N
+
+        GlobalAlterCheckbox.setText(resourceMap.getString("GlobalAlterCheckbox.text")); // NOI18N
+        GlobalAlterCheckbox.setName("GlobalAlterCheckbox"); // NOI18N
+
+        GlobalShowDbCheckbox.setText(resourceMap.getString("GlobalShowDbCheckbox.text")); // NOI18N
+        GlobalShowDbCheckbox.setName("GlobalShowDbCheckbox"); // NOI18N
+
+        GlobalSuperCheckbox.setText(resourceMap.getString("GlobalSuperCheckbox.text")); // NOI18N
+        GlobalSuperCheckbox.setName("GlobalSuperCheckbox"); // NOI18N
+
+        GlobalCreateTmpTableCheckbox.setText(resourceMap.getString("GlobalCreateTmpTableCheckbox.text")); // NOI18N
+        GlobalCreateTmpTableCheckbox.setName("GlobalCreateTmpTableCheckbox"); // NOI18N
+
+        GlobalLockTablesCheckbox.setText(resourceMap.getString("GlobalLockTablesCheckbox.text")); // NOI18N
+        GlobalLockTablesCheckbox.setName("GlobalLockTablesCheckbox"); // NOI18N
+
+        GlobalExecuteCheckbox.setText(resourceMap.getString("GlobalExecuteCheckbox.text")); // NOI18N
+        GlobalExecuteCheckbox.setName("GlobalExecuteCheckbox"); // NOI18N
+
+        GlobalReplSlaveCheckbox.setText(resourceMap.getString("GlobalReplSlaveCheckbox.text")); // NOI18N
+        GlobalReplSlaveCheckbox.setName("GlobalReplSlaveCheckbox"); // NOI18N
+
+        GlobalReplClientCheckbox.setText(resourceMap.getString("GlobalReplClientCheckbox.text")); // NOI18N
+        GlobalReplClientCheckbox.setName("GlobalReplClientCheckbox"); // NOI18N
+
+        GlobalCreateViewCheckbox.setText(resourceMap.getString("GlobalCreateViewCheckbox.text")); // NOI18N
+        GlobalCreateViewCheckbox.setName("GlobalCreateViewCheckbox"); // NOI18N
+
+        GlobalShowViewCheckbox.setText(resourceMap.getString("GlobalShowViewCheckbox.text")); // NOI18N
+        GlobalShowViewCheckbox.setName("GlobalShowViewCheckbox"); // NOI18N
+
+        GlobalCreateRoutineCheckbox.setText(resourceMap.getString("GlobalCreateRoutineCheckbox.text")); // NOI18N
+        GlobalCreateRoutineCheckbox.setName("GlobalCreateRoutineCheckbox"); // NOI18N
+
+        GlobalAlterRoutineCheckbox.setText(resourceMap.getString("GlobalAlterRoutineCheckbox.text")); // NOI18N
+        GlobalAlterRoutineCheckbox.setName("GlobalAlterRoutineCheckbox"); // NOI18N
+
+        GlobalCreateUserCheckbox.setText(resourceMap.getString("GlobalCreateUserCheckbox.text")); // NOI18N
+        GlobalCreateUserCheckbox.setName("GlobalCreateUserCheckbox"); // NOI18N
+
+        GlobalEventCheckbox.setText(resourceMap.getString("GlobalEventCheckbox.text")); // NOI18N
+        GlobalEventCheckbox.setName("GlobalEventCheckbox"); // NOI18N
+
+        GlobalTriggerCheckbox.setText(resourceMap.getString("GlobalTriggerCheckbox.text")); // NOI18N
+        GlobalTriggerCheckbox.setName("GlobalTriggerCheckbox"); // NOI18N
+
         javax.swing.GroupLayout DBListPanelLayout = new javax.swing.GroupLayout(DBListPanel);
         DBListPanel.setLayout(DBListPanelLayout);
         DBListPanelLayout.setHorizontalGroup(
             DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(DBListPanelLayout.createSequentialGroup()
                 .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(GlobalPrivilegeSubmitButton)
-                    .addComponent(backToUsers)
-                    .addComponent(GlobalPrivilegeLabel)
                     .addGroup(DBListPanelLayout.createSequentialGroup()
                         .addContainerGap()
+                        .addComponent(HostComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(DBListPanelLayout.createSequentialGroup()
                         .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(GlobalSelectCheckbox)
-                            .addComponent(GlobalInsertCheckbox)
-                            .addComponent(GlobalUpdateCheckbox)
-                            .addComponent(GlobalDeleteCheckbox)
-                            .addComponent(GlobalCreateCheckbox)
-                            .addComponent(GlobalDropCheckbox))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
+                            .addGroup(DBListPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(DBListPanelLayout.createSequentialGroup()
+                                        .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(GlobalSelectCheckbox)
+                                            .addComponent(GlobalInsertCheckbox)
+                                            .addComponent(GlobalDeleteCheckbox)
+                                            .addComponent(GlobalCreateCheckbox)
+                                            .addComponent(GlobalDropCheckbox))
+                                        .addGap(57, 57, 57)
+                                        .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(GlobalGrantCheckbox)
+                                            .addComponent(GlobalSuperCheckbox)
+                                            .addComponent(GlobalShowDbCheckbox)
+                                            .addComponent(GlobalAlterCheckbox)
+                                            .addComponent(GlobalReferencesCheckbox)
+                                            .addComponent(GlobalIndexCheckbox)
+                                            .addComponent(GlobalCreateTmpTableCheckbox)
+                                            .addComponent(GlobalLockTablesCheckbox)
+                                            .addComponent(GlobalExecuteCheckbox)
+                                            .addComponent(GlobalReplSlaveCheckbox)))
+                                    .addComponent(GlobalUpdateCheckbox)))
+                            .addComponent(GlobalPrivilegeSubmitButton)
+                            .addComponent(backToUsers)
+                            .addComponent(GlobalPrivilegeLabel)
+                            .addGroup(DBListPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(GlobalReloadCheckbox))
+                            .addGroup(DBListPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(GlobalShutdownCheckbox))
+                            .addGroup(DBListPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(GlobalProcessCheckbox))
+                            .addGroup(DBListPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(GlobalFileCheckbox)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                        .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(GlobalReplClientCheckbox)
+                            .addComponent(GlobalCreateViewCheckbox)
+                            .addComponent(GlobalShowViewCheckbox)
+                            .addComponent(GlobalCreateRoutineCheckbox)
+                            .addComponent(GlobalAlterRoutineCheckbox)
+                            .addComponent(GlobalCreateUserCheckbox)
+                            .addComponent(GlobalEventCheckbox)
+                            .addComponent(GlobalTriggerCheckbox))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)))
                 .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(SelectDB)
                     .addComponent(jLabel8)
@@ -425,22 +565,60 @@ public class SQLAdminView extends FrameView {
                     .addComponent(GlobalPrivilegeLabel)
                     .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DBListPanelLayout.createSequentialGroup()
-                        .addComponent(GlobalSelectCheckbox)
+                .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(DBListPanelLayout.createSequentialGroup()
+                        .addComponent(HostComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(GlobalInsertCheckbox)
+                        .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(GlobalSelectCheckbox)
+                            .addComponent(GlobalGrantCheckbox)
+                            .addComponent(GlobalReplClientCheckbox))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(GlobalUpdateCheckbox)
+                        .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(GlobalInsertCheckbox)
+                            .addComponent(GlobalReferencesCheckbox)
+                            .addComponent(GlobalCreateViewCheckbox))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(GlobalDeleteCheckbox)
+                        .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(GlobalUpdateCheckbox)
+                            .addComponent(GlobalIndexCheckbox)
+                            .addComponent(GlobalShowViewCheckbox))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(GlobalCreateCheckbox)
+                        .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(GlobalDeleteCheckbox)
+                            .addComponent(GlobalAlterCheckbox)
+                            .addComponent(GlobalCreateRoutineCheckbox))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(GlobalDropCheckbox)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 197, Short.MAX_VALUE)
+                        .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(GlobalCreateCheckbox)
+                            .addComponent(GlobalShowDbCheckbox)
+                            .addComponent(GlobalAlterRoutineCheckbox))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(GlobalDropCheckbox)
+                            .addComponent(GlobalSuperCheckbox)
+                            .addComponent(GlobalCreateUserCheckbox))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(GlobalReloadCheckbox)
+                            .addComponent(GlobalCreateTmpTableCheckbox)
+                            .addComponent(GlobalEventCheckbox))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(GlobalShutdownCheckbox)
+                            .addComponent(GlobalLockTablesCheckbox)
+                            .addComponent(GlobalTriggerCheckbox))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(GlobalProcessCheckbox)
+                            .addComponent(GlobalExecuteCheckbox))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(GlobalFileCheckbox)
+                            .addComponent(GlobalReplSlaveCheckbox))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                         .addComponent(GlobalPrivilegeSubmitButton))
-                    .addComponent(dbListPane, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE))
+                    .addComponent(dbListPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(backToUsers)
@@ -495,6 +673,7 @@ public class SQLAdminView extends FrameView {
         UserListPanel.setVisible(false);
 //        statusMessageLabel.setText("Editing User: "+editUser);
         setComponent(DBListPanel);
+        updateUsersHosts();
         updateGlobalPrivileges();
         DBListPanel.setVisible(true);
     }//GEN-LAST:event_EditUserButtonActionPerformed
@@ -603,11 +782,15 @@ public class SQLAdminView extends FrameView {
     }//GEN-LAST:event_AddUserCancelActionPerformed
 
 private void backToUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToUsersActionPerformed
-// TODO add your handling code here:
     DBListPanel.setVisible(false);
     setComponent(UserListPanel);
     UserListPanel.setVisible(true);
 }//GEN-LAST:event_backToUsersActionPerformed
+
+private void HostComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HostComboBoxActionPerformed
+    updateGlobalPrivileges();
+}//GEN-LAST:event_HostComboBoxActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddUserButton;
     private javax.swing.JButton AddUserCancel;
@@ -619,14 +802,37 @@ private void backToUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private javax.swing.JPanel DBListPanel;
     private javax.swing.JButton DeleteUserButton;
     private javax.swing.JButton EditUserButton;
+    private javax.swing.JCheckBox GlobalAlterCheckbox;
+    private javax.swing.JCheckBox GlobalAlterRoutineCheckbox;
     private javax.swing.JCheckBox GlobalCreateCheckbox;
+    private javax.swing.JCheckBox GlobalCreateRoutineCheckbox;
+    private javax.swing.JCheckBox GlobalCreateTmpTableCheckbox;
+    private javax.swing.JCheckBox GlobalCreateUserCheckbox;
+    private javax.swing.JCheckBox GlobalCreateViewCheckbox;
     private javax.swing.JCheckBox GlobalDeleteCheckbox;
     private javax.swing.JCheckBox GlobalDropCheckbox;
+    private javax.swing.JCheckBox GlobalEventCheckbox;
+    private javax.swing.JCheckBox GlobalExecuteCheckbox;
+    private javax.swing.JCheckBox GlobalFileCheckbox;
+    private javax.swing.JCheckBox GlobalGrantCheckbox;
+    private javax.swing.JCheckBox GlobalIndexCheckbox;
     private javax.swing.JCheckBox GlobalInsertCheckbox;
+    private javax.swing.JCheckBox GlobalLockTablesCheckbox;
     private javax.swing.JLabel GlobalPrivilegeLabel;
     private javax.swing.JButton GlobalPrivilegeSubmitButton;
+    private javax.swing.JCheckBox GlobalProcessCheckbox;
+    private javax.swing.JCheckBox GlobalReferencesCheckbox;
+    private javax.swing.JCheckBox GlobalReloadCheckbox;
+    private javax.swing.JCheckBox GlobalReplClientCheckbox;
+    private javax.swing.JCheckBox GlobalReplSlaveCheckbox;
     private javax.swing.JCheckBox GlobalSelectCheckbox;
+    private javax.swing.JCheckBox GlobalShowDbCheckbox;
+    private javax.swing.JCheckBox GlobalShowViewCheckbox;
+    private javax.swing.JCheckBox GlobalShutdownCheckbox;
+    private javax.swing.JCheckBox GlobalSuperCheckbox;
+    private javax.swing.JCheckBox GlobalTriggerCheckbox;
     private javax.swing.JCheckBox GlobalUpdateCheckbox;
+    private javax.swing.JComboBox HostComboBox;
     private javax.swing.JPasswordField PasswordField;
     private javax.swing.JButton SelectDB;
     private javax.swing.JTextField ServerField;
@@ -659,10 +865,9 @@ private void backToUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
 
     private void updateGlobalPrivileges() {
         try {
-            //DEBUG
-            editHost = "localhost"; // Replace with combo box
-            //END DEBUG
 
+            editHost = (String)HostComboBox.getSelectedItem();
+            
             GlobalPrivilegeLabel.setText("Global Privileges for " + editUser);
             Statement globPriv = connection.createStatement();
             ResultSet privs = globPriv.executeQuery("SELECT * FROM mysql.`user` WHERE User = '" + editUser + "' AND Host = '" + editHost + "'");
@@ -674,13 +879,52 @@ private void backToUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             GlobalDeleteCheckbox.setSelected(privs.getBoolean("Delete_priv"));
             GlobalCreateCheckbox.setSelected(privs.getBoolean("Create_priv"));
             GlobalDropCheckbox.setSelected(privs.getBoolean("Drop_priv"));
+            GlobalReloadCheckbox.setSelected(privs.getBoolean("Reload_priv"));
+            GlobalShutdownCheckbox.setSelected(privs.getBoolean("Shutdown_priv"));
+            GlobalProcessCheckbox.setSelected(privs.getBoolean("Process_priv"));
+            GlobalFileCheckbox.setSelected(privs.getBoolean("File_priv"));
+            GlobalGrantCheckbox.setSelected(privs.getBoolean("Grant_priv"));
+            GlobalReferencesCheckbox.setSelected(privs.getBoolean("References_priv"));
+            GlobalIndexCheckbox.setSelected(privs.getBoolean("Index_priv"));
+            GlobalAlterCheckbox.setSelected(privs.getBoolean("Alter_priv"));
+            GlobalShowDbCheckbox.setSelected(privs.getBoolean("Show_db_priv"));
+            GlobalSuperCheckbox.setSelected(privs.getBoolean("Super_priv"));
+            GlobalCreateTmpTableCheckbox.setSelected(privs.getBoolean("Create_tmp_table_priv"));
+            GlobalLockTablesCheckbox.setSelected(privs.getBoolean("Lock_Tables_priv"));
+            GlobalExecuteCheckbox.setSelected(privs.getBoolean("Execute_priv"));
+            GlobalReplSlaveCheckbox.setSelected(privs.getBoolean("Repl_slave_priv"));
+            GlobalReplClientCheckbox.setSelected(privs.getBoolean("Repl_client_priv"));
+            GlobalCreateViewCheckbox.setSelected(privs.getBoolean("Create_view_priv"));
+            GlobalShowViewCheckbox.setSelected(privs.getBoolean("Show_view_priv"));
+            GlobalCreateRoutineCheckbox.setSelected(privs.getBoolean("Create_routine_priv"));
+            GlobalAlterRoutineCheckbox.setSelected(privs.getBoolean("Alter_routine_priv"));
+            GlobalCreateUserCheckbox.setSelected(privs.getBoolean("Create_user_priv"));
+            GlobalEventCheckbox.setSelected(privs.getBoolean("Event_priv"));
+            GlobalTriggerCheckbox.setSelected(privs.getBoolean("Trigger_priv"));
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(UserListPanel, ex);
+            JOptionPane.showMessageDialog(UserListPanel, "updateGlobalPrivileges:"+ex);
         }
     }
 
     public static String cleanSQL(String arg) {
         arg = arg.replace("\\", "\\\\");
         return arg.replace("'", "''");
+    }
+
+    private void updateUsersHosts() {
+        try {
+            Statement userHosts = connection.createStatement();
+            ResultSet hostList = userHosts.executeQuery("SELECT Host FROM mysql.`user` WHERE User = '" + editUser + "'");
+            ArrayList<String> currHosts = new ArrayList<String>();
+            while(hostList.next()){
+                currHosts.add(hostList.getString("Host"));
+            }
+            hosts = currHosts;
+            HostComboBox.setModel(new javax.swing.DefaultComboBoxModel(hosts.toArray()));
+            HostComboBox.setSelectedIndex(0);
+            editHost = (String)HostComboBox.getSelectedItem();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(DBListPanel, "UpdateUsersHosts"+ex);
+        }
     }
 }

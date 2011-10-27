@@ -356,22 +356,74 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="GlobalPrivilegeSubmitButton" min="-2" max="-2" attributes="0"/>
-                      <Component id="backToUsers" min="-2" max="-2" attributes="0"/>
-                      <Component id="GlobalPrivilegeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
+                          <Component id="HostComboBox" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="GlobalSelectCheckbox" min="-2" max="-2" attributes="0"/>
-                              <Component id="GlobalInsertCheckbox" min="-2" max="-2" attributes="0"/>
-                              <Component id="GlobalUpdateCheckbox" min="-2" max="-2" attributes="0"/>
-                              <Component id="GlobalDeleteCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="GlobalCreateCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="GlobalDropCheckbox" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="GlobalSelectCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="GlobalInsertCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="GlobalDeleteCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="GlobalCreateCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="GlobalDropCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="GlobalGrantCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="GlobalSuperCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="GlobalShowDbCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="GlobalAlterCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="GlobalReferencesCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="GlobalIndexCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="GlobalCreateTmpTableCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="GlobalLockTablesCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="GlobalExecuteCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="GlobalReplSlaveCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Component id="GlobalUpdateCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Component id="GlobalPrivilegeSubmitButton" min="-2" max="-2" attributes="0"/>
+                              <Component id="backToUsers" min="-2" max="-2" attributes="0"/>
+                              <Component id="GlobalPrivilegeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="GlobalReloadCheckbox" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="GlobalShutdownCheckbox" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="GlobalProcessCheckbox" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="GlobalFileCheckbox" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
+                          <EmptySpace pref="12" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="GlobalReplClientCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="GlobalCreateViewCheckbox" min="-2" max="-2" attributes="0"/>
+                              <Component id="GlobalShowViewCheckbox" min="-2" max="-2" attributes="0"/>
+                              <Component id="GlobalCreateRoutineCheckbox" min="-2" max="-2" attributes="0"/>
+                              <Component id="GlobalAlterRoutineCheckbox" min="-2" max="-2" attributes="0"/>
+                              <Component id="GlobalCreateUserCheckbox" min="-2" max="-2" attributes="0"/>
+                              <Component id="GlobalEventCheckbox" min="-2" max="-2" attributes="0"/>
+                              <Component id="GlobalTriggerCheckbox" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="53" max="32767" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="115" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="SelectDB" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
@@ -388,23 +440,71 @@
                       <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="GlobalSelectCheckbox" min="-2" max="-2" attributes="0"/>
+                          <Component id="HostComboBox" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="GlobalInsertCheckbox" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="GlobalSelectCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="GlobalGrantCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="GlobalReplClientCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="GlobalUpdateCheckbox" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="GlobalInsertCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="GlobalReferencesCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="GlobalCreateViewCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="GlobalDeleteCheckbox" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="GlobalUpdateCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="GlobalIndexCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="GlobalShowViewCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="GlobalCreateCheckbox" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="GlobalDeleteCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="GlobalAlterCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="GlobalCreateRoutineCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="GlobalDropCheckbox" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="197" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="GlobalCreateCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="GlobalShowDbCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="GlobalAlterRoutineCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="GlobalDropCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="GlobalSuperCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="GlobalCreateUserCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="GlobalReloadCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="GlobalCreateTmpTableCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="GlobalEventCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="GlobalShutdownCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="GlobalLockTablesCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="GlobalTriggerCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="GlobalProcessCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="GlobalExecuteCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="GlobalFileCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="GlobalReplSlaveCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="51" max="32767" attributes="0"/>
                           <Component id="GlobalPrivilegeSubmitButton" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="dbListPane" pref="389" max="32767" attributes="0"/>
+                      <Component id="dbListPane" alignment="0" pref="389" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -500,6 +600,149 @@
           <Properties>
             <Property name="text" type="java.lang.String" resourceKey="GlobalDropCheckbox.text"/>
             <Property name="name" type="java.lang.String" value="GlobalDropCheckbox" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="HostComboBox">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new javax.swing.DefaultComboBoxModel(new String[] { &quot;Item 1&quot;, &quot;Item 2&quot;, &quot;Item 3&quot;, &quot;Item 4&quot; })" type="code"/>
+            </Property>
+            <Property name="name" type="java.lang.String" value="HostComboBox" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="HostComboBoxActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="GlobalReloadCheckbox">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="GlobalReloadCheckbox.text"/>
+            <Property name="name" type="java.lang.String" value="GlobalReloadCheckbox" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="GlobalShutdownCheckbox">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="GlobalShutdownCheckbox.text"/>
+            <Property name="name" type="java.lang.String" value="GlobalShutdownCheckbox" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="GlobalProcessCheckbox">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="GlobalProcessCheckbox.text"/>
+            <Property name="name" type="java.lang.String" value="GlobalProcessCheckbox" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="GlobalFileCheckbox">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="GlobalFileCheckbox.text"/>
+            <Property name="name" type="java.lang.String" value="GlobalFileCheckbox" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="GlobalGrantCheckbox">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="GlobalGrantCheckbox.text"/>
+            <Property name="name" type="java.lang.String" value="GlobalGrantCheckbox" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="GlobalReferencesCheckbox">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="GlobalReferencesCheckbox.text"/>
+            <Property name="name" type="java.lang.String" value="GlobalReferencesCheckbox" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="GlobalIndexCheckbox">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="GlobalIndexCheckbox.text"/>
+            <Property name="name" type="java.lang.String" value="GlobalIndexCheckbox" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="GlobalAlterCheckbox">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="GlobalAlterCheckbox.text"/>
+            <Property name="name" type="java.lang.String" value="GlobalAlterCheckbox" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="GlobalShowDbCheckbox">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="GlobalShowDbCheckbox.text"/>
+            <Property name="name" type="java.lang.String" value="GlobalShowDbCheckbox" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="GlobalSuperCheckbox">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="GlobalSuperCheckbox.text"/>
+            <Property name="name" type="java.lang.String" value="GlobalSuperCheckbox" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="GlobalCreateTmpTableCheckbox">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="GlobalCreateTmpTableCheckbox.text"/>
+            <Property name="name" type="java.lang.String" value="GlobalCreateTmpTableCheckbox" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="GlobalLockTablesCheckbox">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="GlobalLockTablesCheckbox.text"/>
+            <Property name="name" type="java.lang.String" value="GlobalLockTablesCheckbox" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="GlobalExecuteCheckbox">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="GlobalExecuteCheckbox.text"/>
+            <Property name="name" type="java.lang.String" value="GlobalExecuteCheckbox" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="GlobalReplSlaveCheckbox">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="GlobalReplSlaveCheckbox.text"/>
+            <Property name="name" type="java.lang.String" value="GlobalReplSlaveCheckbox" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="GlobalReplClientCheckbox">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="GlobalReplClientCheckbox.text"/>
+            <Property name="name" type="java.lang.String" value="GlobalReplClientCheckbox" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="GlobalCreateViewCheckbox">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="GlobalCreateViewCheckbox.text"/>
+            <Property name="name" type="java.lang.String" value="GlobalCreateViewCheckbox" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="GlobalShowViewCheckbox">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="GlobalShowViewCheckbox.text"/>
+            <Property name="name" type="java.lang.String" value="GlobalShowViewCheckbox" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="GlobalCreateRoutineCheckbox">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="GlobalCreateRoutineCheckbox.text"/>
+            <Property name="name" type="java.lang.String" value="GlobalCreateRoutineCheckbox" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="GlobalAlterRoutineCheckbox">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="GlobalAlterRoutineCheckbox.text"/>
+            <Property name="name" type="java.lang.String" value="GlobalAlterRoutineCheckbox" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="GlobalCreateUserCheckbox">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="GlobalCreateUserCheckbox.text"/>
+            <Property name="name" type="java.lang.String" value="GlobalCreateUserCheckbox" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="GlobalEventCheckbox">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="GlobalEventCheckbox.text"/>
+            <Property name="name" type="java.lang.String" value="GlobalEventCheckbox" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="GlobalTriggerCheckbox">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="GlobalTriggerCheckbox.text"/>
+            <Property name="name" type="java.lang.String" value="GlobalTriggerCheckbox" noResource="true"/>
           </Properties>
         </Component>
       </SubComponents>
