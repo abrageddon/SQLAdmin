@@ -34,6 +34,7 @@ public class SQLAdminView extends FrameView {
         try {
             connection = DriverManager.getConnection("jdbc:mysql://" + server + ":3306/mysql", username, password);
             mainPanel.setVisible(false);
+            getDatabases();
             updateUsers();
             setComponent(UserListPanel);
             UserListPanel.setVisible(true);
@@ -462,6 +463,11 @@ public class SQLAdminView extends FrameView {
         editUser = getUserListValue();
         //TODO Edit User
         System.out.println("Edit: " + editUser);
+        
+        // Switch to database panel
+        UserListPanel.setVisible(false);
+        setComponent(DBListPanel);
+        DBListPanel.setVisible(true);
 
     }//GEN-LAST:event_EditUserButtonActionPerformed
 
