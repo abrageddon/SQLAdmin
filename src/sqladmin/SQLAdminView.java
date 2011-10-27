@@ -105,6 +105,7 @@ public class SQLAdminView extends FrameView {
         dbListPane = new javax.swing.JScrollPane();
         databaseList = new javax.swing.JList();
         SelectDB = new javax.swing.JButton();
+        backToUsers = new javax.swing.JButton();
 
         mainPanel.setName("mainPanel"); // NOI18N
 
@@ -389,6 +390,14 @@ public class SQLAdminView extends FrameView {
         SelectDB.setText(resourceMap.getString("SelectDB.text")); // NOI18N
         SelectDB.setName("SelectDB"); // NOI18N
 
+        backToUsers.setText(resourceMap.getString("backToUsers.text")); // NOI18N
+        backToUsers.setName("backToUsers"); // NOI18N
+        backToUsers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backToUsersActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout DBListPanelLayout = new javax.swing.GroupLayout(DBListPanel);
         DBListPanel.setLayout(DBListPanelLayout);
         DBListPanelLayout.setHorizontalGroup(
@@ -396,12 +405,12 @@ public class SQLAdminView extends FrameView {
             .addGroup(DBListPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dbListPane, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DBListPanelLayout.createSequentialGroup()
+                        .addComponent(backToUsers)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
+                        .addComponent(SelectDB))
+                    .addComponent(dbListPane, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
                     .addComponent(jLabel8))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DBListPanelLayout.createSequentialGroup()
-                .addContainerGap(193, Short.MAX_VALUE)
-                .addComponent(SelectDB)
                 .addContainerGap())
         );
         DBListPanelLayout.setVerticalGroup(
@@ -412,7 +421,9 @@ public class SQLAdminView extends FrameView {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(dbListPane, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(SelectDB)
+                .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SelectDB)
+                    .addComponent(backToUsers))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -464,6 +475,7 @@ public class SQLAdminView extends FrameView {
         
         // Switch to database panel
         UserListPanel.setVisible(false);
+        statusMessageLabel.setText("Editing User: "+editUser);
         setComponent(DBListPanel);
         DBListPanel.setVisible(true);
 
@@ -571,6 +583,14 @@ public class SQLAdminView extends FrameView {
         setComponent(UserListPanel);
         UserListPanel.setVisible(true);
     }//GEN-LAST:event_AddUserCancelActionPerformed
+
+private void backToUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToUsersActionPerformed
+// TODO add your handling code here:
+    DBListPanel.setVisible(false);
+    setComponent(UserListPanel);
+    UserListPanel.setVisible(true);
+}//GEN-LAST:event_backToUsersActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddUserButton;
     private javax.swing.JButton AddUserCancel;
@@ -589,6 +609,7 @@ public class SQLAdminView extends FrameView {
     private javax.swing.JTextField UserField;
     private javax.swing.JPanel UserListPanel;
     private javax.swing.JList UserListjList;
+    private javax.swing.JButton backToUsers;
     private javax.swing.JList databaseList;
     private javax.swing.JScrollPane dbListPane;
     private javax.swing.JLabel jLabel1;
