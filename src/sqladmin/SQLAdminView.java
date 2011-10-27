@@ -106,6 +106,7 @@ public class SQLAdminView extends FrameView {
         databaseList = new javax.swing.JList();
         SelectDB = new javax.swing.JButton();
         backToUsers = new javax.swing.JButton();
+        DBPanel = new javax.swing.JPanel();
 
         mainPanel.setName("mainPanel"); // NOI18N
 
@@ -427,6 +428,19 @@ public class SQLAdminView extends FrameView {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        DBPanel.setName("DBPanel"); // NOI18N
+
+        javax.swing.GroupLayout DBPanelLayout = new javax.swing.GroupLayout(DBPanel);
+        DBPanel.setLayout(DBPanelLayout);
+        DBPanelLayout.setHorizontalGroup(
+            DBPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        DBPanelLayout.setVerticalGroup(
+            DBPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
         setComponent(mainPanel);
         setMenuBar(menuBar);
         setStatusBar(statusPanel);
@@ -600,6 +614,7 @@ private void backToUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private javax.swing.JPasswordField AddUserPass;
     private javax.swing.JButton ConnectButton;
     private javax.swing.JPanel DBListPanel;
+    private javax.swing.JPanel DBPanel;
     private javax.swing.JButton DeleteUserButton;
     private javax.swing.JButton EditUserButton;
     private javax.swing.JPasswordField PasswordField;
