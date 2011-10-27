@@ -40,7 +40,7 @@ public class SQLAdminView extends FrameView {
     }
 
     private String getUserListValue() {
-        if (UserListjList.getSelectedIndex() != -1){
+        if (UserListjList.getSelectedIndex() != -1) {
             return UserListjList.getSelectedValue().toString();
         }
         return "";
@@ -78,6 +78,14 @@ public class SQLAdminView extends FrameView {
         AddUserButton = new javax.swing.JButton();
         DeleteUserButton = new javax.swing.JButton();
         AddUserPanel = new javax.swing.JPanel();
+        SubmitAddUser = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        AddUserName = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        AddUserHost = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        AddUserPass = new javax.swing.JPasswordField();
+        AddUserCancel = new javax.swing.JButton();
 
         mainPanel.setName("mainPanel"); // NOI18N
 
@@ -283,15 +291,79 @@ public class SQLAdminView extends FrameView {
 
         AddUserPanel.setName("AddUserPanel"); // NOI18N
 
+        SubmitAddUser.setText(resourceMap.getString("SubmitAddUser.text")); // NOI18N
+        SubmitAddUser.setName("SubmitAddUser"); // NOI18N
+        SubmitAddUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SubmitAddUserActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText(resourceMap.getString("jLabel5.text")); // NOI18N
+        jLabel5.setName("jLabel5"); // NOI18N
+
+        AddUserName.setText(resourceMap.getString("AddUserName.text")); // NOI18N
+        AddUserName.setName("AddUserName"); // NOI18N
+
+        jLabel6.setText(resourceMap.getString("jLabel6.text")); // NOI18N
+        jLabel6.setName("jLabel6"); // NOI18N
+
+        AddUserHost.setText(resourceMap.getString("AddUserHost.text")); // NOI18N
+        AddUserHost.setName("AddUserHost"); // NOI18N
+
+        jLabel7.setText(resourceMap.getString("jLabel7.text")); // NOI18N
+        jLabel7.setName("jLabel7"); // NOI18N
+
+        AddUserPass.setText(resourceMap.getString("AddUserPass.text")); // NOI18N
+        AddUserPass.setName("AddUserPass"); // NOI18N
+
+        AddUserCancel.setText(resourceMap.getString("AddUserCancel.text")); // NOI18N
+        AddUserCancel.setName("AddUserCancel"); // NOI18N
+        AddUserCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddUserCancelActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout AddUserPanelLayout = new javax.swing.GroupLayout(AddUserPanel);
         AddUserPanel.setLayout(AddUserPanelLayout);
         AddUserPanelLayout.setHorizontalGroup(
             AddUserPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(AddUserPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(AddUserPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(AddUserPass, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddUserPanelLayout.createSequentialGroup()
+                        .addComponent(AddUserCancel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 260, Short.MAX_VALUE)
+                        .addComponent(SubmitAddUser))
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6)
+                    .addComponent(AddUserHost, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                    .addComponent(AddUserName, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                    .addComponent(jLabel7))
+                .addContainerGap())
         );
         AddUserPanelLayout.setVerticalGroup(
             AddUserPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddUserPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(AddUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(AddUserHost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(AddUserPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addGroup(AddUserPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SubmitAddUser)
+                    .addComponent(AddUserCancel))
+                .addContainerGap())
         );
 
         setComponent(mainPanel);
@@ -304,21 +376,28 @@ public class SQLAdminView extends FrameView {
     }
 
     private void updateUsers() {
-        try{
-        Statement getUsers = connection.createStatement();
-        ResultSet userSet = getUsers.executeQuery("SELECT DISTINCT User FROM `user`");
-        ArrayList<String> userList = new ArrayList<String>();
-        while (userSet.next()) {
-            userList.add(userSet.getString("User"));
-        }
-        users = userList;
-        }catch(SQLException e){
+        try {
+            Statement getUsers = connection.createStatement();
+            ResultSet userSet = getUsers.executeQuery("SELECT DISTINCT User FROM `user`");
+            ArrayList<String> userList = new ArrayList<String>();
+            while (userSet.next()) {
+                userList.add(userSet.getString("User"));
+            }
+            users = userList;
+        } catch (SQLException e) {
             System.err.println(e);
         }
         UserListjList.setModel(new javax.swing.AbstractListModel() {
+
             ArrayList<String> strings = users;
-            public int getSize() { return strings.size(); }
-            public Object getElementAt(int i) { return strings.get(i); }
+
+            public int getSize() {
+                return strings.size();
+            }
+
+            public Object getElementAt(int i) {
+                return strings.get(i);
+            }
         });
     }//GEN-LAST:event_ConnectButtonActionPerformed
 
@@ -343,31 +422,76 @@ public class SQLAdminView extends FrameView {
         UserListPanel.setVisible(false);
         setComponent(AddUserPanel);
         AddUserPanel.setVisible(true);
-        
-        //Refresh user list
-        updateUsers();
+
     }//GEN-LAST:event_AddUserButtonActionPerformed
 
     private void DeleteUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteUserButtonActionPerformed
         editUser = getUserListValue();
         //TODO Delete user; not root
-        if (!editUser.equals("root") && !editUser.isEmpty()){
+        if (!editUser.equals("root") && !editUser.isEmpty()) {
             System.out.println("Delete: " + editUser);
-        }else if (editUser.equals("root")){
+        } else if (editUser.equals("root")) {
             JOptionPane.showMessageDialog(mainPanel, "Can't delete root account!");
         }
         //Refresh user list
         updateUsers();
     }//GEN-LAST:event_DeleteUserButtonActionPerformed
 
+    private void SubmitAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitAddUserActionPerformed
+        // TODO add your handling code here:
+        String username = AddUserName.getText();
+        String host = AddUserHost.getText();
+        String pass = AddUserPass.getText();
+
+        boolean added = true;
+
+        if (username.isEmpty()) {
+            JOptionPane.showMessageDialog(mainPanel, "Username is blank.");
+            added = false;
+        }
+        if (host.isEmpty()) {
+            JOptionPane.showMessageDialog(mainPanel, "Host is blank.");
+            added = false;
+        }
+        if (pass.isEmpty()) {
+            JOptionPane.showMessageDialog(mainPanel, "Password is blank.");
+            added = false;
+        }
+
+        if (added) {
+            //Refresh user list
+            updateUsers();
+
+            //Return to user list
+            AddUserPanel.setVisible(false);
+            setComponent(UserListPanel);
+            UserListPanel.setVisible(true);
+        }
+    }//GEN-LAST:event_SubmitAddUserActionPerformed
+
+    private void AddUserCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddUserCancelActionPerformed
+
+        //Refresh user list
+        updateUsers();
+
+        //Return to user list
+        AddUserPanel.setVisible(false);
+        setComponent(UserListPanel);
+        UserListPanel.setVisible(true);
+    }//GEN-LAST:event_AddUserCancelActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddUserButton;
+    private javax.swing.JButton AddUserCancel;
+    private javax.swing.JTextField AddUserHost;
+    private javax.swing.JTextField AddUserName;
     private javax.swing.JPanel AddUserPanel;
+    private javax.swing.JPasswordField AddUserPass;
     private javax.swing.JButton ConnectButton;
     private javax.swing.JButton DeleteUserButton;
     private javax.swing.JButton EditUserButton;
     private javax.swing.JPasswordField PasswordField;
     private javax.swing.JTextField ServerField;
+    private javax.swing.JButton SubmitAddUser;
     private javax.swing.JTextField UserField;
     private javax.swing.JPanel UserListPanel;
     private javax.swing.JList UserListjList;
@@ -375,6 +499,9 @@ public class SQLAdminView extends FrameView {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenuBar menuBar;
