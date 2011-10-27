@@ -5,6 +5,8 @@ package sqladmin;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import org.jdesktop.application.SingleFrameApplication;
 import org.jdesktop.application.FrameView;
@@ -456,6 +458,24 @@ public class SQLAdminView extends FrameView {
         if (pass.isEmpty()) {
             JOptionPane.showMessageDialog(mainPanel, "Password is blank.");
             added = false;
+        }
+        if (added) {
+            try {
+                Statement update = connection.createStatement();
+
+                //Check for username in database already
+                int ret = update.executeUpdate("CREATE USER '" + username + "'@'" + host + "' IDENTIFIED BY '" + pass + "'");
+                if (ret == 0) {
+                    JOptionPane.showMessageDialog(mainPanel, "User Added.");
+                    added = true;
+                } else {
+                    JOptionPane.showMessageDialog(mainPanel, "User Not Added.");
+                    added = false;
+                }
+
+            } catch (SQLException ex) {
+                added = false;
+            }
         }
 
         if (added) {
