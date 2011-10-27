@@ -501,9 +501,13 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="DBPanelTitle" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="temp_DBPriv" alignment="0" min="-2" pref="304" max="-2" attributes="0"/>
+                      <Component id="DBPanelTitle" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="BackToDBs" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -513,7 +517,11 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="DBPanelTitle" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="64" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="temp_DBPriv" min="-2" pref="100" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="BackToDBs" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -524,6 +532,31 @@
             <Property name="text" type="java.lang.String" resourceKey="DBPanelTitle.text"/>
             <Property name="name" type="java.lang.String" value="DBPanelTitle" noResource="true"/>
           </Properties>
+        </Component>
+        <Container class="javax.swing.JScrollPane" name="temp_DBPriv">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="temp_DBPriv" noResource="true"/>
+          </Properties>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTextArea" name="temp_DBPrivTxt">
+              <Properties>
+                <Property name="columns" type="int" value="20"/>
+                <Property name="rows" type="int" value="5"/>
+                <Property name="name" type="java.lang.String" value="temp_DBPrivTxt" noResource="true"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Component class="javax.swing.JButton" name="BackToDBs">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="BackToDBs.text"/>
+            <Property name="name" type="java.lang.String" value="BackToDBs" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BackToDBsActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

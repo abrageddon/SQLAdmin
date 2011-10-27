@@ -36,6 +36,7 @@ public class SQLAdminView extends FrameView {
             updateUsers();
             setComponent(UserListPanel);
             UserListPanel.setVisible(true);
+			editServer = server;
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(mainPanel, ex);
         }
@@ -115,6 +116,9 @@ public class SQLAdminView extends FrameView {
         backToUsers = new javax.swing.JButton();
         DBPanel = new javax.swing.JPanel();
         DBPanelTitle = new javax.swing.JLabel();
+        temp_DBPriv = new javax.swing.JScrollPane();
+        temp_DBPrivTxt = new javax.swing.JTextArea();
+        BackToDBs = new javax.swing.JButton();
 
         mainPanel.setName("mainPanel"); // NOI18N
 
@@ -446,13 +450,31 @@ public class SQLAdminView extends FrameView {
         DBPanelTitle.setText(resourceMap.getString("DBPanelTitle.text")); // NOI18N
         DBPanelTitle.setName("DBPanelTitle"); // NOI18N
 
+        temp_DBPriv.setName("temp_DBPriv"); // NOI18N
+
+        temp_DBPrivTxt.setColumns(20);
+        temp_DBPrivTxt.setRows(5);
+        temp_DBPrivTxt.setName("temp_DBPrivTxt"); // NOI18N
+        temp_DBPriv.setViewportView(temp_DBPrivTxt);
+
+        BackToDBs.setText(resourceMap.getString("BackToDBs.text")); // NOI18N
+        BackToDBs.setName("BackToDBs"); // NOI18N
+        BackToDBs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackToDBsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout DBPanelLayout = new javax.swing.GroupLayout(DBPanel);
         DBPanel.setLayout(DBPanelLayout);
         DBPanelLayout.setHorizontalGroup(
             DBPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(DBPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(DBPanelTitle)
+                .addGroup(DBPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(temp_DBPriv, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DBPanelTitle)
+                    .addComponent(BackToDBs))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         DBPanelLayout.setVerticalGroup(
@@ -460,7 +482,11 @@ public class SQLAdminView extends FrameView {
             .addGroup(DBPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(DBPanelTitle)
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(temp_DBPriv, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(BackToDBs)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         setComponent(mainPanel);
@@ -638,6 +664,16 @@ private void backToUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
 		DBPanel.setVisible(true);
 	}//GEN-LAST:event_SelectDBActionPerformed
 
+	private void BackToDBsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDBsActionPerformed
+		// TODO add your handling code here:
+		editDatabase = "";
+		statusMessageLabel.setText("User: " + editUser);
+
+		DBPanel.setVisible(false);
+		setComponent(DBListPanel);
+		DBListPanel.setVisible(true);
+	}//GEN-LAST:event_BackToDBsActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddUserButton;
     private javax.swing.JButton AddUserCancel;
@@ -645,6 +681,7 @@ private void backToUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private javax.swing.JTextField AddUserName;
     private javax.swing.JPanel AddUserPanel;
     private javax.swing.JPasswordField AddUserPass;
+    private javax.swing.JButton BackToDBs;
     private javax.swing.JButton ConnectButton;
     private javax.swing.JPanel DBListPanel;
     private javax.swing.JPanel DBPanel;
@@ -675,8 +712,11 @@ private void backToUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private javax.swing.JLabel statusAnimationLabel;
     private javax.swing.JLabel statusMessageLabel;
     private javax.swing.JPanel statusPanel;
+    private javax.swing.JScrollPane temp_DBPriv;
+    private javax.swing.JTextArea temp_DBPrivTxt;
     // End of variables declaration//GEN-END:variables
     private Connection connection;
+	private String editServer;
     private ArrayList<String> users;
     private String editUser;
     private ArrayList<String> databases;
