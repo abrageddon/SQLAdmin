@@ -37,7 +37,7 @@ public class SQLAdminView extends FrameView {
             setComponent(UserListPanel);
             UserListPanel.setVisible(true);
         } catch (SQLException ex) {
-            System.err.println(ex);
+            JOptionPane.showMessageDialog(mainPanel, ex);
         }
     }
     
