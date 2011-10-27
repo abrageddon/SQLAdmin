@@ -18,6 +18,7 @@ public class SQLAdminView extends FrameView {
         super(app);
 
         users = new ArrayList<String>();
+        databases = new ArrayList<String>();
 
         initComponents();
 
@@ -31,11 +32,24 @@ public class SQLAdminView extends FrameView {
         try {
             connection = DriverManager.getConnection("jdbc:mysql://" + server + ":3306/mysql", username, password);
             mainPanel.setVisible(false);
+            getDatabases();
             updateUsers();
             setComponent(UserListPanel);
             UserListPanel.setVisible(true);
         } catch (SQLException ex) {
             System.err.println(ex);
+        }
+    }
+    
+    private void getDatabases() {
+        try {
+        Statement getDatabases = connection.createStatement();
+        ResultSet dbSet = getDatabases.executeQuery("show databases");
+        while (dbSet.next()) {
+            databases.add(dbSet.getString(1));
+        }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
@@ -86,6 +100,11 @@ public class SQLAdminView extends FrameView {
         jLabel7 = new javax.swing.JLabel();
         AddUserPass = new javax.swing.JPasswordField();
         AddUserCancel = new javax.swing.JButton();
+        DBListPanel = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        dbListPane = new javax.swing.JScrollPane();
+        databaseList = new javax.swing.JList();
+        SelectDB = new javax.swing.JButton();
 
         mainPanel.setName("mainPanel"); // NOI18N
 
@@ -128,28 +147,14 @@ public class SQLAdminView extends FrameView {
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(mainPanelLayout.createSequentialGroup()
-                            .addComponent(jLabel1)
-                            .addContainerGap(339, Short.MAX_VALUE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                            .addComponent(ServerField, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
-                            .addContainerGap())
-                        .addGroup(mainPanelLayout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addContainerGap(313, Short.MAX_VALUE))
-                        .addGroup(mainPanelLayout.createSequentialGroup()
-                            .addComponent(UserField, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
-                            .addContainerGap())
-                        .addGroup(mainPanelLayout.createSequentialGroup()
-                            .addComponent(jLabel3)
-                            .addContainerGap(316, Short.MAX_VALUE))
-                        .addGroup(mainPanelLayout.createSequentialGroup()
-                            .addComponent(PasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
-                            .addContainerGap()))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                        .addComponent(ConnectButton)
-                        .addContainerGap())))
+                    .addComponent(jLabel1)
+                    .addComponent(ServerField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
+                    .addComponent(jLabel2)
+                    .addComponent(UserField, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
+                    .addComponent(jLabel3)
+                    .addComponent(PasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
+                    .addComponent(ConnectButton, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,7 +173,7 @@ public class SQLAdminView extends FrameView {
                 .addComponent(PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ConnectButton)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         menuBar.setName("menuBar"); // NOI18N
@@ -200,7 +205,7 @@ public class SQLAdminView extends FrameView {
             .addGroup(statusPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(statusMessageLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 376, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 360, Short.MAX_VALUE)
                 .addComponent(statusAnimationLabel)
                 .addContainerGap())
         );
@@ -265,7 +270,7 @@ public class SQLAdminView extends FrameView {
                         .addComponent(jLabel4)
                         .addGap(181, 181, 181))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, UserListPanelLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, UserListPanelLayout.createSequentialGroup()
                         .addComponent(AddUserButton)
@@ -284,8 +289,8 @@ public class SQLAdminView extends FrameView {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(UserListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(EditUserButton)
-                    .addComponent(AddUserButton)
-                    .addComponent(DeleteUserButton))
+                    .addComponent(DeleteUserButton)
+                    .addComponent(AddUserButton))
                 .addContainerGap())
         );
 
@@ -332,15 +337,15 @@ public class SQLAdminView extends FrameView {
             .addGroup(AddUserPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(AddUserPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(AddUserPass, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                    .addComponent(AddUserPass, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddUserPanelLayout.createSequentialGroup()
                         .addComponent(AddUserCancel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 260, Short.MAX_VALUE)
                         .addComponent(SubmitAddUser))
                     .addComponent(jLabel5)
                     .addComponent(jLabel6)
-                    .addComponent(AddUserHost, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
-                    .addComponent(AddUserName, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                    .addComponent(AddUserHost, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
+                    .addComponent(AddUserName, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
                     .addComponent(jLabel7))
                 .addContainerGap())
         );
@@ -364,6 +369,51 @@ public class SQLAdminView extends FrameView {
                     .addComponent(SubmitAddUser)
                     .addComponent(AddUserCancel))
                 .addContainerGap())
+        );
+
+        DBListPanel.setName("DBListPanel"); // NOI18N
+
+        jLabel8.setText(resourceMap.getString("jLabel8.text")); // NOI18N
+        jLabel8.setName("jLabel8"); // NOI18N
+
+        dbListPane.setName("dbListPane"); // NOI18N
+
+        databaseList.setModel(new javax.swing.AbstractListModel() {
+            ArrayList<String> strings = databases;
+            public int getSize() { return strings.size(); }
+            public Object getElementAt(int i) { return strings.get(i); }
+        });
+        databaseList.setName("databaseList"); // NOI18N
+        dbListPane.setViewportView(databaseList);
+
+        SelectDB.setText(resourceMap.getString("SelectDB.text")); // NOI18N
+        SelectDB.setName("SelectDB"); // NOI18N
+
+        javax.swing.GroupLayout DBListPanelLayout = new javax.swing.GroupLayout(DBListPanel);
+        DBListPanel.setLayout(DBListPanelLayout);
+        DBListPanelLayout.setHorizontalGroup(
+            DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(DBListPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dbListPane, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DBListPanelLayout.createSequentialGroup()
+                .addContainerGap(193, Short.MAX_VALUE)
+                .addComponent(SelectDB)
+                .addContainerGap())
+        );
+        DBListPanelLayout.setVerticalGroup(
+            DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(DBListPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(dbListPane, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(SelectDB)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         setComponent(mainPanel);
@@ -411,6 +461,11 @@ public class SQLAdminView extends FrameView {
         editUser = getUserListValue();
         //TODO Edit User
         System.out.println("Edit: " + editUser);
+        
+        // Switch to database panel
+        UserListPanel.setVisible(false);
+        setComponent(DBListPanel);
+        DBListPanel.setVisible(true);
 
     }//GEN-LAST:event_EditUserButtonActionPerformed
 
@@ -524,14 +579,18 @@ public class SQLAdminView extends FrameView {
     private javax.swing.JPanel AddUserPanel;
     private javax.swing.JPasswordField AddUserPass;
     private javax.swing.JButton ConnectButton;
+    private javax.swing.JPanel DBListPanel;
     private javax.swing.JButton DeleteUserButton;
     private javax.swing.JButton EditUserButton;
     private javax.swing.JPasswordField PasswordField;
+    private javax.swing.JButton SelectDB;
     private javax.swing.JTextField ServerField;
     private javax.swing.JButton SubmitAddUser;
     private javax.swing.JTextField UserField;
     private javax.swing.JPanel UserListPanel;
     private javax.swing.JList UserListjList;
+    private javax.swing.JList databaseList;
+    private javax.swing.JScrollPane dbListPane;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -539,6 +598,7 @@ public class SQLAdminView extends FrameView {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenuBar menuBar;
@@ -549,4 +609,6 @@ public class SQLAdminView extends FrameView {
     private Connection connection;
     private ArrayList<String> users;
     private String editUser;
+    private ArrayList<String> databases;
+    private String editDatabase;
 }
