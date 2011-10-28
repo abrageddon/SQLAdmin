@@ -1202,12 +1202,17 @@ public class SQLAdminView extends FrameView {
         //Return to user list
         AddUserPanel.setVisible(false);
         setComponent(UserListPanel);
+        getFrame().setMinimumSize(new Dimension(600, 450));
+        getFrame().setSize(new Dimension(600, 450));
         UserListPanel.setVisible(true);
     }//GEN-LAST:event_AddUserCancelActionPerformed
 
 private void backToUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToUsersActionPerformed
     DBListPanel.setVisible(false);
     setComponent(UserListPanel);
+
+    getFrame().setMinimumSize(new Dimension(800, 450));
+    getFrame().setSize(new Dimension(800, 450));
     UserListPanel.setVisible(true);
 }//GEN-LAST:event_backToUsersActionPerformed
 
@@ -1877,20 +1882,20 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
 
 	private void SelectDBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectDBActionPerformed
 
-		// TODO add your handling code here:
-		editDatabase = getDBListValue();
-		if (editDatabase.equals("")) {
-			JOptionPane.showMessageDialog(DBListPanel, "You must select a database to edit.");
-		} else {
-			DBPanelTitle.setText(editUser + "'s Privileges on " + editDatabase);
-			DBTableListLabel.setText(editDatabase + "'s Tables");
-			getTables();
-			getDBPrivs();
+            // TODO add your handling code here:
+            editDatabase = getDBListValue();
+            if (editDatabase.equals("")) {
+                JOptionPane.showMessageDialog(DBListPanel, "You must select a database to edit.");
+            } else {
+                DBPanelTitle.setText(editUser + "'s Privileges on " + editDatabase);
+                DBTableListLabel.setText(editDatabase + "'s Tables");
+                getTables();
+                getDBPrivs();
 
-			DBListPanel.setVisible(false);
-			setComponent(DBPanel);
-			DBPanel.setVisible(true);
-		}
+                DBListPanel.setVisible(false);
+                setComponent(DBPanel);
+                DBPanel.setVisible(true);
+            }
 	}//GEN-LAST:event_SelectDBActionPerformed
 
 	private void BackToDBsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDBsActionPerformed
