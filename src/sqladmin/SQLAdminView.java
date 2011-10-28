@@ -1328,14 +1328,18 @@ public class SQLAdminView extends FrameView {
     private void EditUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditUserButtonActionPerformed
         editUser = getUserListValue();
         if (!editUser.isEmpty()) {
-            // Switch to database panel
-            UserListPanel.setVisible(false);
-            setComponent(GlobalPanel);
-            getFrame().setMinimumSize(GlobalWindow);
-            getFrame().setSize(GlobalWindow);
-            GlobalPanel.setVisible(true);
-            updateUsersHosts();
-            updateGlobalPrivileges();
+            if (!editUser.equalsIgnoreCase("root")) {
+                // Switch to database panel
+                UserListPanel.setVisible(false);
+                setComponent(GlobalPanel);
+                getFrame().setMinimumSize(GlobalWindow);
+                getFrame().setSize(GlobalWindow);
+                GlobalPanel.setVisible(true);
+                updateUsersHosts();
+                updateGlobalPrivileges();
+            } else {
+                JOptionPane.showMessageDialog(mainPanel, "Let's not mess up root's privileges.");
+            }
         }
     }//GEN-LAST:event_EditUserButtonActionPerformed
 
@@ -1355,17 +1359,22 @@ public class SQLAdminView extends FrameView {
     private void DeleteUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteUserButtonActionPerformed
         editUser = getUserListValue();
         updateUsersHosts();
-        if (!editUser.equals("root") && !editUser.isEmpty()) {
+        if (!editUser.equalsIgnoreCase("root") && !editUser.isEmpty()) {
             int canDel = JOptionPane.showConfirmDialog(UserListPanel, "Delete User: " + editUser + "?", "Delete " + editUser, JOptionPane.YES_NO_OPTION);
             if (canDel == JOptionPane.YES_OPTION) {
                 try {
-                    Statement update;
                     //Check for username in database already
                     int ret = 0;
+                    String allUserHosts = "";
                     for (String host : hosts) {
-                        update = connection.createStatement();
-                        ret += update.executeUpdate("DROP USER '" + cleanSQL(editUser) + "'@'" + cleanSQL(host) + "'");
+                        if (!allUserHosts.isEmpty()) {
+                            allUserHosts += ",";
+                        }
+                        allUserHosts += " '" + editUser + "'@'" + host + "' ";
                     }
+
+                    Statement update = connection.createStatement();
+                    ret += update.executeUpdate("DROP USER " + allUserHosts);
                     if (ret == 0) {
                         JOptionPane.showMessageDialog(UserListPanel, "User Deleted.");
                     } else {
@@ -1376,7 +1385,7 @@ public class SQLAdminView extends FrameView {
                     JOptionPane.showMessageDialog(UserListPanel, "DeleteUserButtonActionPerformed: " + ex.getMessage());
                 }
             }
-        } else if (editUser.equals("root")) {
+        } else if (editUser.equalsIgnoreCase("root")) {
             JOptionPane.showMessageDialog(UserListPanel, "Can't delete root account!");
         }
         //Refresh user list
@@ -2527,36 +2536,48 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
 
 
             if (!editUser.isEmpty()) {
-                JTextField username = new JTextField();
-                final JComponent[] inputs = new JComponent[]{
-                    new JLabel("Enter New Username:"),
-                    username
-                };
-                int cancel = JOptionPane.showConfirmDialog(null, inputs, "Change Password", JOptionPane.OK_CANCEL_OPTION);
-                if (cancel == JOptionPane.YES_OPTION) {
-                    if (username.getText() != null && !username.getText().isEmpty()) {
-                        try {
-                            Statement query = connection.createStatement();
-                            ResultSet checkName = query.executeQuery("SELECT DISTINCT User FROM mysql.`user` WHERE User = '" + cleanSQL(username.getText()) + "'");
-                            if (checkName.next()) {
-                                JOptionPane.showMessageDialog(AddUserPanel, "Username \"" + username.getText() + "\" already exists.");
-                            } else {
-                                Statement update;
-                                int ret = 0;
-                                for (String host : hosts) {
-                                    update = connection.createStatement();
-                                    ret += update.executeUpdate("RENAME USER '" + cleanSQL(editUser) + "'@'" + host + "' TO '" + cleanSQL(username.getText()) + "'@'" + host + "'");
-                                }
-                                if (ret == 0) {
-                                    JOptionPane.showMessageDialog(UserListPanel, "Username Updated.");
+                if (!editUser.equalsIgnoreCase("root")) {
+                    JTextField username = new JTextField();
+                    final JComponent[] inputs = new JComponent[]{
+                        new JLabel("Enter New Username:"),
+                        username
+                    };
+                    int cancel = JOptionPane.showConfirmDialog(null, inputs, "Change Password", JOptionPane.OK_CANCEL_OPTION);
+                    if (cancel == JOptionPane.YES_OPTION) {
+                        if (username.getText() != null && !username.getText().isEmpty()) {
+                            try {
+                                Statement query = connection.createStatement();
+                                ResultSet checkName = query.executeQuery("SELECT DISTINCT User FROM mysql.`user` WHERE User = '" + cleanSQL(username.getText()) + "'");
+                                if (checkName.next()) {
+                                    JOptionPane.showMessageDialog(AddUserPanel, "Username \"" + username.getText() + "\" already exists.");
                                 } else {
-                                    JOptionPane.showMessageDialog(UserListPanel, "Username Not Updated.");
+                                    int ret = 0;
+
+                                    String allUserHosts = "";
+                                    for (String host : hosts) {
+                                        if (!allUserHosts.isEmpty()) {
+                                            allUserHosts += ",";
+                                        }
+                                        allUserHosts += " '" + editUser + "'@'" + host + "' TO '" + cleanSQL(username.getText()) + "'@'" + host + "' ";
+                                    }
+
+                                    Statement update = connection.createStatement();
+                                    ret += update.executeUpdate("RENAME USER " + allUserHosts);
+
+                                    if (ret == 0) {
+                                        JOptionPane.showMessageDialog(UserListPanel, "Username Updated.");
+                                    } else {
+                                        JOptionPane.showMessageDialog(UserListPanel, "Username Not Updated.");
+                                    }
                                 }
+                            } catch (SQLException ex) {
+                                JOptionPane.showMessageDialog(UserListPanel, "RenameUserButtonActionPerformed: " + ex.getMessage());
                             }
-                        } catch (SQLException ex) {
-                            JOptionPane.showMessageDialog(UserListPanel, "RenameUserButtonActionPerformed: " + ex.getMessage());
                         }
+
                     }
+                } else {
+                    JOptionPane.showMessageDialog(mainPanel, "Let's not mess up root's name.");
                 }
             }
             updateUsers();
