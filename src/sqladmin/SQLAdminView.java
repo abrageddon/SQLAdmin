@@ -6,8 +6,6 @@ package sqladmin;
 import java.awt.Dimension;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.*;
 import org.jdesktop.application.SingleFrameApplication;
 import org.jdesktop.application.FrameView;
@@ -65,77 +63,77 @@ public class SQLAdminView extends FrameView {
         }
     }
 
-	private void getDBPrivs() {
-		try {
-			Statement updateDBPrivs = connection.createStatement();
-			ResultSet DBPrivs = updateDBPrivs.executeQuery("SELECT * from mysql.db WHERE user='" + editUser + "' AND db='" + editDatabase + "';");
-			
-			if (DBPrivs.next()) {
-				DBSelect.setSelected(DBPrivs.getBoolean("Select_priv"));
-				DBInsert.setSelected(DBPrivs.getBoolean("Insert_priv"));
-				DBDelete.setSelected(DBPrivs.getBoolean("Delete_priv"));
-				DBUpdate.setSelected(DBPrivs.getBoolean("Update_priv"));
-				DBCreate.setSelected(DBPrivs.getBoolean("Create_priv"));
-				DBDrop.setSelected(DBPrivs.getBoolean("Drop_priv"));
-				DBGrant.setSelected(DBPrivs.getBoolean("Grant_priv"));
-				DBIndex.setSelected(DBPrivs.getBoolean("Index_priv"));
-				DBAlter.setSelected(DBPrivs.getBoolean("Alter_priv"));
-				DBCreateTempTables.setSelected(DBPrivs.getBoolean("Create_tmp_table_priv"));
-				DBShowView.setSelected(DBPrivs.getBoolean("Show_view_priv"));
-				DBCreateRoutine.setSelected(DBPrivs.getBoolean("Create_routine_priv"));
-				DBAlterRoutine.setSelected(DBPrivs.getBoolean("Alter_routine_priv"));
-				DBExecute.setSelected(DBPrivs.getBoolean("Execute_priv"));
-				DBCreateView.setSelected(DBPrivs.getBoolean("Create_view_priv"));
-				DBEvent.setSelected(DBPrivs.getBoolean("Event_priv"));
-				DBTrigger.setSelected(DBPrivs.getBoolean("Trigger_priv"));
-				DBLockTables.setSelected(DBPrivs.getBoolean("Lock_tables_priv"));
-				DBReferences.setSelected(DBPrivs.getBoolean("References_priv"));
-			} else {
-				DBSelect.setSelected(false);
-				DBInsert.setSelected(false);
-				DBDelete.setSelected(false);
-				DBUpdate.setSelected(false);
-				DBCreate.setSelected(false);
-				DBDrop.setSelected(false);
-				DBGrant.setSelected(false);
-				DBIndex.setSelected(false);
-				DBAlter.setSelected(false);
-				DBCreateTempTables.setSelected(false);
-				DBShowView.setSelected(false);
-				DBCreateRoutine.setSelected(false);
-				DBAlterRoutine.setSelected(false);
-				DBExecute.setSelected(false);
-				DBCreateView.setSelected(false);
-				DBEvent.setSelected(false);
-				DBTrigger.setSelected(false);
-				DBLockTables.setSelected(false);
-				DBReferences.setSelected(false);	
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-			
-	private void getTables() {
-		try {
-			Statement useDB = connection.createStatement();
-			useDB.execute("use " + editDatabase + ";");
-			useDB.close();
-			Statement getTables = connection.createStatement();
-			ResultSet tableSet = getTables.executeQuery("show tables;");
-			tables.clear();
-			while (tableSet.next()) {
-				tables.add(tableSet.getString(1));
-			}
-			if (tables.size() == 0) {
-				tables.add("No tables.");
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-	
+    private void getDBPrivs() {
+        try {
+            Statement updateDBPrivs = connection.createStatement();
+            ResultSet DBPrivs = updateDBPrivs.executeQuery("SELECT * from mysql.db WHERE user='" + editUser + "' AND db='" + editDatabase + "';");
+
+            if (DBPrivs.next()) {
+                DBSelect.setSelected(DBPrivs.getBoolean("Select_priv"));
+                DBInsert.setSelected(DBPrivs.getBoolean("Insert_priv"));
+                DBDelete.setSelected(DBPrivs.getBoolean("Delete_priv"));
+                DBUpdate.setSelected(DBPrivs.getBoolean("Update_priv"));
+                DBCreate.setSelected(DBPrivs.getBoolean("Create_priv"));
+                DBDrop.setSelected(DBPrivs.getBoolean("Drop_priv"));
+                DBGrant.setSelected(DBPrivs.getBoolean("Grant_priv"));
+                DBIndex.setSelected(DBPrivs.getBoolean("Index_priv"));
+                DBAlter.setSelected(DBPrivs.getBoolean("Alter_priv"));
+                DBCreateTempTables.setSelected(DBPrivs.getBoolean("Create_tmp_table_priv"));
+                DBShowView.setSelected(DBPrivs.getBoolean("Show_view_priv"));
+                DBCreateRoutine.setSelected(DBPrivs.getBoolean("Create_routine_priv"));
+                DBAlterRoutine.setSelected(DBPrivs.getBoolean("Alter_routine_priv"));
+                DBExecute.setSelected(DBPrivs.getBoolean("Execute_priv"));
+                DBCreateView.setSelected(DBPrivs.getBoolean("Create_view_priv"));
+                DBEvent.setSelected(DBPrivs.getBoolean("Event_priv"));
+                DBTrigger.setSelected(DBPrivs.getBoolean("Trigger_priv"));
+                DBLockTables.setSelected(DBPrivs.getBoolean("Lock_tables_priv"));
+                DBReferences.setSelected(DBPrivs.getBoolean("References_priv"));
+            } else {
+                DBSelect.setSelected(false);
+                DBInsert.setSelected(false);
+                DBDelete.setSelected(false);
+                DBUpdate.setSelected(false);
+                DBCreate.setSelected(false);
+                DBDrop.setSelected(false);
+                DBGrant.setSelected(false);
+                DBIndex.setSelected(false);
+                DBAlter.setSelected(false);
+                DBCreateTempTables.setSelected(false);
+                DBShowView.setSelected(false);
+                DBCreateRoutine.setSelected(false);
+                DBAlterRoutine.setSelected(false);
+                DBExecute.setSelected(false);
+                DBCreateView.setSelected(false);
+                DBEvent.setSelected(false);
+                DBTrigger.setSelected(false);
+                DBLockTables.setSelected(false);
+                DBReferences.setSelected(false);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void getTables() {
+        try {
+            Statement useDB = connection.createStatement();
+            useDB.execute("use " + editDatabase + ";");
+            useDB.close();
+            Statement getTables = connection.createStatement();
+            ResultSet tableSet = getTables.executeQuery("show tables;");
+            tables.clear();
+            while (tableSet.next()) {
+                tables.add(tableSet.getString(1));
+            }
+            if (tables.size() == 0) {
+                tables.add("No tables.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     private String getUserListValue() {
         if (UserListjList.getSelectedIndex() != -1) {
             return UserListjList.getSelectedValue().toString();
@@ -1078,17 +1076,16 @@ public class SQLAdminView extends FrameView {
 
     private void EditUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditUserButtonActionPerformed
         editUser = getUserListValue();
-        //TODO Edit User
-
-        // Switch to database panel
-        UserListPanel.setVisible(false);
-//        statusMessageLabel.setText("Editing User: "+editUser);
-        setComponent(DBListPanel);
-        getFrame().setMinimumSize(new Dimension(800, 450));
-        getFrame().setSize(new Dimension(800, 450));
-        updateUsersHosts();
-        updateGlobalPrivileges();
-        DBListPanel.setVisible(true);
+        if (editUser != null && !editUser.isEmpty()) {
+            // Switch to database panel
+            UserListPanel.setVisible(false);
+            setComponent(DBListPanel);
+            getFrame().setMinimumSize(new Dimension(800, 450));
+            getFrame().setSize(new Dimension(800, 450));
+            updateUsersHosts();
+            updateGlobalPrivileges();
+            DBListPanel.setVisible(true);
+        }
     }//GEN-LAST:event_EditUserButtonActionPerformed
 
     private void AddUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddUserButtonActionPerformed
@@ -1880,16 +1877,16 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
 
 	private void SelectDBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectDBActionPerformed
 
-		// TODO add your handling code here:
-		editDatabase = getDBListValue();
-		DBPanelTitle.setText(editUser + "'s Privileges on " + editDatabase);
-		DBTableListLabel.setText(editDatabase + "'s Tables");
-		getTables();
-		getDBPrivs();
+            // TODO add your handling code here:
+            editDatabase = getDBListValue();
+            DBPanelTitle.setText(editUser + "'s Privileges on " + editDatabase);
+            DBTableListLabel.setText(editDatabase + "'s Tables");
+            getTables();
+            getDBPrivs();
 
-		DBListPanel.setVisible(false);
-		setComponent(DBPanel);
-		DBPanel.setVisible(true);
+            DBListPanel.setVisible(false);
+            setComponent(DBPanel);
+            DBPanel.setVisible(true);
 	}//GEN-LAST:event_SelectDBActionPerformed
 
 	private void BackToDBsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDBsActionPerformed
