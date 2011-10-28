@@ -221,7 +221,7 @@ public class SQLAdminView extends FrameView {
         AddHostNameField = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         AddHostPassField = new javax.swing.JPasswordField();
-		DBPanel = new javax.swing.JPanel();
+        DBPanel = new javax.swing.JPanel();
         BackToDBs = new javax.swing.JButton();
         DBPanelTitle = new javax.swing.JLabel();
         DBUpdatePriv = new javax.swing.JButton();
@@ -291,11 +291,11 @@ public class SQLAdminView extends FrameView {
                 .addContainerGap()
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(ServerField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
+                    .addComponent(ServerField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
                     .addComponent(jLabel2)
-                    .addComponent(UserField, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
+                    .addComponent(UserField, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
                     .addComponent(jLabel3)
-                    .addComponent(PasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
+                    .addComponent(PasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
                     .addComponent(ConnectButton, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
@@ -387,7 +387,7 @@ public class SQLAdminView extends FrameView {
                         .addComponent(AddUserButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(DeleteUserButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)
                         .addComponent(EditUserButton))))
         );
         UserListPanelLayout.setVerticalGroup(
@@ -497,6 +497,7 @@ public class SQLAdminView extends FrameView {
         databaseList.setName("databaseList"); // NOI18N
         dbListPane.setViewportView(databaseList);
 
+        SelectDB.setAction(actionMap.get("SelectDBActionPerformed")); // NOI18N
         SelectDB.setText(resourceMap.getString("SelectDB.text")); // NOI18N
         SelectDB.setName("SelectDB"); // NOI18N
         SelectDB.addActionListener(new java.awt.event.ActionListener() {
@@ -763,9 +764,8 @@ public class SQLAdminView extends FrameView {
                     .addComponent(dbListPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(SelectDB)
-                    .addComponent(backToUsers))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(backToUsers)
+                    .addComponent(SelectDB)))
         );
 
         AddHostPanel.setName("AddHostPanel"); // NOI18N
@@ -809,7 +809,6 @@ public class SQLAdminView extends FrameView {
                 .addComponent(AddHostPassField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(30, Short.MAX_VALUE))
         );
-
 
         DBPanel.setMaximumSize(new java.awt.Dimension(767, 767));
         DBPanel.setName("DBPanel"); // NOI18N
@@ -1454,4 +1453,27 @@ private void RemoveHostButtonActionPerformed(java.awt.event.ActionEvent evt) {//
             JOptionPane.showMessageDialog(DBListPanel, "UpdateUsersHosts: " + ex.getMessage());
         }
     }
+
+	private void SelectDBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectDBActionPerformed
+		// TODO add your handling code here:
+		editDatabase = getDBListValue();
+		DBPanelTitle.setText(editUser + "'s Privileges on " + editDatabase);
+		DBTableListLabel.setText(editDatabase + "'s Tables");
+		getTables();
+		updateDBPrivs();
+
+		DBListPanel.setVisible(false);
+		setComponent(DBPanel);
+		DBPanel.setVisible(true);
+	}//GEN-LAST:event_SelectDBActionPerformed
+
+	private void BackToDBsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDBsActionPerformed
+		// TODO add your handling code here:
+		editDatabase = "";
+
+		DBPanel.setVisible(false);
+		setComponent(DBListPanel);
+		DBListPanel.setVisible(true);
+	}//GEN-LAST:event_BackToDBsActionPerformed
+
 }
