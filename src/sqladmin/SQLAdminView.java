@@ -1202,8 +1202,6 @@ public class SQLAdminView extends FrameView {
         //Return to user list
         AddUserPanel.setVisible(false);
         setComponent(UserListPanel);
-        getFrame().setMinimumSize(new Dimension(600, 450));
-        getFrame().setSize(new Dimension(600, 450));
         UserListPanel.setVisible(true);
     }//GEN-LAST:event_AddUserCancelActionPerformed
 
@@ -1894,6 +1892,8 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
 
                 DBListPanel.setVisible(false);
                 setComponent(DBPanel);
+                getFrame().setMinimumSize(new Dimension(600, 450));
+                getFrame().setSize(new Dimension(600, 450));
                 DBPanel.setVisible(true);
             }
 	}//GEN-LAST:event_SelectDBActionPerformed
