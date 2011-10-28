@@ -6,7 +6,7 @@ package sqladmin;
 import java.awt.Dimension;
 import java.sql.*;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 import org.jdesktop.application.SingleFrameApplication;
 import org.jdesktop.application.FrameView;
 
@@ -37,7 +37,7 @@ public class SQLAdminView extends FrameView {
             setComponent(UserListPanel);
             UserListPanel.setVisible(true);
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(mainPanel, ex);
+            JOptionPane.showMessageDialog(mainPanel, "Connect: " + ex.getMessage());
         }
     }
 
@@ -48,8 +48,8 @@ public class SQLAdminView extends FrameView {
             while (dbSet.next()) {
                 databases.add(dbSet.getString(1));
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(mainPanel, "getDatabases: " + ex.getMessage());
         }
     }
 
@@ -141,6 +141,13 @@ public class SQLAdminView extends FrameView {
         GlobalCreateUserCheckbox = new javax.swing.JCheckBox();
         GlobalEventCheckbox = new javax.swing.JCheckBox();
         GlobalTriggerCheckbox = new javax.swing.JCheckBox();
+        AddHostButton = new javax.swing.JButton();
+        RemoveHostButton = new javax.swing.JButton();
+        AddHostPanel = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        AddHostNameField = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        AddHostPassField = new javax.swing.JPasswordField();
 
         mainPanel.setName("mainPanel"); // NOI18N
 
@@ -499,6 +506,22 @@ public class SQLAdminView extends FrameView {
         GlobalTriggerCheckbox.setText(resourceMap.getString("GlobalTriggerCheckbox.text")); // NOI18N
         GlobalTriggerCheckbox.setName("GlobalTriggerCheckbox"); // NOI18N
 
+        AddHostButton.setText(resourceMap.getString("AddHostButton.text")); // NOI18N
+        AddHostButton.setName("AddHostButton"); // NOI18N
+        AddHostButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddHostButtonActionPerformed(evt);
+            }
+        });
+
+        RemoveHostButton.setText(resourceMap.getString("RemoveHostButton.text")); // NOI18N
+        RemoveHostButton.setName("RemoveHostButton"); // NOI18N
+        RemoveHostButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RemoveHostButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout DBListPanelLayout = new javax.swing.GroupLayout(DBListPanel);
         DBListPanel.setLayout(DBListPanelLayout);
         DBListPanelLayout.setHorizontalGroup(
@@ -507,7 +530,12 @@ public class SQLAdminView extends FrameView {
                 .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(DBListPanelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(HostComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(HostComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(AddHostButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(RemoveHostButton)
+                        .addGap(253, 253, 253))
                     .addGroup(DBListPanelLayout.createSequentialGroup()
                         .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(DBListPanelLayout.createSequentialGroup()
@@ -548,7 +576,7 @@ public class SQLAdminView extends FrameView {
                             .addGroup(DBListPanelLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(GlobalFileCheckbox)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                         .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(GlobalReplClientCheckbox)
                             .addComponent(GlobalCreateViewCheckbox)
@@ -558,7 +586,7 @@ public class SQLAdminView extends FrameView {
                             .addComponent(GlobalCreateUserCheckbox)
                             .addComponent(GlobalEventCheckbox)
                             .addComponent(GlobalTriggerCheckbox))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)))
                 .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(SelectDB)
                     .addComponent(jLabel8)
@@ -573,7 +601,10 @@ public class SQLAdminView extends FrameView {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(DBListPanelLayout.createSequentialGroup()
-                        .addComponent(HostComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(HostComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(AddHostButton)
+                            .addComponent(RemoveHostButton))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(GlobalSelectCheckbox)
@@ -622,13 +653,55 @@ public class SQLAdminView extends FrameView {
                         .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(GlobalFileCheckbox)
                             .addComponent(GlobalReplSlaveCheckbox))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
                         .addComponent(GlobalPrivilegeSubmitButton))
                     .addComponent(dbListPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(backToUsers)
                     .addComponent(SelectDB)))
+        );
+
+        AddHostPanel.setName("AddHostPanel"); // NOI18N
+
+        jLabel9.setText(resourceMap.getString("jLabel9.text")); // NOI18N
+        jLabel9.setName("jLabel9"); // NOI18N
+
+        AddHostNameField.setText(resourceMap.getString("AddHostNameField.text")); // NOI18N
+        AddHostNameField.setName("AddHostNameField"); // NOI18N
+
+        jLabel10.setText(resourceMap.getString("jLabel10.text")); // NOI18N
+        jLabel10.setName("jLabel10"); // NOI18N
+
+        AddHostPassField.setText(resourceMap.getString("AddHostPassField.text")); // NOI18N
+        AddHostPassField.setName("AddHostPassField"); // NOI18N
+
+        javax.swing.GroupLayout AddHostPanelLayout = new javax.swing.GroupLayout(AddHostPanel);
+        AddHostPanel.setLayout(AddHostPanelLayout);
+        AddHostPanelLayout.setHorizontalGroup(
+            AddHostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AddHostPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(AddHostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(AddHostNameField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
+                    .addGroup(AddHostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(AddHostPassField)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        AddHostPanelLayout.setVerticalGroup(
+            AddHostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AddHostPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(AddHostNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(AddHostPassField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         setComponent(mainPanel);
@@ -648,8 +721,8 @@ public class SQLAdminView extends FrameView {
                 userList.add(userSet.getString("User"));
             }
             users = userList;
-        } catch (SQLException e) {
-            System.err.println(e);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(mainPanel, "updateUsers: " + ex.getMessage());
         }
         UserListjList.setModel(new javax.swing.AbstractListModel() {
 
@@ -710,7 +783,7 @@ public class SQLAdminView extends FrameView {
                     int ret = 0;
                     for (String host : hosts) {
                         update = connection.createStatement();
-                        ret += update.executeUpdate("DROP USER '" + editUser + "'@'" + host + "'");
+                        ret += update.executeUpdate("DROP USER '" + cleanSQL(editUser) + "'@'" + cleanSQL(host) + "'");
                     }
                     if (ret == 0) {
                         JOptionPane.showMessageDialog(UserListPanel, "User Deleted.");
@@ -719,7 +792,7 @@ public class SQLAdminView extends FrameView {
                     }
 
                 } catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(UserListPanel, ex);
+                    JOptionPane.showMessageDialog(UserListPanel, "DeleteUserButtonActionPerformed: " + ex.getMessage());
                 }
             }
         } else if (editUser.equals("root")) {
@@ -741,23 +814,23 @@ public class SQLAdminView extends FrameView {
             JOptionPane.showMessageDialog(AddUserPanel, "Username is blank.");
             added = false;
         }
-        if (host.isEmpty()) {
+        if (added && host.isEmpty()) {
             JOptionPane.showMessageDialog(AddUserPanel, "Host is blank.");
             added = false;
         }
-        if (pass.isEmpty()) {
+        if (added && pass.isEmpty()) {
             JOptionPane.showMessageDialog(AddUserPanel, "Password is blank.");
             added = false;
         }
         try {
             Statement query = connection.createStatement();
-            ResultSet checkName = query.executeQuery("SELECT DISTINCT User FROM `user` WHERE User = '"+username+"'");
+            ResultSet checkName = query.executeQuery("SELECT DISTINCT User FROM `user` WHERE User = '" + cleanSQL(username) + "'");
             if (checkName.next()) {
-                JOptionPane.showMessageDialog(AddUserPanel, "Username \"" +username + "\" already exists.");
+                JOptionPane.showMessageDialog(AddUserPanel, "Username \"" + username + "\" already exists.");
                 added = false;
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(AddUserPanel, ex);
+            JOptionPane.showMessageDialog(AddUserPanel, "SubmitAddUserActionPerformed: " + ex.getMessage());
             added = false;
         }
         if (added) {
@@ -765,7 +838,7 @@ public class SQLAdminView extends FrameView {
                 Statement update = connection.createStatement();
 
                 //Check for username in database already
-                int ret = update.executeUpdate("CREATE USER '" + username + "'@'" + host + "' IDENTIFIED BY '" + pass + "'");
+                int ret = update.executeUpdate("CREATE USER '" + cleanSQL(username) + "'@'" + cleanSQL(host) + "' IDENTIFIED BY '" + cleanSQL(pass) + "'");
                 if (ret == 0) {
                     JOptionPane.showMessageDialog(AddUserPanel, "User Added.");
                     added = true;
@@ -775,7 +848,7 @@ public class SQLAdminView extends FrameView {
                 }
 
             } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(AddUserPanel, ex);
+                JOptionPane.showMessageDialog(AddUserPanel, "SubmitAddUserActionPerformed: " + ex);
                 added = false;
             }
         }
@@ -811,7 +884,106 @@ private void backToUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
 private void HostComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HostComboBoxActionPerformed
     updateGlobalPrivileges();
 }//GEN-LAST:event_HostComboBoxActionPerformed
+
+private void AddHostButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddHostButtonActionPerformed
+
+
+    JTextField hostname = new JTextField();
+    JPasswordField pass = new JPasswordField();
+    final JComponent[] inputs = new JComponent[]{
+        new JLabel("Enter Hostname:"),
+        hostname,
+        new JLabel("Enter Password:"),
+        pass
+    };
+    int cancel = 0;
+    Boolean added = false;
+    while (cancel != JOptionPane.CANCEL_OPTION && cancel != JOptionPane.CLOSED_OPTION && !added) {
+        added = true;
+        cancel = JOptionPane.showConfirmDialog(null, inputs, "My custom dialog", JOptionPane.OK_CANCEL_OPTION);
+
+        if (cancel != JOptionPane.OK_OPTION) {//Cancel input
+            added = false;
+            break;
+        }
+
+        if (added && (hostname.getText() == null || hostname.getText().isEmpty())) {
+            JOptionPane.showMessageDialog(AddUserPanel, "Hostname Empty.");
+            added = false;
+        }
+        if (added && (pass.getText() == null || pass.getText().isEmpty())) {
+            JOptionPane.showMessageDialog(AddUserPanel, "Password Empty.");
+            added = false;
+        }
+
+    }
+    try {
+        Statement query = connection.createStatement();
+        ResultSet checkName = query.executeQuery("SELECT DISTINCT Host FROM `user` WHERE User = '" + cleanSQL(editUser) + "' AND Host ='" + cleanSQL(hostname.getText()) + "'");
+        if (checkName.next()) {
+            JOptionPane.showMessageDialog(AddUserPanel, editUser + " already has host \"" + hostname.getText() + "\".");
+            added = false;
+        }
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(AddUserPanel, "SubmitAddUserActionPerformed: " + ex.getMessage());
+        added = false;
+    }
+    if (added) {
+        try {
+            Statement update = connection.createStatement();
+//            int ret = 0;
+            int ret = update.executeUpdate("CREATE USER '" + cleanSQL(editUser) + "'@'" + cleanSQL(hostname.getText()) + "' IDENTIFIED BY '" + cleanSQL(pass.getText()) + "'");
+            if (ret == 0) {
+                JOptionPane.showMessageDialog(AddUserPanel, "Host Added.");
+                updateUsersHosts();
+                updateGlobalPrivileges();
+                added = true;
+            } else {
+                JOptionPane.showMessageDialog(AddUserPanel, "Host Not Added.");
+                added = false;
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(AddUserPanel, "AddHostButtonActionPerformed: " + ex.getMessage());
+            added = false;
+        }
+    }
+}//GEN-LAST:event_AddHostButtonActionPerformed
+
+private void RemoveHostButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveHostButtonActionPerformed
+    editHost = HostComboBox.getSelectedItem().toString();
+    if (!editUser.isEmpty() && !editHost.isEmpty()) {
+        int canDel = JOptionPane.showConfirmDialog(UserListPanel, "Delete Host: " + editHost + "?", "Delete " + editHost, JOptionPane.YES_NO_OPTION);
+        if (canDel == JOptionPane.YES_OPTION) {
+            try {
+                Statement query = connection.createStatement();
+                ResultSet hostQuery = query.executeQuery("SELECT DISTINCT Host FROM `user` WHERE User = '" + cleanSQL(editUser) + "'");
+
+
+
+                //Check for username in database already
+                Statement update = connection.createStatement();
+                int ret = 0;
+                ret += update.executeUpdate("DROP USER '" + cleanSQL(editUser) + "'@'" + cleanSQL(editHost) + "'");
+                if (ret == 0) {
+                    JOptionPane.showMessageDialog(UserListPanel, "Host Deleted.");
+                } else {
+                    JOptionPane.showMessageDialog(UserListPanel, "Host Not Deleted.");
+                }
+
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(UserListPanel, "DeleteUserButtonActionPerformed: " + ex.getMessage());
+            }
+        }
+    }
+    //Refresh user list
+    updateUsersHosts();
+}//GEN-LAST:event_RemoveHostButtonActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AddHostButton;
+    private javax.swing.JTextField AddHostNameField;
+    private javax.swing.JPanel AddHostPanel;
+    private javax.swing.JPasswordField AddHostPassField;
     private javax.swing.JButton AddUserButton;
     private javax.swing.JButton AddUserCancel;
     private javax.swing.JTextField AddUserHost;
@@ -854,6 +1026,7 @@ private void HostComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     private javax.swing.JCheckBox GlobalUpdateCheckbox;
     private javax.swing.JComboBox HostComboBox;
     private javax.swing.JPasswordField PasswordField;
+    private javax.swing.JButton RemoveHostButton;
     private javax.swing.JButton SelectDB;
     private javax.swing.JTextField ServerField;
     private javax.swing.JButton SubmitAddUser;
@@ -864,6 +1037,7 @@ private void HostComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     private javax.swing.JList databaseList;
     private javax.swing.JScrollPane dbListPane;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -871,6 +1045,7 @@ private void HostComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenuBar menuBar;
@@ -890,7 +1065,7 @@ private void HostComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
 
             GlobalPrivilegeLabel.setText("Global Privileges for " + editUser);
             Statement globPriv = connection.createStatement();
-            ResultSet privs = globPriv.executeQuery("SELECT * FROM mysql.`user` WHERE User = '" + editUser + "' AND Host = '" + editHost + "'");
+            ResultSet privs = globPriv.executeQuery("SELECT * FROM mysql.`user` WHERE User = '" + cleanSQL(editUser) + "' AND Host = '" + cleanSQL(editHost) + "'");
             privs.next();
 
             GlobalSelectCheckbox.setSelected(privs.getBoolean("Select_priv"));
@@ -922,19 +1097,19 @@ private void HostComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             GlobalEventCheckbox.setSelected(privs.getBoolean("Event_priv"));
             GlobalTriggerCheckbox.setSelected(privs.getBoolean("Trigger_priv"));
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(UserListPanel, "updateGlobalPrivileges:" + ex);
+            JOptionPane.showMessageDialog(UserListPanel, "updateGlobalPrivileges: " + ex.getMessage());
         }
     }
 
     public static String cleanSQL(String arg) {
-        arg = arg.replace("\\", "\\\\");
-        return arg.replace("'", "''");
+        String rtn = arg.replace("\\", "\\\\");
+        return rtn.replace("'", "''");
     }
 
     private void updateUsersHosts() {
         try {
             Statement userHosts = connection.createStatement();
-            ResultSet hostList = userHosts.executeQuery("SELECT Host FROM mysql.`user` WHERE User = '" + editUser + "'");
+            ResultSet hostList = userHosts.executeQuery("SELECT Host FROM mysql.`user` WHERE User = '" + cleanSQL(editUser) + "'");
             ArrayList<String> currHosts = new ArrayList<String>();
             while (hostList.next()) {
                 currHosts.add(hostList.getString("Host"));
@@ -944,7 +1119,7 @@ private void HostComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             HostComboBox.setSelectedIndex(0);
             editHost = (String) HostComboBox.getSelectedItem();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(DBListPanel, "UpdateUsersHosts" + ex);
+            JOptionPane.showMessageDialog(DBListPanel, "UpdateUsersHosts: " + ex.getMessage());
         }
     }
 }
