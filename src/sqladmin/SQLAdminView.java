@@ -6,6 +6,8 @@ package sqladmin;
 import java.awt.Dimension;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 import org.jdesktop.application.SingleFrameApplication;
 import org.jdesktop.application.FrameView;
@@ -83,7 +85,7 @@ public class SQLAdminView extends FrameView {
         editHost = DbHostCombobox.getSelectedItem().toString();
         try {
             Statement updateDBPrivs = connection.createStatement();
-            ResultSet DBPrivs = updateDBPrivs.executeQuery("SELECT * from mysql.db WHERE user='" + editUser + "' AND host='" + editHost + "' AND db='" + editDatabase + "';");
+            ResultSet DBPrivs = updateDBPrivs.executeQuery("SELECT * from mysql.db WHERE user='" + cleanSQL(editUser) + "' AND host='" + cleanSQL(editHost) + "' AND db='" + cleanSQL(editDatabase) + "';");
 
             if (DBPrivs.next()) {
                 DBSelect.setSelected(DBPrivs.getBoolean("Select_priv"));
@@ -135,7 +137,7 @@ public class SQLAdminView extends FrameView {
     private void getTables() {
         try {
             Statement getTables = connection.createStatement();
-            ResultSet tableSet = getTables.executeQuery("SHOW TABLES IN " + editDatabase);
+            ResultSet tableSet = getTables.executeQuery("SHOW TABLES IN " + cleanSQL(editDatabase) );
             tables.clear();
             while (tableSet.next()) {
                 tables.add(tableSet.getString(1));
@@ -163,7 +165,7 @@ public class SQLAdminView extends FrameView {
     private void getColumns() {
         try {
             Statement getTables = connection.createStatement();
-            ResultSet tableSet = getTables.executeQuery("SHOW COLUMNS FROM " + editDatabase + "." + editTable);
+            ResultSet tableSet = getTables.executeQuery("SHOW COLUMNS FROM " + cleanSQL(editDatabase) + "." + cleanSQL(editTable));
             columns.clear();
             while (tableSet.next()) {
                 columns.add(tableSet.getString(1));
@@ -279,6 +281,7 @@ public class SQLAdminView extends FrameView {
         AddHostButton = new javax.swing.JButton();
         RemoveHostButton = new javax.swing.JButton();
         ChangePasswordButton = new javax.swing.JButton();
+        ShowGrantsButton = new javax.swing.JButton();
         DBPanel = new javax.swing.JPanel();
         BackToGlobalButton = new javax.swing.JButton();
         DBPanelTitle = new javax.swing.JLabel();
@@ -735,6 +738,14 @@ public class SQLAdminView extends FrameView {
             }
         });
 
+        ShowGrantsButton.setText(resourceMap.getString("ShowGrantsButton.text")); // NOI18N
+        ShowGrantsButton.setName("ShowGrantsButton"); // NOI18N
+        ShowGrantsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ShowGrantsButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout GlobalPanelLayout = new javax.swing.GroupLayout(GlobalPanel);
         GlobalPanel.setLayout(GlobalPanelLayout);
         GlobalPanelLayout.setHorizontalGroup(
@@ -796,7 +807,8 @@ public class SQLAdminView extends FrameView {
                             .addComponent(GlobalEventCheckbox)
                             .addComponent(GlobalTriggerCheckbox)
                             .addComponent(GlobalPrivilegeSubmitButton)
-                            .addComponent(ChangePasswordButton))
+                            .addComponent(ChangePasswordButton)
+                            .addComponent(ShowGrantsButton))
                         .addGap(18, 18, 18)
                         .addGroup(GlobalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(SelectDB, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -881,7 +893,8 @@ public class SQLAdminView extends FrameView {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(GlobalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(backToUsers)
-                    .addComponent(SelectDB)))
+                    .addComponent(SelectDB)
+                    .addComponent(ShowGrantsButton)))
         );
 
         DBPanel.setMinimumSize(new java.awt.Dimension(590, 441));
@@ -1370,7 +1383,7 @@ public class SQLAdminView extends FrameView {
                         if (!allUserHosts.isEmpty()) {
                             allUserHosts += ",";
                         }
-                        allUserHosts += " '" + editUser + "'@'" + host + "' ";
+                        allUserHosts += " '" + cleanSQL(editUser) + "'@'" + cleanSQL(host) + "' ";
                     }
 
                     Statement update = connection.createStatement();
@@ -2063,6 +2076,7 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
     private javax.swing.JButton RenameUserButton;
     private javax.swing.JButton SelectDB;
     private javax.swing.JTextField ServerField;
+    private javax.swing.JButton ShowGrantsButton;
     private javax.swing.JButton SubmitAddUser;
     private javax.swing.JCheckBox TableAlterCheckbox;
     private javax.swing.JCheckBox TableCreateCheckbox;
@@ -2558,7 +2572,7 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
                                         if (!allUserHosts.isEmpty()) {
                                             allUserHosts += ",";
                                         }
-                                        allUserHosts += " '" + editUser + "'@'" + host + "' TO '" + cleanSQL(username.getText()) + "'@'" + host + "' ";
+                                        allUserHosts += " '" + cleanSQL(editUser) + "'@'" + cleanSQL(host) + "' TO '" + cleanSQL(username.getText()) + "'@'" + cleanSQL(host) + "' ";
                                     }
 
                                     Statement update = connection.createStatement();
@@ -2794,6 +2808,28 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
             getDBPrivs();
         }//GEN-LAST:event_BackToDatabaseButtonActionPerformed
 
+        private void ShowGrantsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowGrantsButtonActionPerformed
+            editHost = (String) HostComboBox.getSelectedItem();
+            if (editHost != null && !editHost.isEmpty()) {
+                try {
+                    String grantsMsg = "";
+                    Statement grantsQ = connection.createStatement();
+                    ResultSet showGrants = grantsQ.executeQuery("SHOW GRANTS FOR '" + cleanSQL(editUser) + "'@'" + cleanSQL(editHost) + "'");
+
+                    while (showGrants.next()) {
+                        if (!grantsMsg.isEmpty()) {
+                            grantsMsg += "\n";
+                        }
+                        grantsMsg += showGrants.getString(1);
+                    }
+
+                    JOptionPane.showMessageDialog(UserListPanel, grantsMsg);
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(UserListPanel, "ShowGrantsButtonActionPerformed: " + ex.getMessage());
+                }
+            }
+        }//GEN-LAST:event_ShowGrantsButtonActionPerformed
+
     private void updateTablePrivs() {
         editHost = (String) TableHostCombobox.getSelectedItem();
 
@@ -2816,7 +2852,7 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
         if (editHost != null && !editHost.isEmpty()) {
             try {
                 Statement updateTablePrivs = connection.createStatement();
-                ResultSet TablePrivs = updateTablePrivs.executeQuery("SELECT * from mysql.tables_priv WHERE user='" + editUser + "' AND host='" + editHost + "' AND db='" + editDatabase + "' AND Table_name='" + editTable + "';");
+                ResultSet TablePrivs = updateTablePrivs.executeQuery("SELECT * from mysql.tables_priv WHERE user='" + cleanSQL(editUser) + "' AND host='" + cleanSQL(editHost) + "' AND db='" + editDatabase + "' AND Table_name='" + editTable + "';");
 
                 if (TablePrivs.next()) {
                     for (String token : TablePrivs.getString("Table_priv").split(",")) {
