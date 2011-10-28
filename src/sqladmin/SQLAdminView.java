@@ -3,7 +3,6 @@
  */
 package sqladmin;
 
-
 import java.awt.Dimension;
 import java.sql.*;
 import java.util.ArrayList;
@@ -54,12 +53,13 @@ public class SQLAdminView extends FrameView {
         }
     }
 
-	private String getDBListValue() {
-		if (databaseList.getSelectedIndex() != -1)
-			return databaseList.getSelectedValue().toString();
-		else
-			return "";
-	}
+    private String getDBListValue() {
+        if (databaseList.getSelectedIndex() != -1) {
+            return databaseList.getSelectedValue().toString();
+        } else {
+            return "";
+        }
+    }
 
     private String getUserListValue() {
         if (UserListjList.getSelectedIndex() != -1) {
@@ -708,9 +708,9 @@ public class SQLAdminView extends FrameView {
                     Statement update;
                     //Check for username in database already
                     int ret = 0;
-                    for (String host:hosts){
+                    for (String host : hosts) {
                         update = connection.createStatement();
-                        ret += update.executeUpdate("DROP USER '" + editUser + "'@'"+host+"'");
+                        ret += update.executeUpdate("DROP USER '" + editUser + "'@'" + host + "'");
                     }
                     if (ret == 0) {
                         JOptionPane.showMessageDialog(UserListPanel, "User Deleted.");
@@ -747,6 +747,17 @@ public class SQLAdminView extends FrameView {
         }
         if (pass.isEmpty()) {
             JOptionPane.showMessageDialog(AddUserPanel, "Password is blank.");
+            added = false;
+        }
+        try {
+            Statement query = connection.createStatement();
+            ResultSet checkName = query.executeQuery("SELECT DISTINCT User FROM `user` WHERE User = '"+username+"'");
+            if (checkName.next()) {
+                JOptionPane.showMessageDialog(AddUserPanel, "Username \"" +username + "\" already exists.");
+                added = false;
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(AddUserPanel, ex);
             added = false;
         }
         if (added) {
@@ -800,7 +811,6 @@ private void backToUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
 private void HostComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HostComboBoxActionPerformed
     updateGlobalPrivileges();
 }//GEN-LAST:event_HostComboBoxActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddUserButton;
     private javax.swing.JButton AddUserCancel;
@@ -876,8 +886,8 @@ private void HostComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     private void updateGlobalPrivileges() {
         try {
 
-            editHost = (String)HostComboBox.getSelectedItem();
-            
+            editHost = (String) HostComboBox.getSelectedItem();
+
             GlobalPrivilegeLabel.setText("Global Privileges for " + editUser);
             Statement globPriv = connection.createStatement();
             ResultSet privs = globPriv.executeQuery("SELECT * FROM mysql.`user` WHERE User = '" + editUser + "' AND Host = '" + editHost + "'");
@@ -912,7 +922,7 @@ private void HostComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             GlobalEventCheckbox.setSelected(privs.getBoolean("Event_priv"));
             GlobalTriggerCheckbox.setSelected(privs.getBoolean("Trigger_priv"));
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(UserListPanel, "updateGlobalPrivileges:"+ex);
+            JOptionPane.showMessageDialog(UserListPanel, "updateGlobalPrivileges:" + ex);
         }
     }
 
@@ -926,15 +936,15 @@ private void HostComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             Statement userHosts = connection.createStatement();
             ResultSet hostList = userHosts.executeQuery("SELECT Host FROM mysql.`user` WHERE User = '" + editUser + "'");
             ArrayList<String> currHosts = new ArrayList<String>();
-            while(hostList.next()){
+            while (hostList.next()) {
                 currHosts.add(hostList.getString("Host"));
             }
             hosts = currHosts;
             HostComboBox.setModel(new javax.swing.DefaultComboBoxModel(hosts.toArray()));
             HostComboBox.setSelectedIndex(0);
-            editHost = (String)HostComboBox.getSelectedItem();
+            editHost = (String) HostComboBox.getSelectedItem();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(DBListPanel, "UpdateUsersHosts"+ex);
+            JOptionPane.showMessageDialog(DBListPanel, "UpdateUsersHosts" + ex);
         }
     }
 }

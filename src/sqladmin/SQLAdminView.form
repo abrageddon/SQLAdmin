@@ -42,11 +42,7 @@
                   <Component id="PasswordField" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="ConnectButton" min="-2" max="-2" attributes="0"/>
-<<<<<<< HEAD
-                  <EmptySpace max="32767" attributes="0"/>
-=======
                   <EmptySpace pref="30" max="32767" attributes="0"/>
->>>>>>> e8dc1e55c2f8ecb76b1d13129d2aa7c4b470e7df
               </Group>
           </Group>
         </DimensionLayout>
@@ -505,11 +501,7 @@
                               <Component id="GlobalFileCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="GlobalReplSlaveCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-<<<<<<< HEAD
-                          <EmptySpace pref="119" max="32767" attributes="0"/>
-=======
                           <EmptySpace pref="101" max="32767" attributes="0"/>
->>>>>>> e8dc1e55c2f8ecb76b1d13129d2aa7c4b470e7df
                           <Component id="GlobalPrivilegeSubmitButton" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="dbListPane" alignment="0" pref="389" max="32767" attributes="0"/>
