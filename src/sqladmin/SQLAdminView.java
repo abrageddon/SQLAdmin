@@ -22,6 +22,7 @@ public class SQLAdminView extends FrameView {
 
         users = new ArrayList<String>();
         databases = new ArrayList<String>();
+		tables = new ArrayList<String>();
 
         initComponents();
 
@@ -38,6 +39,7 @@ public class SQLAdminView extends FrameView {
             updateUsers();
             setComponent(UserListPanel);
             UserListPanel.setVisible(true);
+			editServer = server;
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(mainPanel, "Connect: " + ex.getMessage());
         }
@@ -63,6 +65,77 @@ public class SQLAdminView extends FrameView {
         }
     }
 
+	private void updateDBPrivs() {
+		try {
+			Statement updateDBPrivs = connection.createStatement();
+			ResultSet DBPrivs = updateDBPrivs.executeQuery("SELECT * from mysql.db WHERE user='" + editUser + "' AND db='" + editDatabase + "';");
+			
+			if (DBPrivs.next()) {
+				DBSelect.setSelected(DBPrivs.getBoolean("Select_priv"));
+				DBInsert.setSelected(DBPrivs.getBoolean("Insert_priv"));
+				DBDelete.setSelected(DBPrivs.getBoolean("Delete_priv"));
+				DBUpdate.setSelected(DBPrivs.getBoolean("Update_priv"));
+				DBCreate.setSelected(DBPrivs.getBoolean("Create_priv"));
+				DBDrop.setSelected(DBPrivs.getBoolean("Drop_priv"));
+				DBGrant.setSelected(DBPrivs.getBoolean("Grant_priv"));
+				DBIndex.setSelected(DBPrivs.getBoolean("Index_priv"));
+				DBAlter.setSelected(DBPrivs.getBoolean("Alter_priv"));
+				DBCreateTempTables.setSelected(DBPrivs.getBoolean("Create_tmp_table_priv"));
+				DBShowView.setSelected(DBPrivs.getBoolean("Show_view_priv"));
+				DBCreateRoutine.setSelected(DBPrivs.getBoolean("Create_routine_priv"));
+				DBAlterRoutine.setSelected(DBPrivs.getBoolean("Alter_routine_priv"));
+				DBExecute.setSelected(DBPrivs.getBoolean("Execute_priv"));
+				DBCreateView.setSelected(DBPrivs.getBoolean("Create_view_priv"));
+				DBEvent.setSelected(DBPrivs.getBoolean("Event_priv"));
+				DBTrigger.setSelected(DBPrivs.getBoolean("Trigger_priv"));
+				DBLockTables.setSelected(DBPrivs.getBoolean("Lock_tables_priv"));
+				DBReferences.setSelected(DBPrivs.getBoolean("References_priv"));
+			} else {
+				DBSelect.setSelected(false);
+				DBInsert.setSelected(false);
+				DBDelete.setSelected(false);
+				DBUpdate.setSelected(false);
+				DBCreate.setSelected(false);
+				DBDrop.setSelected(false);
+				DBGrant.setSelected(false);
+				DBIndex.setSelected(false);
+				DBAlter.setSelected(false);
+				DBCreateTempTables.setSelected(false);
+				DBShowView.setSelected(false);
+				DBCreateRoutine.setSelected(false);
+				DBAlterRoutine.setSelected(false);
+				DBExecute.setSelected(false);
+				DBCreateView.setSelected(false);
+				DBEvent.setSelected(false);
+				DBTrigger.setSelected(false);
+				DBLockTables.setSelected(false);
+				DBReferences.setSelected(false);	
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+			
+	private void getTables() {
+		try {
+			Statement useDB = connection.createStatement();
+			useDB.execute("use " + editDatabase + ";");
+			useDB.close();
+			Statement getTables = connection.createStatement();
+			ResultSet tableSet = getTables.executeQuery("show tables;");
+			tables.clear();
+			while (tableSet.next()) {
+				tables.add(tableSet.getString(1));
+			}
+			if (tables.size() == 0) {
+				tables.add("No tables.");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
     private String getUserListValue() {
         if (UserListjList.getSelectedIndex() != -1) {
             return UserListjList.getSelectedValue().toString();
@@ -151,6 +224,33 @@ public class SQLAdminView extends FrameView {
         AddHostNameField = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         AddHostPassField = new javax.swing.JPasswordField();
+        DBPanel = new javax.swing.JPanel();
+        BackToDBs = new javax.swing.JButton();
+        DBPanelTitle = new javax.swing.JLabel();
+        DBUpdatePriv = new javax.swing.JButton();
+        DBSelect = new javax.swing.JCheckBox();
+        DBInsert = new javax.swing.JCheckBox();
+        DBDelete = new javax.swing.JCheckBox();
+        DBUpdate = new javax.swing.JCheckBox();
+        DBCreate = new javax.swing.JCheckBox();
+        DBDrop = new javax.swing.JCheckBox();
+        DBGrant = new javax.swing.JCheckBox();
+        DBIndex = new javax.swing.JCheckBox();
+        DBAlter = new javax.swing.JCheckBox();
+        DBCreateTempTables = new javax.swing.JCheckBox();
+        DBShowView = new javax.swing.JCheckBox();
+        DBCreateRoutine = new javax.swing.JCheckBox();
+        DBAlterRoutine = new javax.swing.JCheckBox();
+        DBExecute = new javax.swing.JCheckBox();
+        DBCreateView = new javax.swing.JCheckBox();
+        DBEvent = new javax.swing.JCheckBox();
+        DBTrigger = new javax.swing.JCheckBox();
+        DBLockTables = new javax.swing.JCheckBox();
+        DBReferences = new javax.swing.JCheckBox();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        DBTablesList = new javax.swing.JList();
+        DBTableListLabel = new javax.swing.JLabel();
+        EditTablePrivs = new javax.swing.JButton();
 
         mainPanel.setName("mainPanel"); // NOI18N
 
@@ -194,11 +294,11 @@ public class SQLAdminView extends FrameView {
                 .addContainerGap()
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(ServerField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
+                    .addComponent(ServerField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
                     .addComponent(jLabel2)
-                    .addComponent(UserField, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
+                    .addComponent(UserField, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
                     .addComponent(jLabel3)
-                    .addComponent(PasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
+                    .addComponent(PasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
                     .addComponent(ConnectButton, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
@@ -400,8 +500,14 @@ public class SQLAdminView extends FrameView {
         databaseList.setName("databaseList"); // NOI18N
         dbListPane.setViewportView(databaseList);
 
+        SelectDB.setAction(actionMap.get("SelectDBActionPerformed")); // NOI18N
         SelectDB.setText(resourceMap.getString("SelectDB.text")); // NOI18N
         SelectDB.setName("SelectDB"); // NOI18N
+        SelectDB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SelectDBActionPerformed(evt);
+            }
+        });
 
         backToUsers.setText(resourceMap.getString("backToUsers.text")); // NOI18N
         backToUsers.setName("backToUsers"); // NOI18N
@@ -732,6 +838,202 @@ public class SQLAdminView extends FrameView {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(AddHostPassField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(30, Short.MAX_VALUE))
+        );
+
+        DBPanel.setMaximumSize(new java.awt.Dimension(767, 767));
+        DBPanel.setName("DBPanel"); // NOI18N
+        DBPanel.setPreferredSize(new java.awt.Dimension(535, 497));
+
+        BackToDBs.setText(resourceMap.getString("BackToDBs.text")); // NOI18N
+        BackToDBs.setName("BackToDBs"); // NOI18N
+        BackToDBs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackToDBsActionPerformed(evt);
+            }
+        });
+
+        DBPanelTitle.setText(resourceMap.getString("DBPanelTitle.text")); // NOI18N
+        DBPanelTitle.setName("DBPanelTitle"); // NOI18N
+
+        DBUpdatePriv.setText(resourceMap.getString("DBUpdatePriv.text")); // NOI18N
+        DBUpdatePriv.setName("DBUpdatePriv"); // NOI18N
+
+        DBSelect.setText(resourceMap.getString("DBSelect.text")); // NOI18N
+        DBSelect.setName("DBSelect"); // NOI18N
+
+        DBInsert.setText(resourceMap.getString("DBInsert.text")); // NOI18N
+        DBInsert.setName("DBInsert"); // NOI18N
+
+        DBDelete.setText(resourceMap.getString("DBDelete.text")); // NOI18N
+        DBDelete.setName("DBDelete"); // NOI18N
+
+        DBUpdate.setText(resourceMap.getString("DBUpdate.text")); // NOI18N
+        DBUpdate.setName("DBUpdate"); // NOI18N
+
+        DBCreate.setText(resourceMap.getString("DBCreate.text")); // NOI18N
+        DBCreate.setName("DBCreate"); // NOI18N
+
+        DBDrop.setText(resourceMap.getString("DBDrop.text")); // NOI18N
+        DBDrop.setName("DBDrop"); // NOI18N
+
+        DBGrant.setText(resourceMap.getString("DBGrant.text")); // NOI18N
+        DBGrant.setName("DBGrant"); // NOI18N
+
+        DBIndex.setText(resourceMap.getString("DBIndex.text")); // NOI18N
+        DBIndex.setName("DBIndex"); // NOI18N
+
+        DBAlter.setText(resourceMap.getString("DBAlter.text")); // NOI18N
+        DBAlter.setName("DBAlter"); // NOI18N
+
+        DBCreateTempTables.setText(resourceMap.getString("DBCreateTempTables.text")); // NOI18N
+        DBCreateTempTables.setName("DBCreateTempTables"); // NOI18N
+
+        DBShowView.setText(resourceMap.getString("DBShowView.text")); // NOI18N
+        DBShowView.setName("DBShowView"); // NOI18N
+
+        DBCreateRoutine.setText(resourceMap.getString("DBCreateRoutine.text")); // NOI18N
+        DBCreateRoutine.setName("DBCreateRoutine"); // NOI18N
+
+        DBAlterRoutine.setText(resourceMap.getString("DBAlterRoutine.text")); // NOI18N
+        DBAlterRoutine.setName("DBAlterRoutine"); // NOI18N
+
+        DBExecute.setText(resourceMap.getString("DBExecute.text")); // NOI18N
+        DBExecute.setName("DBExecute"); // NOI18N
+
+        DBCreateView.setText(resourceMap.getString("DBCreateView.text")); // NOI18N
+        DBCreateView.setName("DBCreateView"); // NOI18N
+
+        DBEvent.setText(resourceMap.getString("DBEvent.text")); // NOI18N
+        DBEvent.setName("DBEvent"); // NOI18N
+
+        DBTrigger.setText(resourceMap.getString("DBTrigger.text")); // NOI18N
+        DBTrigger.setName("DBTrigger"); // NOI18N
+
+        DBLockTables.setText(resourceMap.getString("DBLockTables.text")); // NOI18N
+        DBLockTables.setName("DBLockTables"); // NOI18N
+
+        DBReferences.setText(resourceMap.getString("DBReferences.text")); // NOI18N
+        DBReferences.setName("DBReferences"); // NOI18N
+
+        jScrollPane2.setName("jScrollPane2"); // NOI18N
+
+        DBTablesList.setModel(new javax.swing.AbstractListModel() {
+            ArrayList<String> strings = tables;
+            public int getSize() { return strings.size(); }
+            public Object getElementAt(int i) { return strings.get(i); }
+        });
+        DBTablesList.setName("DBTablesList"); // NOI18N
+        jScrollPane2.setViewportView(DBTablesList);
+
+        DBTableListLabel.setText(resourceMap.getString("DBTableListLabel.text")); // NOI18N
+        DBTableListLabel.setName("DBTableListLabel"); // NOI18N
+
+        EditTablePrivs.setText(resourceMap.getString("EditTablePrivs.text")); // NOI18N
+        EditTablePrivs.setName("EditTablePrivs"); // NOI18N
+
+        javax.swing.GroupLayout DBPanelLayout = new javax.swing.GroupLayout(DBPanel);
+        DBPanel.setLayout(DBPanelLayout);
+        DBPanelLayout.setHorizontalGroup(
+            DBPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(DBPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(DBPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(DBPanelLayout.createSequentialGroup()
+                        .addGroup(DBPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(DBPanelTitle)
+                            .addGroup(DBPanelLayout.createSequentialGroup()
+                                .addGroup(DBPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(DBGrant)
+                                    .addComponent(DBDelete)
+                                    .addComponent(DBUpdate)
+                                    .addComponent(DBInsert)
+                                    .addComponent(DBSelect)
+                                    .addComponent(DBLockTables)
+                                    .addComponent(DBReferences))
+                                .addGap(1, 1, 1)
+                                .addGroup(DBPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(DBCreateTempTables)
+                                    .addComponent(DBDrop)
+                                    .addComponent(DBIndex)
+                                    .addComponent(DBAlter)
+                                    .addComponent(DBCreate)
+                                    .addComponent(DBShowView)
+                                    .addComponent(DBCreateRoutine)
+                                    .addComponent(DBAlterRoutine)
+                                    .addComponent(DBExecute)
+                                    .addComponent(DBCreateView)
+                                    .addComponent(DBEvent)
+                                    .addComponent(DBTrigger))))
+                        .addGap(44, 44, 44)
+                        .addGroup(DBPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(DBTableListLabel)
+                            .addGroup(DBPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(EditTablePrivs)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(DBPanelLayout.createSequentialGroup()
+                        .addComponent(BackToDBs)
+                        .addGap(18, 18, 18)
+                        .addComponent(DBUpdatePriv)))
+                .addContainerGap(1937, Short.MAX_VALUE))
+        );
+        DBPanelLayout.setVerticalGroup(
+            DBPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(DBPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(DBPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DBPanelTitle)
+                    .addComponent(DBTableListLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(DBPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(DBPanelLayout.createSequentialGroup()
+                        .addGroup(DBPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(DBSelect)
+                            .addComponent(DBCreate))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(DBPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(DBInsert)
+                            .addComponent(DBAlter))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(DBPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(DBDelete)
+                            .addComponent(DBIndex))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(DBPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(DBUpdate)
+                            .addComponent(DBDrop))
+                        .addGroup(DBPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(DBPanelLayout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addComponent(DBGrant)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(DBLockTables)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(DBReferences))
+                            .addGroup(DBPanelLayout.createSequentialGroup()
+                                .addComponent(DBCreateTempTables)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(DBShowView)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(DBCreateRoutine)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(DBAlterRoutine)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(DBExecute)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(DBCreateView)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(DBEvent)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(DBTrigger)))
+                        .addGap(27, 27, 27)
+                        .addGroup(DBPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(BackToDBs)
+                            .addComponent(DBUpdatePriv)))
+                    .addGroup(DBPanelLayout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(EditTablePrivs)))
+                .addGap(121, 121, 121))
         );
 
         setComponent(mainPanel);
@@ -1413,9 +1715,35 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
     private javax.swing.JPanel AddUserPanel;
     private javax.swing.JPasswordField AddUserPass;
     private javax.swing.JButton ChangePasswordButton;
+    private javax.swing.JButton BackToDBs;
     private javax.swing.JButton ConnectButton;
+    private javax.swing.JCheckBox DBAlter;
+    private javax.swing.JCheckBox DBAlterRoutine;
+    private javax.swing.JCheckBox DBCreate;
+    private javax.swing.JCheckBox DBCreateRoutine;
+    private javax.swing.JCheckBox DBCreateTempTables;
+    private javax.swing.JCheckBox DBCreateView;
+    private javax.swing.JCheckBox DBDelete;
+    private javax.swing.JCheckBox DBDrop;
+    private javax.swing.JCheckBox DBEvent;
+    private javax.swing.JCheckBox DBExecute;
+    private javax.swing.JCheckBox DBGrant;
+    private javax.swing.JCheckBox DBIndex;
+    private javax.swing.JCheckBox DBInsert;
     private javax.swing.JPanel DBListPanel;
+    private javax.swing.JCheckBox DBLockTables;
+    private javax.swing.JPanel DBPanel;
+    private javax.swing.JLabel DBPanelTitle;
+    private javax.swing.JCheckBox DBReferences;
+    private javax.swing.JCheckBox DBSelect;
+    private javax.swing.JCheckBox DBShowView;
+    private javax.swing.JLabel DBTableListLabel;
+    private javax.swing.JList DBTablesList;
+    private javax.swing.JCheckBox DBTrigger;
+    private javax.swing.JCheckBox DBUpdate;
+    private javax.swing.JButton DBUpdatePriv;
     private javax.swing.JButton DeleteUserButton;
+    private javax.swing.JButton EditTablePrivs;
     private javax.swing.JButton EditUserButton;
     private javax.swing.JCheckBox GlobalAlterCheckbox;
     private javax.swing.JCheckBox GlobalAlterRoutineCheckbox;
@@ -1470,16 +1798,19 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenuBar menuBar;
     // End of variables declaration//GEN-END:variables
     private Connection connection;
+	private String editServer;
     private ArrayList<String> users;
     private String editUser;
     private ArrayList<String> hosts;
     private String editHost;
     private ArrayList<String> databases;
     private String editDatabase;
+	private ArrayList<String> tables;
 
     private void updateGlobalPrivileges() {
         try {
@@ -1545,4 +1876,27 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
             JOptionPane.showMessageDialog(DBListPanel, "UpdateUsersHosts: " + ex.getMessage());
         }
     }
+
+	private void SelectDBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectDBActionPerformed
+		// TODO add your handling code here:
+		editDatabase = getDBListValue();
+		DBPanelTitle.setText(editUser + "'s Privileges on " + editDatabase);
+		DBTableListLabel.setText(editDatabase + "'s Tables");
+		getTables();
+		updateDBPrivs();
+
+		DBListPanel.setVisible(false);
+		setComponent(DBPanel);
+		DBPanel.setVisible(true);
+	}//GEN-LAST:event_SelectDBActionPerformed
+
+	private void BackToDBsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDBsActionPerformed
+		// TODO add your handling code here:
+		editDatabase = "";
+
+		DBPanel.setVisible(false);
+		setComponent(DBListPanel);
+		DBListPanel.setVisible(true);
+	}//GEN-LAST:event_BackToDBsActionPerformed
+
 }

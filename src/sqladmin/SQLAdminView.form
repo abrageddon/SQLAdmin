@@ -14,11 +14,11 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="ServerField" alignment="1" pref="379" max="32767" attributes="0"/>
+                      <Component id="ServerField" alignment="1" pref="363" max="32767" attributes="0"/>
                       <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="UserField" alignment="0" pref="379" max="32767" attributes="0"/>
+                      <Component id="UserField" alignment="0" pref="363" max="32767" attributes="0"/>
                       <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="PasswordField" alignment="0" pref="379" max="32767" attributes="0"/>
+                      <Component id="PasswordField" alignment="0" pref="363" max="32767" attributes="0"/>
                       <Component id="ConnectButton" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -568,9 +568,15 @@
         </Container>
         <Component class="javax.swing.JButton" name="SelectDB">
           <Properties>
+            <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+              <action class="sqladmin.SQLAdminView" id="SelectDBActionPerformed" methodName="SelectDBActionPerformed"/>
+            </Property>
             <Property name="text" type="java.lang.String" resourceKey="SelectDB.text"/>
             <Property name="name" type="java.lang.String" value="SelectDB" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SelectDBActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="backToUsers">
           <Properties>
@@ -869,6 +875,316 @@
         </Component>
       </SubComponents>
     </Container>
+    <Container class="javax.swing.JPanel" name="DBPanel">
+      <Properties>
+        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[767, 767]"/>
+        </Property>
+        <Property name="name" type="java.lang.String" value="DBPanel" noResource="true"/>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[535, 497]"/>
+        </Property>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="DBPanelTitle" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="DBGrant" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="DBDelete" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="DBUpdate" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="DBInsert" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="DBSelect" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="DBLockTables" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="DBReferences" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="DBCreateTempTables" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="DBDrop" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="DBIndex" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="DBAlter" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="DBCreate" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="DBShowView" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="DBCreateRoutine" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="DBAlterRoutine" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="DBExecute" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="DBCreateView" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="DBEvent" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="DBTrigger" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="DBTableListLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                  <Component id="EditTablePrivs" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jScrollPane2" alignment="1" min="-2" pref="196" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="BackToDBs" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="DBUpdatePriv" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace pref="1937" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="DBPanelTitle" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="DBTableListLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="DBSelect" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="DBCreate" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="DBInsert" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="DBAlter" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="DBDelete" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="DBIndex" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="DBUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="DBDrop" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                                  <Component id="DBGrant" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="DBLockTables" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="DBReferences" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="DBCreateTempTables" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="DBShowView" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="DBCreateRoutine" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="DBAlterRoutine" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="DBExecute" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="DBCreateView" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="DBEvent" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="DBTrigger" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="BackToDBs" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="DBUpdatePriv" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="jScrollPane2" min="-2" pref="196" max="-2" attributes="1"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="EditTablePrivs" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JButton" name="BackToDBs">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="BackToDBs.text"/>
+            <Property name="name" type="java.lang.String" value="BackToDBs" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BackToDBsActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="DBPanelTitle">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="DBPanelTitle.text"/>
+            <Property name="name" type="java.lang.String" value="DBPanelTitle" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="DBUpdatePriv">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="DBUpdatePriv.text"/>
+            <Property name="name" type="java.lang.String" value="DBUpdatePriv" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="DBSelect">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="DBSelect.text"/>
+            <Property name="name" type="java.lang.String" value="DBSelect" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="DBInsert">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="DBInsert.text"/>
+            <Property name="name" type="java.lang.String" value="DBInsert" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="DBDelete">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="DBDelete.text"/>
+            <Property name="name" type="java.lang.String" value="DBDelete" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="DBUpdate">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="DBUpdate.text"/>
+            <Property name="name" type="java.lang.String" value="DBUpdate" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="DBCreate">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="DBCreate.text"/>
+            <Property name="name" type="java.lang.String" value="DBCreate" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="DBDrop">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="DBDrop.text"/>
+            <Property name="name" type="java.lang.String" value="DBDrop" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="DBGrant">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="DBGrant.text"/>
+            <Property name="name" type="java.lang.String" value="DBGrant" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="DBIndex">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="DBIndex.text"/>
+            <Property name="name" type="java.lang.String" value="DBIndex" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="DBAlter">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="DBAlter.text"/>
+            <Property name="name" type="java.lang.String" value="DBAlter" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="DBCreateTempTables">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="DBCreateTempTables.text"/>
+            <Property name="name" type="java.lang.String" value="DBCreateTempTables" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="DBShowView">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="DBShowView.text"/>
+            <Property name="name" type="java.lang.String" value="DBShowView" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="DBCreateRoutine">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="DBCreateRoutine.text"/>
+            <Property name="name" type="java.lang.String" value="DBCreateRoutine" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="DBAlterRoutine">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="DBAlterRoutine.text"/>
+            <Property name="name" type="java.lang.String" value="DBAlterRoutine" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="DBExecute">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="DBExecute.text"/>
+            <Property name="name" type="java.lang.String" value="DBExecute" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="DBCreateView">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="DBCreateView.text"/>
+            <Property name="name" type="java.lang.String" value="DBCreateView" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="DBEvent">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="DBEvent.text"/>
+            <Property name="name" type="java.lang.String" value="DBEvent" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="DBTrigger">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="DBTrigger.text"/>
+            <Property name="name" type="java.lang.String" value="DBTrigger" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="DBLockTables">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="DBLockTables.text"/>
+            <Property name="name" type="java.lang.String" value="DBLockTables" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="DBReferences">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="DBReferences.text"/>
+            <Property name="name" type="java.lang.String" value="DBReferences" noResource="true"/>
+          </Properties>
+        </Component>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="jScrollPane2" noResource="true"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JList" name="DBTablesList">
+              <Properties>
+                <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="new javax.swing.AbstractListModel() {&#xa;    ArrayList&lt;String&gt; strings = tables;&#xa;    public int getSize() { return strings.size(); }&#xa;    public Object getElementAt(int i) { return strings.get(i); }&#xa;}" type="code"/>
+                </Property>
+                <Property name="name" type="java.lang.String" value="DBTablesList" noResource="true"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Component class="javax.swing.JLabel" name="DBTableListLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="DBTableListLabel.text"/>
+            <Property name="name" type="java.lang.String" value="DBTableListLabel" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="EditTablePrivs">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="EditTablePrivs.text"/>
+            <Property name="name" type="java.lang.String" value="EditTablePrivs" noResource="true"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
   </NonVisualComponents>
   <Properties>
     <Property name="component" type="javax.swing.JComponent" editor="org.netbeans.modules.form.ComponentChooserEditor">
@@ -888,6 +1204,6 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,0,-26,0,0,1,-109"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,11,0,0,1,-109"/>
   </AuxValues>
 </Form>
