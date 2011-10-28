@@ -60,6 +60,10 @@ public class SQLAdminView extends FrameView {
 		else
 			return "";
 	}
+
+	private void getDBPrivs() {
+		
+	}
 			
     private String getUserListValue() {
         if (UserListjList.getSelectedIndex() != -1) {
@@ -115,10 +119,8 @@ public class SQLAdminView extends FrameView {
         SelectDB = new javax.swing.JButton();
         backToUsers = new javax.swing.JButton();
         DBPanel = new javax.swing.JPanel();
-        DBPanelTitle = new javax.swing.JLabel();
-        temp_DBPriv = new javax.swing.JScrollPane();
-        temp_DBPrivTxt = new javax.swing.JTextArea();
         BackToDBs = new javax.swing.JButton();
+        DBPanelTitle = new javax.swing.JLabel();
 
         mainPanel.setName("mainPanel"); // NOI18N
 
@@ -447,16 +449,6 @@ public class SQLAdminView extends FrameView {
 
         DBPanel.setName("DBPanel"); // NOI18N
 
-        DBPanelTitle.setText(resourceMap.getString("DBPanelTitle.text")); // NOI18N
-        DBPanelTitle.setName("DBPanelTitle"); // NOI18N
-
-        temp_DBPriv.setName("temp_DBPriv"); // NOI18N
-
-        temp_DBPrivTxt.setColumns(20);
-        temp_DBPrivTxt.setRows(5);
-        temp_DBPrivTxt.setName("temp_DBPrivTxt"); // NOI18N
-        temp_DBPriv.setViewportView(temp_DBPrivTxt);
-
         BackToDBs.setText(resourceMap.getString("BackToDBs.text")); // NOI18N
         BackToDBs.setName("BackToDBs"); // NOI18N
         BackToDBs.addActionListener(new java.awt.event.ActionListener() {
@@ -465,6 +457,9 @@ public class SQLAdminView extends FrameView {
             }
         });
 
+        DBPanelTitle.setText(resourceMap.getString("DBPanelTitle.text")); // NOI18N
+        DBPanelTitle.setName("DBPanelTitle"); // NOI18N
+
         javax.swing.GroupLayout DBPanelLayout = new javax.swing.GroupLayout(DBPanel);
         DBPanel.setLayout(DBPanelLayout);
         DBPanelLayout.setHorizontalGroup(
@@ -472,19 +467,16 @@ public class SQLAdminView extends FrameView {
             .addGroup(DBPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(DBPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(temp_DBPriv, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(DBPanelTitle)
-                    .addComponent(BackToDBs))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(BackToDBs)
+                    .addComponent(DBPanelTitle))
+                .addContainerGap(181, Short.MAX_VALUE))
         );
         DBPanelLayout.setVerticalGroup(
             DBPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(DBPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(DBPanelTitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(temp_DBPriv, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(99, 99, 99)
                 .addComponent(BackToDBs)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -656,7 +648,6 @@ private void backToUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
 	private void SelectDBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectDBActionPerformed
 		// TODO add your handling code here:
 		editDatabase = getDatabaseListValue();
-		statusMessageLabel.setText("User: " + editUser + "\tDatabase: " + editDatabase);
 		DBPanelTitle.setText(editUser + "'s Privileges on " + editDatabase);
 		
 		DBListPanel.setVisible(false);
@@ -667,7 +658,6 @@ private void backToUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
 	private void BackToDBsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDBsActionPerformed
 		// TODO add your handling code here:
 		editDatabase = "";
-		statusMessageLabel.setText("User: " + editUser);
 
 		DBPanel.setVisible(false);
 		setComponent(DBListPanel);
@@ -712,8 +702,6 @@ private void backToUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private javax.swing.JLabel statusAnimationLabel;
     private javax.swing.JLabel statusMessageLabel;
     private javax.swing.JPanel statusPanel;
-    private javax.swing.JScrollPane temp_DBPriv;
-    private javax.swing.JTextArea temp_DBPrivTxt;
     // End of variables declaration//GEN-END:variables
     private Connection connection;
 	private String editServer;
