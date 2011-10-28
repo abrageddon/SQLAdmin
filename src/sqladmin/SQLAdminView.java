@@ -3,10 +3,9 @@
  */
 package sqladmin;
 
+import java.awt.event.ActionEvent;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import org.jdesktop.application.SingleFrameApplication;
 import org.jdesktop.application.FrameView;
@@ -23,7 +22,6 @@ public class SQLAdminView extends FrameView {
         databases = new ArrayList<String>();
 
         initComponents();
-
 
     }
 
@@ -54,6 +52,13 @@ public class SQLAdminView extends FrameView {
             e.printStackTrace();
         }
     }
+
+	private String getDBListValue() {
+		if (databaseList.getSelectedIndex() != -1)
+			return databaseList.getSelectedValue().toString();
+		else
+			return "";
+	}
 
     private String getUserListValue() {
         if (UserListjList.getSelectedIndex() != -1) {
@@ -369,7 +374,6 @@ public class SQLAdminView extends FrameView {
                 .addContainerGap())
         );
 
-        DBListPanel.setMinimumSize(new java.awt.Dimension(700, 460));
         DBListPanel.setName("DBListPanel"); // NOI18N
 
         jLabel8.setText(resourceMap.getString("jLabel8.text")); // NOI18N
@@ -617,9 +621,9 @@ public class SQLAdminView extends FrameView {
                         .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(GlobalFileCheckbox)
                             .addComponent(GlobalReplSlaveCheckbox))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                         .addComponent(GlobalPrivilegeSubmitButton))
-                    .addComponent(dbListPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE))
+                    .addComponent(dbListPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(backToUsers)
@@ -637,7 +641,7 @@ public class SQLAdminView extends FrameView {
     private void updateUsers() {
         try {
             Statement getUsers = connection.createStatement();
-            ResultSet userSet = getUsers.executeQuery("SELECT DISTINCT User FROM `user` ORDER BY User");
+            ResultSet userSet = getUsers.executeQuery("SELECT DISTINCT User FROM `user`");
             ArrayList<String> userList = new ArrayList<String>();
             while (userSet.next()) {
                 userList.add(userSet.getString("User"));
@@ -672,7 +676,7 @@ public class SQLAdminView extends FrameView {
 
         // Switch to database panel
         UserListPanel.setVisible(false);
-
+//        statusMessageLabel.setText("Editing User: "+editUser);
         setComponent(DBListPanel);
         updateUsersHosts();
         updateGlobalPrivileges();
