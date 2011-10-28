@@ -37,6 +37,8 @@ public class SQLAdminView extends FrameView {
             updateUsers();
             setComponent(UserListPanel);
             UserListPanel.setVisible(true);
+            getFrame().setMinimumSize(new Dimension(400, 400));
+            getFrame().setSize(new Dimension(400, 400));
             editServer = server;
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(mainPanel, "Connect: " + ex.getMessage());
@@ -169,6 +171,7 @@ public class SQLAdminView extends FrameView {
         UserListjList = new javax.swing.JList();
         AddUserButton = new javax.swing.JButton();
         DeleteUserButton = new javax.swing.JButton();
+        RenameUserButton = new javax.swing.JButton();
         AddUserPanel = new javax.swing.JPanel();
         SubmitAddUser = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
@@ -373,6 +376,14 @@ public class SQLAdminView extends FrameView {
             }
         });
 
+        RenameUserButton.setText(resourceMap.getString("RenameUserButton.text")); // NOI18N
+        RenameUserButton.setName("RenameUserButton"); // NOI18N
+        RenameUserButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RenameUserButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout UserListPanelLayout = new javax.swing.GroupLayout(UserListPanel);
         UserListPanel.setLayout(UserListPanelLayout);
         UserListPanelLayout.setHorizontalGroup(
@@ -382,29 +393,31 @@ public class SQLAdminView extends FrameView {
                 .addGroup(UserListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(UserListPanelLayout.createSequentialGroup()
                         .addComponent(jLabel4)
-                        .addGap(181, 181, 181))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, UserListPanelLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, UserListPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(AddUserButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(DeleteUserButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)
-                        .addComponent(EditUserButton))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                        .addComponent(DeleteUserButton))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
+                    .addGroup(UserListPanelLayout.createSequentialGroup()
+                        .addComponent(RenameUserButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
+                        .addComponent(EditUserButton)))
+                .addContainerGap())
         );
         UserListPanelLayout.setVerticalGroup(
             UserListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(UserListPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4)
+                .addGroup(UserListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(AddUserButton)
+                    .addComponent(DeleteUserButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(UserListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(EditUserButton)
-                    .addComponent(DeleteUserButton)
-                    .addComponent(AddUserButton))
+                    .addComponent(RenameUserButton)
+                    .addComponent(EditUserButton))
                 .addContainerGap())
         );
 
@@ -1141,7 +1154,6 @@ public class SQLAdminView extends FrameView {
     }//GEN-LAST:event_DeleteUserButtonActionPerformed
 
     private void SubmitAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitAddUserActionPerformed
-        // TODO add your handling code here:
         String username = AddUserName.getText();
         String host = AddUserHost.getText();
         String pass = AddUserPass.getText();
@@ -1788,6 +1800,7 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
     private javax.swing.JComboBox HostComboBox;
     private javax.swing.JPasswordField PasswordField;
     private javax.swing.JButton RemoveHostButton;
+    private javax.swing.JButton RenameUserButton;
     private javax.swing.JButton SelectDB;
     private javax.swing.JTextField ServerField;
     private javax.swing.JButton SubmitAddUser;
@@ -1913,8 +1926,6 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
     }
 
 	private void SelectDBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectDBActionPerformed
-
-            // TODO add your handling code here:
             editDatabase = getDBListValue();
             if (editDatabase.equals("")) {
                 JOptionPane.showMessageDialog(DBListPanel, "You must select a database to edit.");
@@ -1936,7 +1947,6 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
 	}//GEN-LAST:event_SelectDBActionPerformed
 
 	private void BackToDBsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDBsActionPerformed
-            // TODO add your handling code here:
             editDatabase = "";
 
             DBPanel.setVisible(false);
@@ -2179,19 +2189,19 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
             }
 
 
-            
 
-            
+
+
             try {
                 Statement update;
                 int ret = 0;
                 if (!grants.isEmpty()) {
                     update = connection.createStatement();
-                    ret += update.executeUpdate("GRANT " + grants + " ON "+cleanSQL(editDatabase)+".* TO '" + cleanSQL(editUser) + "'@'" + cleanSQL(editHost) + "'");
+                    ret += update.executeUpdate("GRANT " + grants + " ON " + cleanSQL(editDatabase) + ".* TO '" + cleanSQL(editUser) + "'@'" + cleanSQL(editHost) + "'");
                 }
                 if (!revokes.isEmpty()) {
                     update = connection.createStatement();
-                    ret += update.executeUpdate("REVOKE " + revokes + " ON "+cleanSQL(editDatabase)+".* FROM '" + cleanSQL(editUser) + "'@'" + cleanSQL(editHost) + "'");
+                    ret += update.executeUpdate("REVOKE " + revokes + " ON " + cleanSQL(editDatabase) + ".* FROM '" + cleanSQL(editUser) + "'@'" + cleanSQL(editHost) + "'");
                 }
                 if (ret == 0) {
                     JOptionPane.showMessageDialog(UserListPanel, "Privileges Updated.");
@@ -2202,4 +2212,43 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
                 JOptionPane.showMessageDialog(UserListPanel, "DBUpdatePrivActionPerformed: " + ex.getMessage());
             }
         }//GEN-LAST:event_DBUpdatePrivActionPerformed
+
+        private void RenameUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RenameUserButtonActionPerformed
+            editUser = UserListjList.getSelectedValue().toString();
+            updateUsersHosts();
+            if (!editUser.isEmpty()) {
+                JTextField username = new JTextField();
+                final JComponent[] inputs = new JComponent[]{
+                    new JLabel("Enter New Username:"),
+                    username
+                };
+                int cancel = JOptionPane.showConfirmDialog(null, inputs, "Change Password", JOptionPane.OK_CANCEL_OPTION);
+                if (cancel == JOptionPane.YES_OPTION) {
+                    if (username.getText() != null && !username.getText().isEmpty()) {
+                        try {
+                            Statement query = connection.createStatement();
+                            ResultSet checkName = query.executeQuery("SELECT DISTINCT User FROM mysql.`user` WHERE User = '" + cleanSQL(username.getText()) + "'");
+                            if (checkName.next()) {
+                                JOptionPane.showMessageDialog(AddUserPanel, "Username \"" + username.getText() + "\" already exists.");
+                            } else {
+                                Statement update;
+                                int ret = 0;
+                                for (String host : hosts) {
+                                    update = connection.createStatement();
+                                    ret += update.executeUpdate("RENAME USER '" + cleanSQL(editUser) + "'@'"+host+"' TO '" + cleanSQL(username.getText()) + "'@'"+host+"'");
+                                }
+                                if (ret == 0) {
+                                    JOptionPane.showMessageDialog(UserListPanel, "Username Updated.");
+                                } else {
+                                    JOptionPane.showMessageDialog(UserListPanel, "Username Not Updated.");
+                                }
+                            }
+                        } catch (SQLException ex) {
+                            JOptionPane.showMessageDialog(UserListPanel, "RenameUserButtonActionPerformed: " + ex.getMessage());
+                        }
+                    }
+                }
+            }
+            updateUsers();
+        }//GEN-LAST:event_RenameUserButtonActionPerformed
 }
