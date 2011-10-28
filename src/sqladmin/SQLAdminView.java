@@ -121,6 +121,7 @@ public class SQLAdminView extends FrameView {
         DBPanel = new javax.swing.JPanel();
         BackToDBs = new javax.swing.JButton();
         DBPanelTitle = new javax.swing.JLabel();
+        DBUpdatePriv = new javax.swing.JButton();
 
         mainPanel.setName("mainPanel"); // NOI18N
 
@@ -460,6 +461,9 @@ public class SQLAdminView extends FrameView {
         DBPanelTitle.setText(resourceMap.getString("DBPanelTitle.text")); // NOI18N
         DBPanelTitle.setName("DBPanelTitle"); // NOI18N
 
+        DBUpdatePriv.setText(resourceMap.getString("DBUpdatePriv.text")); // NOI18N
+        DBUpdatePriv.setName("DBUpdatePriv"); // NOI18N
+
         javax.swing.GroupLayout DBPanelLayout = new javax.swing.GroupLayout(DBPanel);
         DBPanel.setLayout(DBPanelLayout);
         DBPanelLayout.setHorizontalGroup(
@@ -467,9 +471,12 @@ public class SQLAdminView extends FrameView {
             .addGroup(DBPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(DBPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BackToDBs)
+                    .addGroup(DBPanelLayout.createSequentialGroup()
+                        .addComponent(BackToDBs)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                        .addComponent(DBUpdatePriv))
                     .addComponent(DBPanelTitle))
-                .addContainerGap(181, Short.MAX_VALUE))
+                .addContainerGap())
         );
         DBPanelLayout.setVerticalGroup(
             DBPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -477,7 +484,9 @@ public class SQLAdminView extends FrameView {
                 .addContainerGap()
                 .addComponent(DBPanelTitle)
                 .addGap(99, 99, 99)
-                .addComponent(BackToDBs)
+                .addGroup(DBPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BackToDBs)
+                    .addComponent(DBUpdatePriv))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -676,6 +685,7 @@ private void backToUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private javax.swing.JPanel DBListPanel;
     private javax.swing.JPanel DBPanel;
     private javax.swing.JLabel DBPanelTitle;
+    private javax.swing.JButton DBUpdatePriv;
     private javax.swing.JButton DeleteUserButton;
     private javax.swing.JButton EditUserButton;
     private javax.swing.JPasswordField PasswordField;

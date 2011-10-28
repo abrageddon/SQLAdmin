@@ -504,10 +504,14 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="BackToDBs" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="BackToDBs" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="37" max="32767" attributes="0"/>
+                          <Component id="DBUpdatePriv" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <Component id="DBPanelTitle" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="181" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -517,7 +521,10 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="DBPanelTitle" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
-                  <Component id="BackToDBs" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="BackToDBs" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="DBUpdatePriv" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -537,6 +544,12 @@
           <Properties>
             <Property name="text" type="java.lang.String" resourceKey="DBPanelTitle.text"/>
             <Property name="name" type="java.lang.String" value="DBPanelTitle" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="DBUpdatePriv">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="DBUpdatePriv.text"/>
+            <Property name="name" type="java.lang.String" value="DBUpdatePriv" noResource="true"/>
           </Properties>
         </Component>
       </SubComponents>
