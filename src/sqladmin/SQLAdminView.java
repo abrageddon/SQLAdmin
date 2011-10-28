@@ -144,6 +144,13 @@ public class SQLAdminView extends FrameView {
         return "";
     }
 
+    private String getTableListValue() {
+        if (DBTablesList.getSelectedIndex() != -1) {
+            return DBTablesList.getSelectedValue().toString();
+        }
+        return "";
+    }
+
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -254,6 +261,27 @@ public class SQLAdminView extends FrameView {
         DBTableListLabel = new javax.swing.JLabel();
         EditTablePrivs = new javax.swing.JButton();
         DbHostCombobox = new javax.swing.JComboBox();
+        TablePanel = new javax.swing.JPanel();
+        TablePanelLabel = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        ColumnNameList = new javax.swing.JList();
+        TableSelectCheckbox = new javax.swing.JCheckBox();
+        TableInsertCheckbox = new javax.swing.JCheckBox();
+        TableUpdateCheckbox = new javax.swing.JCheckBox();
+        TableDeleteCheckbox = new javax.swing.JCheckBox();
+        TableCreateCheckbox = new javax.swing.JCheckBox();
+        TableHostCombobox = new javax.swing.JComboBox();
+        TableDropCheckbox = new javax.swing.JCheckBox();
+        TableGrantCheckbox = new javax.swing.JCheckBox();
+        TableReferencesCheckbox = new javax.swing.JCheckBox();
+        TableIndexCheckbox = new javax.swing.JCheckBox();
+        TableAlterCheckbox = new javax.swing.JCheckBox();
+        TableCreateViewCheckbox = new javax.swing.JCheckBox();
+        TableShowViewCheckbox = new javax.swing.JCheckBox();
+        TableTriggerCheckbox = new javax.swing.JCheckBox();
+        EditColumnButton = new javax.swing.JButton();
+        BackToDatabaseButton = new javax.swing.JButton();
+        ApplyTablePrivsButton = new javax.swing.JButton();
 
         mainPanel.setName("mainPanel"); // NOI18N
 
@@ -946,6 +974,11 @@ public class SQLAdminView extends FrameView {
 
         EditTablePrivs.setText(resourceMap.getString("EditTablePrivs.text")); // NOI18N
         EditTablePrivs.setName("EditTablePrivs"); // NOI18N
+        EditTablePrivs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditTablePrivsActionPerformed(evt);
+            }
+        });
 
         DbHostCombobox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         DbHostCombobox.setName("DbHostCombobox"); // NOI18N
@@ -987,13 +1020,17 @@ public class SQLAdminView extends FrameView {
                             .addComponent(DBTrigger)
                             .addComponent(DBUpdatePriv)))
                     .addComponent(DBPanelTitle)
-                    .addComponent(BackToDBs)
-                    .addComponent(DbHostCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(DbHostCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BackToDBs))
                 .addGroup(DBPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
-                    .addComponent(DBTableListLabel)
-                    .addComponent(EditTablePrivs))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 323, Short.MAX_VALUE)
+                    .addGroup(DBPanelLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(DBTableListLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 223, Short.MAX_VALUE))
+                    .addGroup(DBPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE)
+                        .addComponent(EditTablePrivs)))
                 .addContainerGap())
         );
         DBPanelLayout.setVerticalGroup(
@@ -1046,13 +1083,181 @@ public class SQLAdminView extends FrameView {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(DBTrigger)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(DBUpdatePriv))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(DBUpdatePriv)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                        .addComponent(BackToDBs)
+                        .addGap(28, 28, 28))
+                    .addGroup(DBPanelLayout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(EditTablePrivs)
+                        .addContainerGap())))
+        );
+
+        TablePanel.setName("TablePanel"); // NOI18N
+
+        TablePanelLabel.setText(resourceMap.getString("TablePanelLabel.text")); // NOI18N
+        TablePanelLabel.setName("TablePanelLabel"); // NOI18N
+
+        jScrollPane3.setName("jScrollPane3"); // NOI18N
+
+        ColumnNameList.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        ColumnNameList.setName("ColumnNameList"); // NOI18N
+        jScrollPane3.setViewportView(ColumnNameList);
+
+        TableSelectCheckbox.setText(resourceMap.getString("TableSelectCheckbox.text")); // NOI18N
+        TableSelectCheckbox.setName("TableSelectCheckbox"); // NOI18N
+
+        TableInsertCheckbox.setText(resourceMap.getString("TableInsertCheckbox.text")); // NOI18N
+        TableInsertCheckbox.setName("TableInsertCheckbox"); // NOI18N
+
+        TableUpdateCheckbox.setText(resourceMap.getString("TableUpdateCheckbox.text")); // NOI18N
+        TableUpdateCheckbox.setName("TableUpdateCheckbox"); // NOI18N
+
+        TableDeleteCheckbox.setText(resourceMap.getString("TableDeleteCheckbox.text")); // NOI18N
+        TableDeleteCheckbox.setName("TableDeleteCheckbox"); // NOI18N
+
+        TableCreateCheckbox.setText(resourceMap.getString("TableCreateCheckbox.text")); // NOI18N
+        TableCreateCheckbox.setName("TableCreateCheckbox"); // NOI18N
+
+        TableHostCombobox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        TableHostCombobox.setName("TableHostCombobox"); // NOI18N
+        TableHostCombobox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TableHostComboboxActionPerformed(evt);
+            }
+        });
+
+        TableDropCheckbox.setText(resourceMap.getString("TableDropCheckbox.text")); // NOI18N
+        TableDropCheckbox.setName("TableDropCheckbox"); // NOI18N
+
+        TableGrantCheckbox.setText(resourceMap.getString("TableGrantCheckbox.text")); // NOI18N
+        TableGrantCheckbox.setName("TableGrantCheckbox"); // NOI18N
+
+        TableReferencesCheckbox.setText(resourceMap.getString("TableReferencesCheckbox.text")); // NOI18N
+        TableReferencesCheckbox.setName("TableReferencesCheckbox"); // NOI18N
+
+        TableIndexCheckbox.setText(resourceMap.getString("TableIndexCheckbox.text")); // NOI18N
+        TableIndexCheckbox.setName("TableIndexCheckbox"); // NOI18N
+
+        TableAlterCheckbox.setText(resourceMap.getString("TableAlterCheckbox.text")); // NOI18N
+        TableAlterCheckbox.setName("TableAlterCheckbox"); // NOI18N
+
+        TableCreateViewCheckbox.setText(resourceMap.getString("TableCreateViewCheckbox.text")); // NOI18N
+        TableCreateViewCheckbox.setName("TableCreateViewCheckbox"); // NOI18N
+
+        TableShowViewCheckbox.setText(resourceMap.getString("TableShowViewCheckbox.text")); // NOI18N
+        TableShowViewCheckbox.setName("TableShowViewCheckbox"); // NOI18N
+
+        TableTriggerCheckbox.setText(resourceMap.getString("TableTriggerCheckbox.text")); // NOI18N
+        TableTriggerCheckbox.setName("TableTriggerCheckbox"); // NOI18N
+
+        EditColumnButton.setText(resourceMap.getString("EditColumnButton.text")); // NOI18N
+        EditColumnButton.setName("EditColumnButton"); // NOI18N
+
+        BackToDatabaseButton.setText(resourceMap.getString("BackToDatabaseButton.text")); // NOI18N
+        BackToDatabaseButton.setName("BackToDatabaseButton"); // NOI18N
+        BackToDatabaseButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackToDatabaseButtonActionPerformed(evt);
+            }
+        });
+
+        ApplyTablePrivsButton.setText(resourceMap.getString("ApplyTablePrivsButton.text")); // NOI18N
+        ApplyTablePrivsButton.setName("ApplyTablePrivsButton"); // NOI18N
+        ApplyTablePrivsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ApplyTablePrivsButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout TablePanelLayout = new javax.swing.GroupLayout(TablePanel);
+        TablePanel.setLayout(TablePanelLayout);
+        TablePanelLayout.setHorizontalGroup(
+            TablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TablePanelLayout.createSequentialGroup()
+                .addGroup(TablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(TablePanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(TablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(TablePanelLayout.createSequentialGroup()
+                                .addGroup(TablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(TablePanelLabel)
+                                    .addGroup(TablePanelLayout.createSequentialGroup()
+                                        .addGroup(TablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(TableHostCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(TableSelectCheckbox)
+                                            .addComponent(TableInsertCheckbox)
+                                            .addComponent(TableUpdateCheckbox)
+                                            .addComponent(TableDeleteCheckbox)
+                                            .addComponent(TableCreateCheckbox)
+                                            .addComponent(TableDropCheckbox))
+                                        .addGap(79, 79, 79)
+                                        .addGroup(TablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(TableGrantCheckbox)
+                                            .addComponent(TableReferencesCheckbox)
+                                            .addComponent(TableIndexCheckbox)
+                                            .addComponent(TableAlterCheckbox)
+                                            .addComponent(TableCreateViewCheckbox)
+                                            .addComponent(TableShowViewCheckbox)
+                                            .addComponent(TableTriggerCheckbox)))
+                                    .addComponent(ApplyTablePrivsButton))
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE))
+                            .addComponent(EditColumnButton, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addComponent(BackToDatabaseButton))
+                .addContainerGap())
+        );
+        TablePanelLayout.setVerticalGroup(
+            TablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TablePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(TablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(TablePanelLayout.createSequentialGroup()
+                        .addComponent(TablePanelLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(TablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(TablePanelLayout.createSequentialGroup()
+                                .addComponent(TableHostCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(TableSelectCheckbox)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TableInsertCheckbox)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TableUpdateCheckbox)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TableDeleteCheckbox)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TableCreateCheckbox)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TableDropCheckbox))
+                            .addGroup(TablePanelLayout.createSequentialGroup()
+                                .addComponent(TableGrantCheckbox)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TableReferencesCheckbox)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TableIndexCheckbox)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TableAlterCheckbox)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TableCreateViewCheckbox)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TableShowViewCheckbox)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TableTriggerCheckbox)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ApplyTablePrivsButton))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(DBPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BackToDBs)
-                    .addComponent(EditTablePrivs))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(TablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(TablePanelLayout.createSequentialGroup()
+                        .addComponent(EditColumnButton)
+                        .addContainerGap())
+                    .addComponent(BackToDatabaseButton)))
         );
 
         setComponent(mainPanel);
@@ -1097,7 +1302,7 @@ public class SQLAdminView extends FrameView {
 
     private void EditUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditUserButtonActionPerformed
         editUser = getUserListValue();
-        if (editUser != null && !editUser.isEmpty()) {
+        if (!editUser.isEmpty()) {
             // Switch to database panel
             UserListPanel.setVisible(false);
             setComponent(DBListPanel);
@@ -1735,8 +1940,11 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
     private javax.swing.JTextField AddUserName;
     private javax.swing.JPanel AddUserPanel;
     private javax.swing.JPasswordField AddUserPass;
+    private javax.swing.JButton ApplyTablePrivsButton;
     private javax.swing.JButton BackToDBs;
+    private javax.swing.JButton BackToDatabaseButton;
     private javax.swing.JButton ChangePasswordButton;
+    private javax.swing.JList ColumnNameList;
     private javax.swing.JButton ConnectButton;
     private javax.swing.JCheckBox DBAlter;
     private javax.swing.JCheckBox DBAlterRoutine;
@@ -1765,6 +1973,7 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
     private javax.swing.JButton DBUpdatePriv;
     private javax.swing.JComboBox DbHostCombobox;
     private javax.swing.JButton DeleteUserButton;
+    private javax.swing.JButton EditColumnButton;
     private javax.swing.JButton EditTablePrivs;
     private javax.swing.JButton EditUserButton;
     private javax.swing.JCheckBox GlobalAlterCheckbox;
@@ -1804,6 +2013,22 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
     private javax.swing.JButton SelectDB;
     private javax.swing.JTextField ServerField;
     private javax.swing.JButton SubmitAddUser;
+    private javax.swing.JCheckBox TableAlterCheckbox;
+    private javax.swing.JCheckBox TableCreateCheckbox;
+    private javax.swing.JCheckBox TableCreateViewCheckbox;
+    private javax.swing.JCheckBox TableDeleteCheckbox;
+    private javax.swing.JCheckBox TableDropCheckbox;
+    private javax.swing.JCheckBox TableGrantCheckbox;
+    private javax.swing.JComboBox TableHostCombobox;
+    private javax.swing.JCheckBox TableIndexCheckbox;
+    private javax.swing.JCheckBox TableInsertCheckbox;
+    private javax.swing.JPanel TablePanel;
+    private javax.swing.JLabel TablePanelLabel;
+    private javax.swing.JCheckBox TableReferencesCheckbox;
+    private javax.swing.JCheckBox TableSelectCheckbox;
+    private javax.swing.JCheckBox TableShowViewCheckbox;
+    private javax.swing.JCheckBox TableTriggerCheckbox;
+    private javax.swing.JCheckBox TableUpdateCheckbox;
     private javax.swing.JTextField UserField;
     private javax.swing.JPanel UserListPanel;
     private javax.swing.JList UserListjList;
@@ -1822,6 +2047,7 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenuBar menuBar;
     // End of variables declaration//GEN-END:variables
@@ -1834,6 +2060,7 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
     private ArrayList<String> databases;
     private String editDatabase;
     private ArrayList<String> tables;
+    private String editTable;
 
     private void updateGlobalPrivileges() {
         try {
@@ -1918,10 +2145,32 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
             DbHostCombobox.setSelectedIndex(0);
 
             if (DBPanel.isVisible()) {
-                editHost = (String) HostComboBox.getSelectedItem();
+                editHost = (String) DbHostCombobox.getSelectedItem();
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(DBListPanel, "updateDbHosts: " + ex.getMessage());
+        }
+    }
+
+    private void updateTableHosts() {
+        try {
+            Statement userHosts = connection.createStatement();
+            ResultSet hostList = userHosts.executeQuery("SELECT Host FROM mysql.`user` WHERE User = '" + cleanSQL(editUser) + "' ORDER BY Host");
+            ArrayList<String> currHosts = new ArrayList<String>();
+            while (hostList.next()) {
+                currHosts.add(hostList.getString("Host"));
+            }
+
+            hosts = currHosts;
+
+            TableHostCombobox.setModel(new javax.swing.DefaultComboBoxModel(hosts.toArray()));
+            TableHostCombobox.setSelectedIndex(0);
+
+            if (TablePanel.isVisible()) {
+                editHost = (String) TableHostCombobox.getSelectedItem();
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(DBListPanel, "updateTableHosts: " + ex.getMessage());
         }
     }
 
@@ -2188,10 +2437,6 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
                 revokes += " REFERENCES ";
             }
 
-
-
-
-
             try {
                 Statement update;
                 int ret = 0;
@@ -2235,7 +2480,7 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
                                 int ret = 0;
                                 for (String host : hosts) {
                                     update = connection.createStatement();
-                                    ret += update.executeUpdate("RENAME USER '" + cleanSQL(editUser) + "'@'"+host+"' TO '" + cleanSQL(username.getText()) + "'@'"+host+"'");
+                                    ret += update.executeUpdate("RENAME USER '" + cleanSQL(editUser) + "'@'" + host + "' TO '" + cleanSQL(username.getText()) + "'@'" + host + "'");
                                 }
                                 if (ret == 0) {
                                     JOptionPane.showMessageDialog(UserListPanel, "Username Updated.");
@@ -2251,4 +2496,288 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
             }
             updateUsers();
         }//GEN-LAST:event_RenameUserButtonActionPerformed
+
+        private void EditTablePrivsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditTablePrivsActionPerformed
+            editTable = getTableListValue();
+            if (!editTable.isEmpty()) {
+                DBPanel.setVisible(false);
+                setComponent(TablePanel);
+                getFrame().setMinimumSize(new Dimension(600, 500));
+                getFrame().setSize(new Dimension(600, 500));
+                TablePanel.setVisible(true);
+                TablePanelLabel.setText("Privileges for " + editUser + " on " + editDatabase + "." + editTable);
+                updateTableHosts();
+                updateTablePrivs();
+            }
+        }//GEN-LAST:event_EditTablePrivsActionPerformed
+
+        private void TableHostComboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TableHostComboboxActionPerformed
+            updateTablePrivs();
+        }//GEN-LAST:event_TableHostComboboxActionPerformed
+
+        private void ApplyTablePrivsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ApplyTablePrivsButtonActionPerformed
+            editHost = (String) TableHostCombobox.getSelectedItem();
+            String grants = "";
+            String revokes = "";
+
+            if (TableSelectCheckbox.isSelected()) {
+                grants += " SELECT ";
+            } else {
+                revokes += " SELECT ";
+            }
+
+            if (TableInsertCheckbox.isSelected()) {
+                if (!grants.isEmpty()) {
+                    grants += ",";
+                }
+                grants += " INSERT ";
+            } else {
+                if (!revokes.isEmpty()) {
+                    revokes += ",";
+                }
+                revokes += " INSERT ";
+            }
+
+            if (TableUpdateCheckbox.isSelected()) {
+                if (!grants.isEmpty()) {
+                    grants += ",";
+                }
+                grants += " UPDATE ";
+            } else {
+                if (!revokes.isEmpty()) {
+                    revokes += ",";
+                }
+                revokes += " UPDATE ";
+            }
+
+            if (TableDeleteCheckbox.isSelected()) {
+                if (!grants.isEmpty()) {
+                    grants += ",";
+                }
+                grants += " DELETE ";
+            } else {
+                if (!revokes.isEmpty()) {
+                    revokes += ",";
+                }
+                revokes += " DELETE ";
+            }
+
+            if (TableCreateCheckbox.isSelected()) {
+                if (!grants.isEmpty()) {
+                    grants += ",";
+                }
+                grants += " CREATE ";
+            } else {
+                if (!revokes.isEmpty()) {
+                    revokes += ",";
+                }
+                revokes += " CREATE ";
+            }
+
+            if (TableDropCheckbox.isSelected()) {
+                if (!grants.isEmpty()) {
+                    grants += ",";
+                }
+                grants += " DROP ";
+            } else {
+                if (!revokes.isEmpty()) {
+                    revokes += ",";
+                }
+                revokes += " DROP ";
+            }
+
+            if (TableGrantCheckbox.isSelected()) {
+                if (!grants.isEmpty()) {
+                    grants += ",";
+                }
+                grants += " GRANT OPTION ";
+            } else {
+                if (!revokes.isEmpty()) {
+                    revokes += ",";
+                }
+                revokes += " GRANT OPTION ";
+            }
+
+            if (TableReferencesCheckbox.isSelected()) {
+                if (!grants.isEmpty()) {
+                    grants += ",";
+                }
+                grants += " REFERENCES ";
+            } else {
+                if (!revokes.isEmpty()) {
+                    revokes += ",";
+                }
+                revokes += " REFERENCES ";
+            }
+
+            if (TableIndexCheckbox.isSelected()) {
+                if (!grants.isEmpty()) {
+                    grants += ",";
+                }
+                grants += " INDEX ";
+            } else {
+                if (!revokes.isEmpty()) {
+                    revokes += ",";
+                }
+                revokes += " INDEX ";
+            }
+
+            if (TableAlterCheckbox.isSelected()) {
+                if (!grants.isEmpty()) {
+                    grants += ",";
+                }
+                grants += " ALTER ";
+            } else {
+                if (!revokes.isEmpty()) {
+                    revokes += ",";
+                }
+                revokes += " ALTER ";
+            }
+
+            if (TableCreateViewCheckbox.isSelected()) {
+                if (!grants.isEmpty()) {
+                    grants += ",";
+                }
+                grants += " CREATE VIEW ";
+            } else {
+                if (!revokes.isEmpty()) {
+                    revokes += ",";
+                }
+                revokes += " CREATE VIEW ";
+            }
+
+            if (TableShowViewCheckbox.isSelected()) {
+                if (!grants.isEmpty()) {
+                    grants += ",";
+                }
+                grants += " SHOW VIEW ";
+            } else {
+                if (!revokes.isEmpty()) {
+                    revokes += ",";
+                }
+                revokes += " SHOW VIEW ";
+            }
+
+            if (TableTriggerCheckbox.isSelected()) {
+                if (!grants.isEmpty()) {
+                    grants += ",";
+                }
+                grants += " TRIGGER ";
+            } else {
+                if (!revokes.isEmpty()) {
+                    revokes += ",";
+                }
+                revokes += " TRIGGER ";
+            }
+
+
+
+            try {
+                Statement update;
+                int ret = 0;
+                if (!grants.isEmpty()) {
+                    update = connection.createStatement();
+                    ret += update.executeUpdate("GRANT " + grants + " ON " + cleanSQL(editDatabase) + "." + editTable + " TO '" + cleanSQL(editUser) + "'@'" + cleanSQL(editHost) + "'");
+                }
+                if (!revokes.isEmpty()) {
+                    update = connection.createStatement();
+                    ret += update.executeUpdate("REVOKE " + revokes + " ON " + cleanSQL(editDatabase) + "." + editTable + " FROM '" + cleanSQL(editUser) + "'@'" + cleanSQL(editHost) + "'");
+                }
+                if (ret == 0) {
+                    JOptionPane.showMessageDialog(UserListPanel, "Privileges Updated.");
+                } else {
+                    JOptionPane.showMessageDialog(UserListPanel, "Privileges Not Updated.");
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(UserListPanel, "ApplyTablePrivsButtonActionPerformed: " + ex.getMessage());
+            }
+        }//GEN-LAST:event_ApplyTablePrivsButtonActionPerformed
+
+        private void BackToDatabaseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDatabaseButtonActionPerformed
+            DBPanelTitle.setText(editUser + "'s Privileges on " + editDatabase);
+            DBTableListLabel.setText(editDatabase + "'s Tables");
+            getTables();
+
+            TablePanel.setVisible(false);
+            setComponent(DBPanel);
+            DBPanel.setVisible(true);
+
+            getFrame().setMinimumSize(new Dimension(600, 500));
+            getFrame().setSize(new Dimension(600, 500));
+
+            updateDbHosts();
+            getDBPrivs();
+        }//GEN-LAST:event_BackToDatabaseButtonActionPerformed
+
+    private void updateTablePrivs() {
+        editHost = (String) TableHostCombobox.getSelectedItem();
+
+        TableSelectCheckbox.setSelected(false);
+        TableInsertCheckbox.setSelected(false);
+        TableUpdateCheckbox.setSelected(false);
+        TableDeleteCheckbox.setSelected(false);
+        TableCreateCheckbox.setSelected(false);
+        TableDropCheckbox.setSelected(false);
+        TableGrantCheckbox.setSelected(false);
+        TableReferencesCheckbox.setSelected(false);
+        TableIndexCheckbox.setSelected(false);
+        TableAlterCheckbox.setSelected(false);
+        TableCreateViewCheckbox.setSelected(false);
+        TableShowViewCheckbox.setSelected(false);
+        TableTriggerCheckbox.setSelected(false);
+
+        if (editHost != null && !editHost.isEmpty()) {
+            try {
+                Statement updateTablePrivs = connection.createStatement();
+                ResultSet TablePrivs = updateTablePrivs.executeQuery("SELECT * from mysql.tables_priv WHERE user='" + editUser + "' AND host='" + editHost + "' AND db='" + editDatabase + "' AND Table_name='" + editTable + "';");
+
+                if (TablePrivs.next()) {
+                    for (String token : TablePrivs.getString("Table_priv").split(",")) {
+                        if (token.equalsIgnoreCase("Select")) {
+                            TableSelectCheckbox.setSelected(true);
+                        }
+                        if (token.equalsIgnoreCase("Insert")) {
+                            TableInsertCheckbox.setSelected(true);
+                        }
+                        if (token.equalsIgnoreCase("Update")) {
+                            TableUpdateCheckbox.setSelected(true);
+                        }
+                        if (token.equalsIgnoreCase("Delete")) {
+                            TableDeleteCheckbox.setSelected(true);
+                        }
+                        if (token.equalsIgnoreCase("Create")) {
+                            TableCreateCheckbox.setSelected(true);
+                        }
+                        if (token.equalsIgnoreCase("Drop")) {
+                            TableDropCheckbox.setSelected(true);
+                        }
+                        if (token.equalsIgnoreCase("Grant")) {
+                            TableGrantCheckbox.setSelected(true);
+                        }
+                        if (token.equalsIgnoreCase("Reference")) {
+                            TableReferencesCheckbox.setSelected(true);
+                        }
+                        if (token.equalsIgnoreCase("Index")) {
+                            TableIndexCheckbox.setSelected(true);
+                        }
+                        if (token.equalsIgnoreCase("Alter")) {
+                            TableAlterCheckbox.setSelected(true);
+                        }
+                        if (token.equalsIgnoreCase("Create View")) {
+                            TableCreateViewCheckbox.setSelected(true);
+                        }
+                        if (token.equalsIgnoreCase("Show View")) {
+                            TableShowViewCheckbox.setSelected(true);
+                        }
+                        if (token.equalsIgnoreCase("Trigger")) {
+                            TableTriggerCheckbox.setSelected(true);
+                        }
+                    }
+                }
+
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(UserListPanel, "updateTablePrivs: " + ex.getMessage());
+            }
+        }
+    }
 }
