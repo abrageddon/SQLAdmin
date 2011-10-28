@@ -1621,592 +1621,356 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
     editHost = HostComboBox.getSelectedItem().toString();
     String grants = "";
     String revokes = "";
-
-
-
     if (GlobalSelectCheckbox.isSelected()) {
         grants += " SELECT ";
-
-
     } else {
         revokes += " SELECT ";
-
-
     }
 
     if (GlobalInsertCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
-
-
         }
         grants += " INSERT ";
-
-
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
-
-
         }
         revokes += " INSERT ";
-
-
     }
 
     if (GlobalUpdateCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
-
-
         }
         grants += " UPDATE ";
-
-
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
-
-
         }
         revokes += " UPDATE ";
-
-
     }
 
     if (GlobalDeleteCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
-
-
         }
         grants += " DELETE ";
-
-
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
-
-
         }
         revokes += " DELETE ";
-
-
     }
 
     if (GlobalCreateCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
-
-
         }
         grants += " CREATE ";
-
-
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
-
-
         }
         revokes += " CREATE ";
-
-
     }
 
     if (GlobalDropCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
-
-
         }
         grants += " DROP ";
-
-
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
-
-
         }
         revokes += " DROP ";
-
-
     }
 
     if (GlobalReloadCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
-
-
         }
         grants += " RELOAD ";
-
-
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
-
-
         }
         revokes += " RELOAD ";
-
-
     }
 
     if (GlobalShutdownCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
-
-
         }
         grants += " SHUTDOWN ";
-
-
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
-
-
         }
         revokes += " SHUTDOWN ";
-
-
     }
 
     if (GlobalProcessCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
-
-
         }
         grants += " PROCESS ";
-
-
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
-
-
         }
         revokes += " PROCESS ";
-
-
     }
 
     if (GlobalFileCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
-
-
         }
         grants += " FILE ";
-
-
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
-
-
         }
         revokes += " FILE ";
-
-
     }
 
     if (GlobalGrantCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
-
-
         }
         grants += " GRANT OPTION ";
-
-
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
-
-
         }
         revokes += " GRANT OPTION ";
-
-
     }
 
     if (GlobalReferencesCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
-
-
         }
         grants += " REFERENCES ";
-
-
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
-
-
         }
         revokes += " REFERENCES ";
-
-
     }
 
     if (GlobalIndexCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
-
-
         }
         grants += " INDEX ";
-
-
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
-
-
         }
         revokes += " INDEX ";
-
-
     }
 
     if (GlobalAlterCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
-
-
         }
         grants += " ALTER ";
-
-
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
-
-
         }
         revokes += " ALTER ";
-
-
     }
 
     if (GlobalShowDbCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
-
-
         }
         grants += " SHOW DATABASES ";
-
-
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
-
-
         }
         revokes += " SHOW DATABASES ";
-
-
     }
 
     if (GlobalSuperCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
-
-
         }
         grants += " SUPER ";
-
-
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
-
-
         }
         revokes += " SUPER ";
-
-
     }
 
     if (GlobalCreateTmpTableCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
-
-
         }
         grants += " CREATE TEMPORARY TABLES ";
-
-
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
-
-
         }
         revokes += " CREATE TEMPORARY TABLES ";
-
-
     }
 
     if (GlobalLockTablesCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
-
-
         }
         grants += " LOCK TABLES ";
-
-
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
-
-
         }
         revokes += " LOCK TABLES ";
-
-
     }
 
     if (GlobalExecuteCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
-
-
         }
         grants += " EXECUTE ";
-
-
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
-
-
         }
         revokes += " EXECUTE ";
-
-
     }
 
     if (GlobalReplSlaveCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
-
-
         }
         grants += " REPLICATION SLAVE ";
-
-
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
-
-
         }
         revokes += " REPLICATION SLAVE ";
-
-
     }
 
     if (GlobalReplClientCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
-
-
         }
         grants += " REPLICATION CLIENT ";
-
-
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
-
-
         }
         revokes += " REPLICATION CLIENT ";
-
-
     }
 
     if (GlobalCreateViewCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
-
-
         }
         grants += " CREATE VIEW ";
-
-
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
-
-
         }
         revokes += " CREATE VIEW ";
-
-
     }
 
     if (GlobalShowViewCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
-
-
         }
         grants += " SHOW VIEW ";
-
-
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
-
-
         }
         revokes += " SHOW VIEW ";
-
-
     }
 
     if (GlobalCreateRoutineCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
-
-
         }
         grants += " CREATE ROUTINE ";
-
-
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
-
-
         }
         revokes += " CREATE ROUTINE ";
-
-
     }
 
     if (GlobalAlterRoutineCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
-
-
         }
         grants += " ALTER ROUTINE ";
-
-
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
-
-
         }
         revokes += " ALTER ROUTINE ";
-
-
     }
 
     if (GlobalCreateUserCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
-
-
         }
         grants += " CREATE USER ";
-
-
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
-
-
         }
         revokes += " CREATE USER ";
-
-
     }
 
     if (GlobalEventCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
-
-
         }
         grants += " EVENT ";
-
-
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
-
-
         }
         revokes += " EVENT ";
-
-
     }
 
     if (GlobalTriggerCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
-
-
         }
         grants += " TRIGGER ";
-
-
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
-
-
         }
         revokes += " TRIGGER ";
-
-
-    } //    System.out.println("GRANT " + grants + " ON *.* TO '" + cleanSQL(editUser) + "'@'" + cleanSQL(editHost) + "'");
+    }
+    //    System.out.println("GRANT " + grants + " ON *.* TO '" + cleanSQL(editUser) + "'@'" + cleanSQL(editHost) + "'");
     //    System.out.println("REVOKE " + revokes + " ON *.* FROM '" + cleanSQL(editUser) + "'@'" + cleanSQL(editHost) + "'");
 
     try {
         Statement update;
-
-
         int ret = 0;
-
-
         if (!grants.isEmpty()) {
             update = connection.createStatement();
             ret += update.executeUpdate("GRANT " + grants + " ON *.* TO '" + cleanSQL(editUser) + "'@'" + cleanSQL(editHost) + "'");
-
-
         }
         if (!revokes.isEmpty()) {
             update = connection.createStatement();
             ret += update.executeUpdate("REVOKE " + revokes + " ON *.* FROM '" + cleanSQL(editUser) + "'@'" + cleanSQL(editHost) + "'");
-
-
         }
         if (ret == 0) {
             JOptionPane.showMessageDialog(UserListPanel, "Privileges Updated.");
-
-
         } else {
             JOptionPane.showMessageDialog(UserListPanel, "Privileges Not Updated.");
-
-
         }
     } catch (SQLException ex) {
         JOptionPane.showMessageDialog(UserListPanel, "GlobalPrivilegeSubmitButtonActionPerformed: " + ex.getMessage());
-
-
     }
 
 }//GEN-LAST:event_GlobalPrivilegeSubmitButtonActionPerformed
@@ -2512,411 +2276,248 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
             editHost = DbHostCombobox.getSelectedItem().toString();
             String grants = "";
             String revokes = "";
-
-
-
             if (DBSelect.isSelected()) {
                 grants += " SELECT ";
-
-
             } else {
                 revokes += " SELECT ";
-
-
             }
 
             if (DBInsert.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
-
-
                 }
                 grants += " INSERT ";
-
-
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
-
-
                 }
                 revokes += " INSERT ";
-
-
             }
 
             if (DBDelete.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
-
-
                 }
                 grants += " DELETE ";
-
-
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
-
-
                 }
                 revokes += " DELETE ";
-
-
             }
 
             if (DBUpdate.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
-
-
                 }
                 grants += " UPDATE ";
-
-
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
-
-
                 }
                 revokes += " UPDATE ";
-
-
             }
 
             if (DBCreate.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
-
-
                 }
                 grants += " CREATE ";
-
-
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
-
-
                 }
                 revokes += " CREATE ";
-
-
             }
 
             if (DBDrop.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
-
-
                 }
                 grants += " DROP ";
-
-
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
-
-
                 }
                 revokes += " DROP ";
-
-
             }
 
             if (DBGrant.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
-
-
                 }
                 grants += " GRANT OPTION ";
-
-
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
-
-
                 }
                 revokes += " GRANT OPTION ";
-
-
             }
 
             if (DBIndex.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
-
-
                 }
                 grants += " INDEX ";
-
-
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
-
-
                 }
                 revokes += " INDEX ";
-
-
             }
 
             if (DBAlter.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
-
-
                 }
                 grants += " ALTER ";
-
-
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
-
-
                 }
                 revokes += " ALTER ";
-
-
             }
 
             if (DBCreateTempTables.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
-
-
                 }
                 grants += " CREATE TEMPORARY TABLES ";
-
-
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
-
-
                 }
                 revokes += " CREATE TEMPORARY TABLES ";
-
-
             }
 
             if (DBShowView.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
-
-
                 }
                 grants += " SHOW VIEW ";
-
-
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
-
-
                 }
                 revokes += " SHOW VIEW ";
-
-
             }
 
             if (DBCreateRoutine.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
-
-
                 }
                 grants += " CREATE ROUTINE ";
-
-
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
-
-
                 }
                 revokes += " CREATE ROUTINE ";
-
-
             }
 
             if (DBAlterRoutine.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
-
-
                 }
                 grants += " ALTER ROUTINE ";
-
-
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
-
-
                 }
                 revokes += " ALTER ROUTINE ";
-
-
             }
 
             if (DBExecute.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
-
-
                 }
                 grants += " EXECUTE ";
-
-
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
-
-
                 }
                 revokes += " EXECUTE ";
-
-
             }
 
             if (DBCreateView.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
-
-
                 }
                 grants += " CREATE VIEW ";
-
-
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
-
-
                 }
                 revokes += " CREATE VIEW ";
-
-
             }
 
             if (DBEvent.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
-
-
                 }
                 grants += " EVENT ";
-
-
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
-
-
                 }
                 revokes += " EVENT ";
-
-
             }
 
             if (DBTrigger.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
-
-
                 }
                 grants += " TRIGGER ";
-
-
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
-
-
                 }
                 revokes += " TRIGGER ";
-
-
             }
 
             if (DBLockTables.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
-
-
                 }
                 grants += " LOCK TABLES ";
-
-
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
-
-
                 }
                 revokes += " LOCK TABLES ";
-
-
             }
 
             if (DBReferences.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
-
-
                 }
                 grants += " REFERENCES ";
-
-
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
-
-
                 }
                 revokes += " REFERENCES ";
-
-
             }
 
             try {
                 Statement update;
-
-
                 int ret = 0;
 
 
                 if (!grants.isEmpty()) {
                     update = connection.createStatement();
                     ret += update.executeUpdate("GRANT " + grants + " ON " + cleanSQL(editDatabase) + ".* TO '" + cleanSQL(editUser) + "'@'" + cleanSQL(editHost) + "'");
-
-
                 }
                 if (!revokes.isEmpty()) {
                     update = connection.createStatement();
                     ret += update.executeUpdate("REVOKE " + revokes + " ON " + cleanSQL(editDatabase) + ".* FROM '" + cleanSQL(editUser) + "'@'" + cleanSQL(editHost) + "'");
-
-
                 }
                 if (ret == 0) {
                     JOptionPane.showMessageDialog(UserListPanel, "Privileges Updated.");
-
-
                 } else {
                     JOptionPane.showMessageDialog(UserListPanel, "Privileges Not Updated.");
-
-
                 }
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(UserListPanel, "DBUpdatePrivActionPerformed: " + ex.getMessage());
-
-
             }
         }//GEN-LAST:event_ApplyDBPrivButtonActionPerformed
 
@@ -2931,49 +2532,29 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
                     new JLabel("Enter New Username:"),
                     username
                 };
-
-
                 int cancel = JOptionPane.showConfirmDialog(null, inputs, "Change Password", JOptionPane.OK_CANCEL_OPTION);
-
-
                 if (cancel == JOptionPane.YES_OPTION) {
                     if (username.getText() != null && !username.getText().isEmpty()) {
                         try {
                             Statement query = connection.createStatement();
                             ResultSet checkName = query.executeQuery("SELECT DISTINCT User FROM mysql.`user` WHERE User = '" + cleanSQL(username.getText()) + "'");
-
-
                             if (checkName.next()) {
                                 JOptionPane.showMessageDialog(AddUserPanel, "Username \"" + username.getText() + "\" already exists.");
-
-
                             } else {
                                 Statement update;
-
-
                                 int ret = 0;
-
-
                                 for (String host : hosts) {
                                     update = connection.createStatement();
                                     ret += update.executeUpdate("RENAME USER '" + cleanSQL(editUser) + "'@'" + host + "' TO '" + cleanSQL(username.getText()) + "'@'" + host + "'");
-
-
                                 }
                                 if (ret == 0) {
                                     JOptionPane.showMessageDialog(UserListPanel, "Username Updated.");
-
-
                                 } else {
                                     JOptionPane.showMessageDialog(UserListPanel, "Username Not Updated.");
-
-
                                 }
                             }
                         } catch (SQLException ex) {
                             JOptionPane.showMessageDialog(UserListPanel, "RenameUserButtonActionPerformed: " + ex.getMessage());
-
-
                         }
                     }
                 }
@@ -2982,8 +2563,6 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
         }//GEN-LAST:event_RenameUserButtonActionPerformed
         private void EditTablePrivsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditTablePrivsActionPerformed
             editTable = getTableListValue();
-
-
             if (!editTable.isEmpty()) {
                 DBPanel.setVisible(false);
                 setComponent(
@@ -2995,8 +2574,6 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
                 updateTableHosts();
                 updateTablePrivs();
                 getColumns();
-
-
             }
         }//GEN-LAST:event_EditTablePrivsActionPerformed
 
@@ -3009,292 +2586,176 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
             String grants = "";
             String revokes = "";
 
-
-
             if (TableSelectCheckbox.isSelected()) {
                 grants += " SELECT ";
-
-
             } else {
                 revokes += " SELECT ";
-
-
             }
 
             if (TableInsertCheckbox.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
-
-
                 }
                 grants += " INSERT ";
-
-
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
-
-
                 }
                 revokes += " INSERT ";
-
-
             }
 
             if (TableUpdateCheckbox.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
-
-
                 }
                 grants += " UPDATE ";
-
-
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
-
-
                 }
                 revokes += " UPDATE ";
-
-
             }
 
             if (TableDeleteCheckbox.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
-
-
                 }
                 grants += " DELETE ";
-
-
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
-
-
                 }
                 revokes += " DELETE ";
-
-
             }
 
             if (TableCreateCheckbox.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
-
-
                 }
                 grants += " CREATE ";
-
-
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
-
-
                 }
                 revokes += " CREATE ";
-
-
             }
 
             if (TableDropCheckbox.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
-
-
                 }
                 grants += " DROP ";
-
-
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
-
-
                 }
                 revokes += " DROP ";
-
-
             }
 
             if (TableGrantCheckbox.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
-
-
                 }
                 grants += " GRANT OPTION ";
-
-
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
-
-
                 }
                 revokes += " GRANT OPTION ";
-
-
             }
 
             if (TableReferencesCheckbox.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
-
-
                 }
                 grants += " REFERENCES ";
-
-
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
-
-
                 }
                 revokes += " REFERENCES ";
-
-
             }
 
             if (TableIndexCheckbox.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
-
-
                 }
                 grants += " INDEX ";
-
-
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
-
-
                 }
                 revokes += " INDEX ";
-
-
             }
 
             if (TableAlterCheckbox.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
-
-
                 }
                 grants += " ALTER ";
-
-
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
-
-
                 }
                 revokes += " ALTER ";
-
-
             }
 
             if (TableCreateViewCheckbox.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
-
-
                 }
                 grants += " CREATE VIEW ";
-
-
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
-
-
                 }
                 revokes += " CREATE VIEW ";
-
-
             }
 
             if (TableShowViewCheckbox.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
-
-
                 }
                 grants += " SHOW VIEW ";
-
-
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
-
-
                 }
                 revokes += " SHOW VIEW ";
-
-
             }
 
             if (TableTriggerCheckbox.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
-
-
                 }
                 grants += " TRIGGER ";
-
-
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
-
-
                 }
                 revokes += " TRIGGER ";
-
-
             }
 
 
 
             try {
                 Statement update;
-
-
                 int ret = 0;
-
-
                 if (!grants.isEmpty()) {
                     update = connection.createStatement();
                     ret += update.executeUpdate("GRANT " + grants + " ON " + cleanSQL(editDatabase) + "." + editTable + " TO '" + cleanSQL(editUser) + "'@'" + cleanSQL(editHost) + "'");
-
-
                 }
                 if (!revokes.isEmpty()) {
                     update = connection.createStatement();
                     ret += update.executeUpdate("REVOKE " + revokes + " ON " + cleanSQL(editDatabase) + "." + editTable + " FROM '" + cleanSQL(editUser) + "'@'" + cleanSQL(editHost) + "'");
-
-
                 }
                 if (ret == 0) {
                     JOptionPane.showMessageDialog(UserListPanel, "Privileges Updated.");
-
-
                 } else {
                     JOptionPane.showMessageDialog(UserListPanel, "Privileges Not Updated.");
-
-
                 }
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(UserListPanel, "ApplyTablePrivsButtonActionPerformed: " + ex.getMessage());
-
-
             }
         }//GEN-LAST:event_ApplyTablePrivsButtonActionPerformed
 
@@ -3302,8 +2763,7 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
             getTables();
 
             TablePanel.setVisible(false);
-            setComponent(
-                    DBPanel);
+            setComponent(DBPanel);
             DBPanel.setVisible(true);
 
             getFrame().setMinimumSize(DbWindow);
@@ -3337,81 +2797,52 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
                 Statement updateTablePrivs = connection.createStatement();
                 ResultSet TablePrivs = updateTablePrivs.executeQuery("SELECT * from mysql.tables_priv WHERE user='" + editUser + "' AND host='" + editHost + "' AND db='" + editDatabase + "' AND Table_name='" + editTable + "';");
 
-
-
                 if (TablePrivs.next()) {
                     for (String token : TablePrivs.getString("Table_priv").split(",")) {
                         if (token.equalsIgnoreCase("Select")) {
                             TableSelectCheckbox.setSelected(true);
-
-
                         }
                         if (token.equalsIgnoreCase("Insert")) {
                             TableInsertCheckbox.setSelected(true);
-
-
                         }
                         if (token.equalsIgnoreCase("Update")) {
                             TableUpdateCheckbox.setSelected(true);
-
-
                         }
                         if (token.equalsIgnoreCase("Delete")) {
                             TableDeleteCheckbox.setSelected(true);
-
-
                         }
                         if (token.equalsIgnoreCase("Create")) {
                             TableCreateCheckbox.setSelected(true);
-
-
                         }
                         if (token.equalsIgnoreCase("Drop")) {
                             TableDropCheckbox.setSelected(true);
-
-
                         }
                         if (token.equalsIgnoreCase("Grant")) {
                             TableGrantCheckbox.setSelected(true);
-
-
                         }
                         if (token.equalsIgnoreCase("Reference")) {
                             TableReferencesCheckbox.setSelected(true);
-
-
                         }
                         if (token.equalsIgnoreCase("Index")) {
                             TableIndexCheckbox.setSelected(true);
-
-
                         }
                         if (token.equalsIgnoreCase("Alter")) {
                             TableAlterCheckbox.setSelected(true);
-
-
                         }
                         if (token.equalsIgnoreCase("Create View")) {
                             TableCreateViewCheckbox.setSelected(true);
-
-
                         }
                         if (token.equalsIgnoreCase("Show View")) {
                             TableShowViewCheckbox.setSelected(true);
-
-
                         }
                         if (token.equalsIgnoreCase("Trigger")) {
                             TableTriggerCheckbox.setSelected(true);
-
-
                         }
                     }
                 }
 
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(UserListPanel, "updateTablePrivs: " + ex.getMessage());
-
             }
         }
     }
