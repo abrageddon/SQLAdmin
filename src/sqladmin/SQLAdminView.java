@@ -1879,20 +1879,7 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
     }
 
 	private void SelectDBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectDBActionPerformed
-<<<<<<< HEAD
-            // TODO add your handling code here:
-            editDatabase = getDBListValue();
-            DBPanelTitle.setText(editUser + "'s Privileges on " + editDatabase);
-            DBTableListLabel.setText(editDatabase + "'s Tables");
-            getTables();
-            updateDBPrivs();
 
-            DBListPanel.setVisible(false);
-            setComponent(DBPanel);
-            getFrame().setMinimumSize(new Dimension(600, 450));
-            getFrame().setSize(new Dimension(600, 450));
-            DBPanel.setVisible(true);
-=======
 		// TODO add your handling code here:
 		editDatabase = getDBListValue();
 		DBPanelTitle.setText(editUser + "'s Privileges on " + editDatabase);
@@ -1903,7 +1890,6 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
 		DBListPanel.setVisible(false);
 		setComponent(DBPanel);
 		DBPanel.setVisible(true);
->>>>>>> 31df3337aa173063dc94f52c32ae7c5aae26889f
 	}//GEN-LAST:event_SelectDBActionPerformed
 
 	private void BackToDBsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDBsActionPerformed
