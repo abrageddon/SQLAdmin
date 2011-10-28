@@ -63,7 +63,7 @@ public class SQLAdminView extends FrameView {
         }
     }
 
-	private void updateDBPrivs() {
+	private void getDBPrivs() {
 		try {
 			Statement updateDBPrivs = connection.createStatement();
 			ResultSet DBPrivs = updateDBPrivs.executeQuery("SELECT * from mysql.db WHERE user='" + editUser + "' AND db='" + editDatabase + "';");
@@ -1460,7 +1460,7 @@ private void RemoveHostButtonActionPerformed(java.awt.event.ActionEvent evt) {//
 		DBPanelTitle.setText(editUser + "'s Privileges on " + editDatabase);
 		DBTableListLabel.setText(editDatabase + "'s Tables");
 		getTables();
-		updateDBPrivs();
+		getDBPrivs();
 
 		DBListPanel.setVisible(false);
 		setComponent(DBPanel);
