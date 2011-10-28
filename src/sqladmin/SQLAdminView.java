@@ -292,11 +292,11 @@ public class SQLAdminView extends FrameView {
                 .addContainerGap()
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(ServerField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
+                    .addComponent(ServerField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
                     .addComponent(jLabel2)
-                    .addComponent(UserField, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
+                    .addComponent(UserField, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
                     .addComponent(jLabel3)
-                    .addComponent(PasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
+                    .addComponent(PasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
                     .addComponent(ConnectButton, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
@@ -317,7 +317,7 @@ public class SQLAdminView extends FrameView {
                 .addComponent(PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ConnectButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         menuBar.setName("menuBar"); // NOI18N
@@ -657,9 +657,11 @@ public class SQLAdminView extends FrameView {
                                     .addComponent(GlobalInsertCheckbox)
                                     .addComponent(GlobalDeleteCheckbox)
                                     .addComponent(GlobalCreateCheckbox)
-                                    .addComponent(GlobalDropCheckbox))
+                                    .addComponent(GlobalDropCheckbox)
+                                    .addComponent(GlobalFileCheckbox))
                                 .addGap(57, 57, 57)
                                 .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(GlobalReplSlaveCheckbox)
                                     .addComponent(GlobalGrantCheckbox)
                                     .addComponent(GlobalSuperCheckbox)
                                     .addComponent(GlobalShowDbCheckbox)
@@ -668,10 +670,8 @@ public class SQLAdminView extends FrameView {
                                     .addComponent(GlobalIndexCheckbox)
                                     .addComponent(GlobalCreateTmpTableCheckbox)
                                     .addComponent(GlobalLockTablesCheckbox)
-                                    .addComponent(GlobalExecuteCheckbox)
-                                    .addComponent(GlobalReplSlaveCheckbox)))
+                                    .addComponent(GlobalExecuteCheckbox)))
                             .addComponent(GlobalUpdateCheckbox)))
-                    .addComponent(GlobalPrivilegeSubmitButton)
                     .addComponent(backToUsers)
                     .addComponent(GlobalPrivilegeLabel)
                     .addGroup(DBListPanelLayout.createSequentialGroup()
@@ -683,9 +683,6 @@ public class SQLAdminView extends FrameView {
                     .addGroup(DBListPanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(GlobalProcessCheckbox))
-                    .addGroup(DBListPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(GlobalFileCheckbox))
                     .addGroup(DBListPanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(HostComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -708,7 +705,8 @@ public class SQLAdminView extends FrameView {
                             .addComponent(GlobalAlterRoutineCheckbox, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(GlobalCreateUserCheckbox, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(GlobalEventCheckbox, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(GlobalTriggerCheckbox, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(GlobalTriggerCheckbox, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(GlobalPrivilegeSubmitButton, javax.swing.GroupLayout.Alignment.LEADING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(SelectDB)
@@ -723,7 +721,7 @@ public class SQLAdminView extends FrameView {
                     .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(DBListPanelLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, DBListPanelLayout.createSequentialGroup()
                         .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(HostComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(AddHostButton)
@@ -784,11 +782,10 @@ public class SQLAdminView extends FrameView {
                             .addComponent(GlobalProcessCheckbox)
                             .addComponent(GlobalExecuteCheckbox))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(GlobalFileCheckbox)
-                            .addComponent(GlobalReplSlaveCheckbox))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
-                        .addComponent(GlobalPrivilegeSubmitButton))
+                        .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(GlobalPrivilegeSubmitButton)
+                            .addComponent(GlobalReplSlaveCheckbox)
+                            .addComponent(GlobalFileCheckbox)))
                     .addComponent(dbListPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1715,8 +1712,8 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
     private javax.swing.JTextField AddUserName;
     private javax.swing.JPanel AddUserPanel;
     private javax.swing.JPasswordField AddUserPass;
-    private javax.swing.JButton ChangePasswordButton;
     private javax.swing.JButton BackToDBs;
+    private javax.swing.JButton ChangePasswordButton;
     private javax.swing.JButton ConnectButton;
     private javax.swing.JCheckBox DBAlter;
     private javax.swing.JCheckBox DBAlterRoutine;

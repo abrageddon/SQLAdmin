@@ -14,11 +14,11 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="ServerField" alignment="1" pref="363" max="32767" attributes="0"/>
+                      <Component id="ServerField" alignment="1" pref="379" max="32767" attributes="0"/>
                       <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="UserField" alignment="0" pref="363" max="32767" attributes="0"/>
+                      <Component id="UserField" alignment="0" pref="379" max="32767" attributes="0"/>
                       <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="PasswordField" alignment="0" pref="363" max="32767" attributes="0"/>
+                      <Component id="PasswordField" alignment="0" pref="379" max="32767" attributes="0"/>
                       <Component id="ConnectButton" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -42,7 +42,7 @@
                   <Component id="PasswordField" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="ConnectButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="47" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -366,9 +366,11 @@
                                       <Component id="GlobalDeleteCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="GlobalCreateCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="GlobalDropCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="GlobalFileCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="GlobalReplSlaveCheckbox" min="-2" max="-2" attributes="0"/>
                                       <Component id="GlobalGrantCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="GlobalSuperCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="GlobalShowDbCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -378,13 +380,11 @@
                                       <Component id="GlobalCreateTmpTableCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="GlobalLockTablesCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="GlobalExecuteCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="GlobalReplSlaveCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Component id="GlobalUpdateCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Component id="GlobalPrivilegeSubmitButton" min="-2" max="-2" attributes="0"/>
                       <Component id="backToUsers" min="-2" max="-2" attributes="0"/>
                       <Component id="GlobalPrivilegeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
@@ -398,10 +398,6 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="GlobalProcessCheckbox" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="GlobalFileCheckbox" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
@@ -429,6 +425,7 @@
                               <Component id="GlobalCreateUserCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="GlobalEventCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="GlobalTriggerCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="GlobalPrivilegeSubmitButton" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -450,7 +447,7 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="HostComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="AddHostButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -524,12 +521,11 @@
                               <Component id="GlobalExecuteCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="GlobalFileCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="GlobalReplSlaveCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="GlobalPrivilegeSubmitButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="GlobalReplSlaveCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="GlobalFileCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="107" max="32767" attributes="0"/>
-                          <Component id="GlobalPrivilegeSubmitButton" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="dbListPane" alignment="0" pref="389" max="32767" attributes="0"/>
                   </Group>
