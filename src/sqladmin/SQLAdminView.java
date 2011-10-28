@@ -21,6 +21,7 @@ public class SQLAdminView extends FrameView {
         users = new ArrayList<String>();
         databases = new ArrayList<String>();
         tables = new ArrayList<String>();
+        columns = new ArrayList<String>();
 
         initComponents();
 
@@ -120,11 +121,8 @@ public class SQLAdminView extends FrameView {
 
     private void getTables() {
         try {
-            Statement useDB = connection.createStatement();
-            useDB.execute("use " + editDatabase + ";");
-            useDB.close();
             Statement getTables = connection.createStatement();
-            ResultSet tableSet = getTables.executeQuery("show tables;");
+            ResultSet tableSet = getTables.executeQuery("show tables in "+editDatabase);
             tables.clear();
             while (tableSet.next()) {
                 tables.add(tableSet.getString(1));
@@ -134,6 +132,22 @@ public class SQLAdminView extends FrameView {
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(UserListPanel, "getTables: " + ex.getMessage());
+        }
+    }
+
+    private void getColumns() {
+        try {
+            Statement getTables = connection.createStatement();
+            ResultSet tableSet = getTables.executeQuery("SHOW COLUMNS FROM "+editDatabase+"."+editTable);
+            columns.clear();
+            while (tableSet.next()) {
+                columns.add(tableSet.getString(1));
+            }
+            if (columns.isEmpty()) {
+                columns.add("No columns.");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(UserListPanel, "getColumns: " + ex.getMessage());
         }
     }
 
@@ -1023,13 +1037,13 @@ public class SQLAdminView extends FrameView {
                     .addComponent(DbHostCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BackToDBs))
                 .addGroup(DBPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 323, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
                     .addGroup(DBPanelLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(DBTableListLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 223, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE))
                     .addGroup(DBPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                         .addComponent(EditTablePrivs)))
                 .addContainerGap())
         );
@@ -1084,11 +1098,11 @@ public class SQLAdminView extends FrameView {
                                 .addComponent(DBTrigger)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(DBUpdatePriv)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
                         .addComponent(BackToDBs)
                         .addGap(28, 28, 28))
                     .addGroup(DBPanelLayout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(EditTablePrivs)
                         .addContainerGap())))
@@ -1102,9 +1116,9 @@ public class SQLAdminView extends FrameView {
         jScrollPane3.setName("jScrollPane3"); // NOI18N
 
         ColumnNameList.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
+            ArrayList<String> strings = columns;
+            public int getSize() { return strings.size(); }
+            public Object getElementAt(int i) { return strings.get(i); }
         });
         ColumnNameList.setName("ColumnNameList"); // NOI18N
         jScrollPane3.setViewportView(ColumnNameList);
@@ -1124,7 +1138,7 @@ public class SQLAdminView extends FrameView {
         TableCreateCheckbox.setText(resourceMap.getString("TableCreateCheckbox.text")); // NOI18N
         TableCreateCheckbox.setName("TableCreateCheckbox"); // NOI18N
 
-        TableHostCombobox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        TableHostCombobox.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"NULL"}));
         TableHostCombobox.setName("TableHostCombobox"); // NOI18N
         TableHostCombobox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2061,6 +2075,7 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
     private String editDatabase;
     private ArrayList<String> tables;
     private String editTable;
+    private ArrayList<String> columns;
 
     private void updateGlobalPrivileges() {
         try {
@@ -2112,16 +2127,19 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
 
     private void updateUsersHosts() {
         try {
+            if (hosts == null){
+                hosts = new ArrayList<String>();
+            }else{
+                hosts.clear();
+            }
             Statement userHosts = connection.createStatement();
             ResultSet hostList = userHosts.executeQuery("SELECT Host FROM mysql.`user` WHERE User = '" + cleanSQL(editUser) + "' ORDER BY Host");
-            ArrayList<String> currHosts = new ArrayList<String>();
             while (hostList.next()) {
-                currHosts.add(hostList.getString("Host"));
+                hosts.add(hostList.getString("Host"));
             }
 
-            hosts = currHosts;
             HostComboBox.setModel(new javax.swing.DefaultComboBoxModel(hosts.toArray()));
-            HostComboBox.setSelectedIndex(0);
+
             if (DBListPanel.isVisible()) {
                 editHost = (String) HostComboBox.getSelectedItem();
             }
@@ -2131,47 +2149,51 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
     }
 
     private void updateDbHosts() {
-        try {
-            Statement userHosts = connection.createStatement();
-            ResultSet hostList = userHosts.executeQuery("SELECT Host FROM mysql.`user` WHERE User = '" + cleanSQL(editUser) + "' ORDER BY Host");
-            ArrayList<String> currHosts = new ArrayList<String>();
-            while (hostList.next()) {
-                currHosts.add(hostList.getString("Host"));
-            }
+//        try {
+//            Statement userHosts = connection.createStatement();
+//            ResultSet hostList = userHosts.executeQuery("SELECT Host FROM mysql.`user` WHERE User = '" + cleanSQL(editUser) + "' ORDER BY Host");
+//            ArrayList<String> currHosts = new ArrayList<String>();
+//            while (hostList.next()) {
+//                currHosts.add(hostList.getString("Host"));
+//            }
+//
+//            hosts = currHosts;
+//
+//            DbHostCombobox.setSelectedIndex(0);
+        updateUsersHosts();
 
-            hosts = currHosts;
-
-            DbHostCombobox.setModel(new javax.swing.DefaultComboBoxModel(hosts.toArray()));
-            DbHostCombobox.setSelectedIndex(0);
-
-            if (DBPanel.isVisible()) {
-                editHost = (String) DbHostCombobox.getSelectedItem();
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(DBListPanel, "updateDbHosts: " + ex.getMessage());
+        DbHostCombobox.setModel(new javax.swing.DefaultComboBoxModel(hosts.toArray()));
+        if (DBPanel.isVisible()) {
+            editHost = (String) DbHostCombobox.getSelectedItem();
         }
+//        } catch (SQLException ex) {
+//            JOptionPane.showMessageDialog(DBListPanel, "updateDbHosts: " + ex.getMessage());
+//        }
     }
 
     private void updateTableHosts() {
-        try {
-            Statement userHosts = connection.createStatement();
-            ResultSet hostList = userHosts.executeQuery("SELECT Host FROM mysql.`user` WHERE User = '" + cleanSQL(editUser) + "' ORDER BY Host");
-            ArrayList<String> currHosts = new ArrayList<String>();
-            while (hostList.next()) {
-                currHosts.add(hostList.getString("Host"));
-            }
+//        try {
+//            hosts.clear();
+//            Statement userHosts = connection.createStatement();
+//            ResultSet hostList = userHosts.executeQuery("SELECT Host FROM mysql.`user` WHERE User = '" + cleanSQL(editUser) + "' ORDER BY Host");
+//            ArrayList<String> currHosts = new ArrayList<String>();
+//            while (hostList.next()) {
+//                currHosts.add(hostList.getString("Host"));
+//            }
+//
+//            hosts = currHosts;
 
-            hosts = currHosts;
+//            TableHostCombobox.setModel(new javax.swing.DefaultComboBoxModel(hosts.toArray()));
+//            TableHostCombobox.setSelectedIndex(0);
 
-            TableHostCombobox.setModel(new javax.swing.DefaultComboBoxModel(hosts.toArray()));
-            TableHostCombobox.setSelectedIndex(0);
-
-            if (TablePanel.isVisible()) {
-                editHost = (String) TableHostCombobox.getSelectedItem();
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(DBListPanel, "updateTableHosts: " + ex.getMessage());
+        updateUsersHosts();
+        TableHostCombobox.setModel(new javax.swing.DefaultComboBoxModel(hosts.toArray()));
+        if (TablePanel.isVisible()) {
+            editHost = (String) TableHostCombobox.getSelectedItem();
         }
+//        } catch (SQLException ex) {
+//            JOptionPane.showMessageDialog(DBListPanel, "updateTableHosts: " + ex.getMessage());
+//        }
     }
 
 	private void SelectDBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectDBActionPerformed
@@ -2508,6 +2530,7 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
                 TablePanelLabel.setText("Privileges for " + editUser + " on " + editDatabase + "." + editTable);
                 updateTableHosts();
                 updateTablePrivs();
+                getColumns();
             }
         }//GEN-LAST:event_EditTablePrivsActionPerformed
 
