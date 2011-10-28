@@ -358,75 +358,79 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="GlobalSelectCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="GlobalInsertCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="GlobalDeleteCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="GlobalCreateCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="GlobalDropCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="GlobalGrantCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="GlobalSuperCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="GlobalShowDbCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="GlobalAlterCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="GlobalReferencesCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="GlobalIndexCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="GlobalCreateTmpTableCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="GlobalLockTablesCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="GlobalExecuteCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="GlobalReplSlaveCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Component id="GlobalUpdateCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Component id="GlobalPrivilegeSubmitButton" min="-2" max="-2" attributes="0"/>
+                      <Component id="backToUsers" min="-2" max="-2" attributes="0"/>
+                      <Component id="GlobalPrivilegeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="GlobalReloadCheckbox" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="GlobalShutdownCheckbox" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="GlobalProcessCheckbox" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="GlobalFileCheckbox" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="HostComboBox" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="AddHostButton" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="RemoveHostButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="253" max="-2" attributes="0"/>
                       </Group>
+                  </Group>
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="GlobalSelectCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="GlobalInsertCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="GlobalDeleteCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="GlobalCreateCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="GlobalDropCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="GlobalGrantCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="GlobalSuperCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="GlobalShowDbCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="GlobalAlterCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="GlobalReferencesCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="GlobalIndexCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="GlobalCreateTmpTableCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="GlobalLockTablesCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="GlobalExecuteCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="GlobalReplSlaveCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <Component id="GlobalUpdateCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Component id="GlobalPrivilegeSubmitButton" min="-2" max="-2" attributes="0"/>
-                              <Component id="backToUsers" min="-2" max="-2" attributes="0"/>
-                              <Component id="GlobalPrivilegeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="GlobalReloadCheckbox" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="GlobalShutdownCheckbox" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="GlobalProcessCheckbox" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="GlobalFileCheckbox" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace pref="28" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
+                          <EmptySpace pref="137" max="32767" attributes="0"/>
+                          <Component id="ChangePasswordButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="GlobalReplClientCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="GlobalCreateViewCheckbox" min="-2" max="-2" attributes="0"/>
-                              <Component id="GlobalShowViewCheckbox" min="-2" max="-2" attributes="0"/>
-                              <Component id="GlobalCreateRoutineCheckbox" min="-2" max="-2" attributes="0"/>
-                              <Component id="GlobalAlterRoutineCheckbox" min="-2" max="-2" attributes="0"/>
-                              <Component id="GlobalCreateUserCheckbox" min="-2" max="-2" attributes="0"/>
-                              <Component id="GlobalEventCheckbox" min="-2" max="-2" attributes="0"/>
-                              <Component id="GlobalTriggerCheckbox" min="-2" max="-2" attributes="0"/>
+                              <Component id="GlobalCreateViewCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="GlobalShowViewCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="GlobalCreateRoutineCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="GlobalAlterRoutineCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="GlobalCreateUserCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="GlobalEventCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="GlobalTriggerCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="69" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="103" groupAlignment="1" attributes="0">
@@ -451,54 +455,68 @@
                               <Component id="HostComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="AddHostButton" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="RemoveHostButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="ChangePasswordButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="GlobalSelectCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="GlobalGrantCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="GlobalReplClientCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="GlobalInsertCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="GlobalReferencesCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="GlobalCreateViewCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="GlobalUpdateCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="GlobalIndexCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="GlobalShowViewCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="GlobalDeleteCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="GlobalAlterCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="GlobalCreateRoutineCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="GlobalCreateCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="GlobalShowDbCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="GlobalAlterRoutineCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="GlobalDropCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="GlobalSuperCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="GlobalCreateUserCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="GlobalReloadCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="GlobalCreateTmpTableCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="GlobalEventCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="GlobalShutdownCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="GlobalLockTablesCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="GlobalTriggerCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="GlobalSelectCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="GlobalGrantCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="GlobalInsertCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="GlobalReferencesCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="GlobalUpdateCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="GlobalIndexCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="GlobalDeleteCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="GlobalAlterCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="GlobalCreateCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="GlobalShowDbCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="GlobalDropCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="GlobalSuperCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="GlobalReloadCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="GlobalCreateTmpTableCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="GlobalShutdownCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="GlobalLockTablesCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="GlobalReplClientCheckbox" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="GlobalCreateViewCheckbox" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="GlobalShowViewCheckbox" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="GlobalCreateRoutineCheckbox" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="GlobalAlterRoutineCheckbox" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="GlobalCreateUserCheckbox" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="GlobalEventCheckbox" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="GlobalTriggerCheckbox" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -586,6 +604,9 @@
             <Property name="text" type="java.lang.String" resourceKey="GlobalPrivilegeSubmitButton.text"/>
             <Property name="name" type="java.lang.String" value="GlobalPrivilegeSubmitButton" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="GlobalPrivilegeSubmitButtonActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JCheckBox" name="GlobalSelectCheckbox">
           <Properties>
@@ -776,6 +797,15 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RemoveHostButtonActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="ChangePasswordButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="ChangePasswordButton.text"/>
+            <Property name="name" type="java.lang.String" value="ChangePasswordButton" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ChangePasswordButtonActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
