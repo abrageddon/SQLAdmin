@@ -14,11 +14,11 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="ServerField" alignment="1" pref="379" max="32767" attributes="0"/>
+                      <Component id="ServerField" alignment="1" pref="385" max="32767" attributes="0"/>
                       <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="UserField" alignment="0" pref="379" max="32767" attributes="0"/>
+                      <Component id="UserField" alignment="0" pref="385" max="32767" attributes="0"/>
                       <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="PasswordField" alignment="0" pref="379" max="32767" attributes="0"/>
+                      <Component id="PasswordField" alignment="0" pref="385" max="32767" attributes="0"/>
                       <Component id="ConnectButton" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -42,7 +42,7 @@
                   <Component id="PasswordField" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="ConnectButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="47" max="32767" attributes="0"/>
+                  <EmptySpace pref="29" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -135,6 +135,9 @@
     </Container>
     <Container class="javax.swing.JPanel" name="UserListPanel">
       <Properties>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[403, 265]"/>
+        </Property>
         <Property name="name" type="java.lang.String" value="UserListPanel" noResource="true"/>
       </Properties>
 
@@ -250,6 +253,9 @@
     </Container>
     <Container class="javax.swing.JPanel" name="AddUserPanel">
       <Properties>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[353, 271]"/>
+        </Property>
         <Property name="name" type="java.lang.String" value="AddUserPanel" noResource="true"/>
       </Properties>
 
@@ -259,16 +265,16 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="AddUserPass" alignment="0" pref="434" max="32767" attributes="0"/>
+                      <Component id="AddUserPass" alignment="0" pref="329" max="32767" attributes="0"/>
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="AddUserCancel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="260" max="32767" attributes="0"/>
+                          <EmptySpace pref="165" max="32767" attributes="0"/>
                           <Component id="SubmitAddUser" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="AddUserHost" alignment="0" pref="434" max="32767" attributes="0"/>
-                      <Component id="AddUserName" alignment="0" pref="434" max="32767" attributes="0"/>
+                      <Component id="AddUserHost" alignment="0" pref="329" max="32767" attributes="0"/>
+                      <Component id="AddUserName" alignment="0" pref="329" max="32767" attributes="0"/>
                       <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -290,7 +296,7 @@
                   <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="AddUserPass" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="21" max="32767" attributes="0"/>
+                  <EmptySpace pref="66" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="SubmitAddUser" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="AddUserCancel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -359,6 +365,9 @@
     </Container>
     <Container class="javax.swing.JPanel" name="DBListPanel">
       <Properties>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[759, 390]"/>
+        </Property>
         <Property name="name" type="java.lang.String" value="DBListPanel" noResource="true"/>
       </Properties>
 
@@ -419,15 +428,10 @@
                           <Component id="RemoveHostButton" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace pref="137" max="32767" attributes="0"/>
-                          <Component id="ChangePasswordButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="GlobalReplClientCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="GlobalCreateViewCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="GlobalShowViewCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -437,14 +441,16 @@
                               <Component id="GlobalEventCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="GlobalTriggerCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="GlobalPrivilegeSubmitButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="ChangePasswordButton" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="SelectDB" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="dbListPane" alignment="0" pref="253" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
-                  </Group>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="SelectDB" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                      <Component id="dbListPane" alignment="1" min="-2" pref="230" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -457,8 +463,8 @@
                       <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="HostComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="AddHostButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -538,7 +544,7 @@
                               <Component id="GlobalFileCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Component id="dbListPane" alignment="0" pref="389" max="32767" attributes="0"/>
+                      <Component id="dbListPane" pref="338" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -817,82 +823,14 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="AddHostPanel">
-      <Properties>
-        <Property name="name" type="java.lang.String" value="AddHostPanel" noResource="true"/>
-      </Properties>
-
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="AddHostNameField" alignment="1" pref="119" max="32767" attributes="1"/>
-                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jLabel9" alignment="0" max="32767" attributes="1"/>
-                          <Component id="AddHostPassField" alignment="0" max="32767" attributes="1"/>
-                          <Component id="jLabel10" alignment="0" max="32767" attributes="1"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="AddHostNameField" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="AddHostPassField" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="30" max="32767" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-      </Layout>
-      <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel9">
-          <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="jLabel9.text"/>
-            <Property name="name" type="java.lang.String" value="jLabel9" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="AddHostNameField">
-          <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="AddHostNameField.text"/>
-            <Property name="name" type="java.lang.String" value="AddHostNameField" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel10">
-          <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="jLabel10.text"/>
-            <Property name="name" type="java.lang.String" value="jLabel10" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JPasswordField" name="AddHostPassField">
-          <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="AddHostPassField.text"/>
-            <Property name="name" type="java.lang.String" value="AddHostPassField" noResource="true"/>
-          </Properties>
-        </Component>
-      </SubComponents>
-    </Container>
     <Container class="javax.swing.JPanel" name="DBPanel">
       <Properties>
-        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[767, 767]"/>
-        </Property>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[600, 450]"/>
+          <Dimension value="[590, 441]"/>
         </Property>
         <Property name="name" type="java.lang.String" value="DBPanel" noResource="true"/>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[535, 497]"/>
+          <Dimension value="[535, 397]"/>
         </Property>
       </Properties>
 
@@ -900,48 +838,49 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="DBDelete" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="DBUpdate" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="DBInsert" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="DBSelect" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="DBLockTables" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="DBReferences" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="DBGrant" min="-2" max="-2" attributes="0"/>
-                              <Component id="DBCreate" min="-2" max="-2" attributes="0"/>
-                              <Component id="DBAlter" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="DBCreateTempTables" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="DBDrop" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="DBPanelTitle" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="DbHostCombobox" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="DBIndex" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="DBShowView" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="DBCreateRoutine" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="DBAlterRoutine" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="DBExecute" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="DBCreateView" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="DBEvent" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="DBTrigger" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="DBUpdatePriv" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="DBSelect" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="DBInsert" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="DBDelete" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="DBUpdate" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="DBGrant" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="DBLockTables" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="DBReferences" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="DBCreate" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="DBAlter" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="DBTrigger" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="DBEvent" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="DBCreateView" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="DBExecute" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="DBAlterRoutine" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="DBCreateRoutine" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="DBShowView" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="DBCreateTempTables" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="DBDrop" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="ApplyDBPrivButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="DBTableListLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="jScrollPane2" pref="216" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <Component id="DBPanelTitle" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="DbHostCombobox" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="BackToDBs" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jScrollPane2" pref="226" max="32767" attributes="0"/>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                          <Component id="DBTableListLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="126" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace pref="49" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="BackToGlobalButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="247" max="32767" attributes="0"/>
                           <Component id="EditTablePrivs" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -952,65 +891,82 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="DBPanelTitle" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="DBTableListLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="DbHostCombobox" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="DBSelect" min="-2" max="-2" attributes="0"/>
+                                  <Component id="DBPanelTitle" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="DBInsert" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="DBDelete" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="DBUpdate" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="DBGrant" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
-                                  <Component id="DBLockTables" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="DBReferences" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="DBCreate" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="DBAlter" min="-2" max="-2" attributes="0"/>
+                                  <Component id="DbHostCombobox" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="DBInsert" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="DBDelete" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="DBUpdate" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="DBGrant" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="DBCreateTempTables" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="DBShowView" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="DBCreateRoutine" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="DBAlterRoutine" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="DBCreateView" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="DBEvent" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="DBTrigger" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                                          <Component id="ApplyDBPrivButton" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="DBReferences" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="DBCreate" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="DBAlter" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="DBIndex" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="DBIndex" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="DBDrop" min="-2" max="-2" attributes="0"/>
-                                  <Component id="DBCreateTempTables" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="DBShowView" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="DBCreateRoutine" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="DBAlterRoutine" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="DBExecute" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="DBCreateView" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="DBEvent" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="DBTrigger" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="DBSelect" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="DBDrop" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="92" pref="92" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="DBLockTables" min="-2" max="-2" attributes="0"/>
+                                      <Component id="DBExecute" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="DBUpdatePriv" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="114" max="32767" attributes="0"/>
-                          <Component id="BackToDBs" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                          <EmptySpace pref="74" max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="jScrollPane2" pref="433" max="32767" attributes="1"/>
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
+                          <Component id="DBTableListLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jScrollPane2" pref="365" max="32767" attributes="1"/>
+                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="BackToGlobalButton" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
                           <Component id="EditTablePrivs" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -1020,13 +976,13 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="BackToDBs">
+        <Component class="javax.swing.JButton" name="BackToGlobalButton">
           <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="BackToDBs.text"/>
-            <Property name="name" type="java.lang.String" value="BackToDBs" noResource="true"/>
+            <Property name="text" type="java.lang.String" resourceKey="BackToGlobalButton.text"/>
+            <Property name="name" type="java.lang.String" value="BackToGlobalButton" noResource="true"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BackToDBsActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BackToGlobalButtonActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="DBPanelTitle">
@@ -1035,13 +991,13 @@
             <Property name="name" type="java.lang.String" value="DBPanelTitle" noResource="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="DBUpdatePriv">
+        <Component class="javax.swing.JButton" name="ApplyDBPrivButton">
           <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="DBUpdatePriv.text"/>
-            <Property name="name" type="java.lang.String" value="DBUpdatePriv" noResource="true"/>
+            <Property name="text" type="java.lang.String" resourceKey="ApplyDBPrivButton.text"/>
+            <Property name="name" type="java.lang.String" value="ApplyDBPrivButton" noResource="true"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DBUpdatePrivActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ApplyDBPrivButtonActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JCheckBox" name="DBSelect">
@@ -1213,6 +1169,9 @@
     </Container>
     <Container class="javax.swing.JPanel" name="TablePanel">
       <Properties>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[516, 347]"/>
+        </Property>
         <Property name="name" type="java.lang.String" value="TablePanel" noResource="true"/>
       </Properties>
 
@@ -1223,40 +1182,47 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="TablePanelLabel" min="-2" max="-2" attributes="0"/>
-                                      <Group type="102" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="TableHostCombobox" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="TableSelectCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="TableInsertCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="TableUpdateCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="TableDeleteCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="TableCreateCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="TableDropCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="TableGrantCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="TableReferencesCheckbox" min="-2" max="-2" attributes="0"/>
-                                              <Component id="TableIndexCheckbox" min="-2" max="-2" attributes="0"/>
-                                              <Component id="TableAlterCheckbox" min="-2" max="-2" attributes="0"/>
-                                              <Component id="TableCreateViewCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="TableShowViewCheckbox" min="-2" max="-2" attributes="0"/>
-                                              <Component id="TableTriggerCheckbox" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <Component id="ApplyTablePrivsButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="TableHostCombobox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="TableSelectCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="TableInsertCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="TableUpdateCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="TableDeleteCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="TableCreateCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="TableDropCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jScrollPane3" pref="253" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="TableGrantCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="TableReferencesCheckbox" min="-2" max="-2" attributes="0"/>
+                                      <Component id="TableIndexCheckbox" min="-2" max="-2" attributes="0"/>
+                                      <Component id="TableAlterCheckbox" min="-2" max="-2" attributes="0"/>
+                                      <Component id="TableCreateViewCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="TableShowViewCheckbox" min="-2" max="-2" attributes="0"/>
+                                      <Component id="TableTriggerCheckbox" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <Component id="EditColumnButton" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="ApplyTablePrivsButton" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="jScrollPane3" pref="201" max="32767" attributes="1"/>
                       </Group>
-                      <Component id="BackToDatabaseButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="BackToDatabaseButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="155" max="32767" attributes="0"/>
+                          <Component id="EditColumnButton" min="-2" max="-2" attributes="1"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="TablePanelLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="207" max="32767" attributes="0"/>
+                          <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -1266,9 +1232,12 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="TablePanelLabel" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="TablePanelLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" attributes="0">
@@ -1302,18 +1271,18 @@
                                   <Component id="TableTriggerCheckbox" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="ApplyTablePrivsButton" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jScrollPane3" pref="354" max="32767" attributes="0"/>
+                      <Component id="jScrollPane3" pref="277" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Component id="BackToDatabaseButton" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
                           <Component id="EditColumnButton" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
-                      <Component id="BackToDatabaseButton" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -1459,6 +1428,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ApplyTablePrivsButtonActionPerformed"/>
           </Events>
         </Component>
+        <Component class="javax.swing.JLabel" name="jLabel11">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jLabel11.text"/>
+            <Property name="name" type="java.lang.String" value="jLabel11" noResource="true"/>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
   </NonVisualComponents>
@@ -1480,6 +1455,6 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,11,0,0,1,-109"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,0,-7,0,0,1,-103"/>
   </AuxValues>
 </Form>
