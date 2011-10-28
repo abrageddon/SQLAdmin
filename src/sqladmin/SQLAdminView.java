@@ -50,9 +50,22 @@ public class SQLAdminView extends FrameView {
         try {
             Statement getDatabases = connection.createStatement();
             ResultSet dbSet = getDatabases.executeQuery("show databases");
+            databases.clear();
             while (dbSet.next()) {
                 databases.add(dbSet.getString(1));
             }
+            databaseList.setModel(new javax.swing.AbstractListModel() {
+
+                ArrayList<String> strings = databases;
+
+                public int getSize() {
+                    return strings.size();
+                }
+
+                public Object getElementAt(int i) {
+                    return strings.get(i);
+                }
+            });
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(mainPanel, "getDatabases: " + ex.getMessage());
         }
@@ -127,9 +140,9 @@ public class SQLAdminView extends FrameView {
             while (tableSet.next()) {
                 tables.add(tableSet.getString(1));
             }
-            if (tables.isEmpty()) {
-                tables.add("No tables.");
-            }
+//            if (tables.isEmpty()) {
+//                tables.add("No tables.");
+//            }
             DBTablesList.setModel(new javax.swing.AbstractListModel() {
 
                 ArrayList<String> strings = tables;
@@ -155,9 +168,9 @@ public class SQLAdminView extends FrameView {
             while (tableSet.next()) {
                 columns.add(tableSet.getString(1));
             }
-            if (columns.isEmpty()) {
-                columns.add("No columns.");
-            }
+//            if (columns.isEmpty()) {
+//                columns.add("No columns.");
+//            }
             ColumnNameList.setModel(new javax.swing.AbstractListModel() {
 
                 ArrayList<String> strings = columns;
@@ -226,7 +239,7 @@ public class SQLAdminView extends FrameView {
         jLabel7 = new javax.swing.JLabel();
         AddUserPass = new javax.swing.JPasswordField();
         AddUserCancel = new javax.swing.JButton();
-        DBListPanel = new javax.swing.JPanel();
+        GlobalPanel = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         dbListPane = new javax.swing.JScrollPane();
         databaseList = new javax.swing.JList();
@@ -562,8 +575,8 @@ public class SQLAdminView extends FrameView {
                 .addContainerGap())
         );
 
-        DBListPanel.setMinimumSize(new java.awt.Dimension(759, 390));
-        DBListPanel.setName("DBListPanel"); // NOI18N
+        GlobalPanel.setMinimumSize(new java.awt.Dimension(759, 390));
+        GlobalPanel.setName("GlobalPanel"); // NOI18N
 
         jLabel8.setText(resourceMap.getString("jLabel8.text")); // NOI18N
         jLabel8.setName("jLabel8"); // NOI18N
@@ -722,17 +735,17 @@ public class SQLAdminView extends FrameView {
             }
         });
 
-        javax.swing.GroupLayout DBListPanelLayout = new javax.swing.GroupLayout(DBListPanel);
-        DBListPanel.setLayout(DBListPanelLayout);
-        DBListPanelLayout.setHorizontalGroup(
-            DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(DBListPanelLayout.createSequentialGroup()
-                .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(DBListPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout GlobalPanelLayout = new javax.swing.GroupLayout(GlobalPanel);
+        GlobalPanel.setLayout(GlobalPanelLayout);
+        GlobalPanelLayout.setHorizontalGroup(
+            GlobalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(GlobalPanelLayout.createSequentialGroup()
+                .addGroup(GlobalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(GlobalPanelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(DBListPanelLayout.createSequentialGroup()
-                                .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(GlobalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(GlobalPanelLayout.createSequentialGroup()
+                                .addGroup(GlobalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(GlobalSelectCheckbox)
                                     .addComponent(GlobalInsertCheckbox)
                                     .addComponent(GlobalDeleteCheckbox)
@@ -740,7 +753,7 @@ public class SQLAdminView extends FrameView {
                                     .addComponent(GlobalDropCheckbox)
                                     .addComponent(GlobalFileCheckbox))
                                 .addGap(57, 57, 57)
-                                .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(GlobalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(GlobalReplSlaveCheckbox)
                                     .addComponent(GlobalGrantCheckbox)
                                     .addComponent(GlobalSuperCheckbox)
@@ -754,16 +767,16 @@ public class SQLAdminView extends FrameView {
                             .addComponent(GlobalUpdateCheckbox)))
                     .addComponent(backToUsers)
                     .addComponent(GlobalPrivilegeLabel)
-                    .addGroup(DBListPanelLayout.createSequentialGroup()
+                    .addGroup(GlobalPanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(GlobalReloadCheckbox))
-                    .addGroup(DBListPanelLayout.createSequentialGroup()
+                    .addGroup(GlobalPanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(GlobalShutdownCheckbox))
-                    .addGroup(DBListPanelLayout.createSequentialGroup()
+                    .addGroup(GlobalPanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(GlobalProcessCheckbox))
-                    .addGroup(DBListPanelLayout.createSequentialGroup()
+                    .addGroup(GlobalPanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(HostComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -771,9 +784,9 @@ public class SQLAdminView extends FrameView {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(RemoveHostButton)))
                 .addGap(18, 18, 18)
-                .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(DBListPanelLayout.createSequentialGroup()
-                        .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(GlobalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(GlobalPanelLayout.createSequentialGroup()
+                        .addGroup(GlobalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(GlobalReplClientCheckbox)
                             .addComponent(GlobalCreateViewCheckbox)
                             .addComponent(GlobalShowViewCheckbox)
@@ -785,61 +798,61 @@ public class SQLAdminView extends FrameView {
                             .addComponent(GlobalPrivilegeSubmitButton)
                             .addComponent(ChangePasswordButton))
                         .addGap(18, 18, 18)
-                        .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(GlobalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(SelectDB, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(dbListPane, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE))
                         .addContainerGap())
                     .addComponent(jLabel8)))
         );
-        DBListPanelLayout.setVerticalGroup(
-            DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(DBListPanelLayout.createSequentialGroup()
-                .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        GlobalPanelLayout.setVerticalGroup(
+            GlobalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(GlobalPanelLayout.createSequentialGroup()
+                .addGroup(GlobalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(GlobalPrivilegeLabel)
                     .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(DBListPanelLayout.createSequentialGroup()
-                        .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(GlobalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(GlobalPanelLayout.createSequentialGroup()
+                        .addGroup(GlobalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(HostComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(AddHostButton)
                             .addComponent(RemoveHostButton)
                             .addComponent(ChangePasswordButton))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(DBListPanelLayout.createSequentialGroup()
-                                .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(GlobalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(GlobalPanelLayout.createSequentialGroup()
+                                .addGroup(GlobalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(GlobalSelectCheckbox)
                                     .addComponent(GlobalGrantCheckbox))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addGroup(GlobalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(GlobalInsertCheckbox)
                                     .addComponent(GlobalReferencesCheckbox))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addGroup(GlobalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(GlobalUpdateCheckbox)
                                     .addComponent(GlobalIndexCheckbox))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addGroup(GlobalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(GlobalDeleteCheckbox)
                                     .addComponent(GlobalAlterCheckbox))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addGroup(GlobalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(GlobalCreateCheckbox)
                                     .addComponent(GlobalShowDbCheckbox))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addGroup(GlobalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(GlobalDropCheckbox)
                                     .addComponent(GlobalSuperCheckbox))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addGroup(GlobalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(GlobalReloadCheckbox)
                                     .addComponent(GlobalCreateTmpTableCheckbox))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addGroup(GlobalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(GlobalShutdownCheckbox)
                                     .addComponent(GlobalLockTablesCheckbox)))
-                            .addGroup(DBListPanelLayout.createSequentialGroup()
+                            .addGroup(GlobalPanelLayout.createSequentialGroup()
                                 .addComponent(GlobalReplClientCheckbox)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(GlobalCreateViewCheckbox)
@@ -856,17 +869,17 @@ public class SQLAdminView extends FrameView {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(GlobalTriggerCheckbox)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(GlobalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(GlobalProcessCheckbox)
                             .addComponent(GlobalExecuteCheckbox))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(GlobalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(GlobalPrivilegeSubmitButton)
                             .addComponent(GlobalReplSlaveCheckbox)
                             .addComponent(GlobalFileCheckbox)))
                     .addComponent(dbListPane, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(GlobalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(backToUsers)
                     .addComponent(SelectDB)))
         );
@@ -1317,10 +1330,10 @@ public class SQLAdminView extends FrameView {
         if (!editUser.isEmpty()) {
             // Switch to database panel
             UserListPanel.setVisible(false);
-            setComponent(DBListPanel);
+            setComponent(GlobalPanel);
             getFrame().setMinimumSize(GlobalWindow);
             getFrame().setSize(GlobalWindow);
-            DBListPanel.setVisible(true);
+            GlobalPanel.setVisible(true);
             updateUsersHosts();
             updateGlobalPrivileges();
         }
@@ -1443,7 +1456,7 @@ public class SQLAdminView extends FrameView {
     }//GEN-LAST:event_AddUserCancelActionPerformed
 
 private void backToUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToUsersActionPerformed
-    DBListPanel.setVisible(false);
+    GlobalPanel.setVisible(false);
     setComponent(UserListPanel);
 
     getFrame().setMinimumSize(UsersWindow);
@@ -1518,47 +1531,59 @@ private void AddHostButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN
             added = false;
         }
     }
+    updateGlobalPrivileges();
 }//GEN-LAST:event_AddHostButtonActionPerformed
 
 private void RemoveHostButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveHostButtonActionPerformed
     editHost = HostComboBox.getSelectedItem().toString();
     if (!editUser.isEmpty() && !editHost.isEmpty()) {
-        int canDel = JOptionPane.showConfirmDialog(UserListPanel, "Delete Host: " + editHost + "?", "Delete " + editHost, JOptionPane.YES_NO_OPTION);
-        if (canDel == JOptionPane.YES_OPTION) {
-            try {
-                Statement query = connection.createStatement();
-                ResultSet hostQuery = query.executeQuery("SELECT DISTINCT Host FROM mysql.`user` WHERE User = '" + cleanSQL(editUser) + "'");
-                hostQuery.last();
-                if (hostQuery.getRow() > 1) {
+
+        try {
+            Statement query = connection.createStatement();
+            ResultSet hostQuery = query.executeQuery("SELECT DISTINCT Host FROM mysql.`user` WHERE User = '" + cleanSQL(editUser) + "'");
+            hostQuery.last();
+            if (hostQuery.getRow() > 1) {
+                int canDel = JOptionPane.showConfirmDialog(UserListPanel, "Delete Host: " + editHost + "?", "Delete " + editHost, JOptionPane.YES_NO_OPTION);
+                if (canDel == JOptionPane.YES_OPTION) {
                     Statement update = connection.createStatement();
                     int ret = 0;
                     ret += update.executeUpdate("DROP USER '" + cleanSQL(editUser) + "'@'" + cleanSQL(editHost) + "'");
                     if (ret == 0) {
                         JOptionPane.showMessageDialog(UserListPanel, "Host Deleted.");
+                        updateUsersHosts();
+                        updateGlobalPrivileges();
                     } else {
                         JOptionPane.showMessageDialog(UserListPanel, "Host Not Deleted.");
                     }
-                } else {
-                    JOptionPane.showMessageDialog(UserListPanel, "Only 1 host left for this user.");
                 }
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(UserListPanel, "RemoveHostButtonActionPerformed: " + ex.getMessage());
+            } else {
+                JOptionPane.showMessageDialog(UserListPanel, "Only host left for this user.\nDelete User Instead.");
             }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(UserListPanel, "RemoveHostButtonActionPerformed: " + ex.getMessage());
+
         }
     }
     //Refresh user list
+
     updateUsersHosts();
 }//GEN-LAST:event_RemoveHostButtonActionPerformed
 
 private void ChangePasswordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChangePasswordButtonActionPerformed
     editHost = HostComboBox.getSelectedItem().toString();
+
+
     if (!editUser.isEmpty() && !editHost.isEmpty()) {
         JPasswordField pass = new JPasswordField();
         final JComponent[] inputs = new JComponent[]{
             new JLabel("Enter Password:"),
             pass
         };
+
+
         int cancel = JOptionPane.showConfirmDialog(null, inputs, "Change Password", JOptionPane.OK_CANCEL_OPTION);
+
+
         if (cancel == JOptionPane.YES_OPTION) {
             if (pass.getText() != null && !pass.getText().isEmpty()) {
                 try {
@@ -1566,16 +1591,26 @@ private void ChangePasswordButtonActionPerformed(java.awt.event.ActionEvent evt)
 
 
                     Statement update = connection.createStatement();
+
+
                     int ret = 0;
                     ret += update.executeUpdate("SET PASSWORD FOR '" + cleanSQL(editUser) + "'@'" + cleanSQL(editHost) + "' = PASSWORD('" + cleanSQL(pass.getText()) + "')");
+
+
                     if (ret == 0) {
                         JOptionPane.showMessageDialog(UserListPanel, "Password Updated.");
+
+
                     } else {
                         JOptionPane.showMessageDialog(UserListPanel, "Password Not Updated.");
+
+
                     }
 
                 } catch (SQLException ex) {
                     JOptionPane.showMessageDialog(UserListPanel, "ChangePasswordButtonActionPerformed: " + ex.getMessage());
+
+
                 }
             }
         }
@@ -1587,357 +1622,591 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
     String grants = "";
     String revokes = "";
 
+
+
     if (GlobalSelectCheckbox.isSelected()) {
         grants += " SELECT ";
+
+
     } else {
         revokes += " SELECT ";
+
+
     }
 
     if (GlobalInsertCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
+
+
         }
         grants += " INSERT ";
+
+
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
+
+
         }
         revokes += " INSERT ";
+
+
     }
 
     if (GlobalUpdateCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
+
+
         }
         grants += " UPDATE ";
+
+
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
+
+
         }
         revokes += " UPDATE ";
+
+
     }
 
     if (GlobalDeleteCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
+
+
         }
         grants += " DELETE ";
+
+
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
+
+
         }
         revokes += " DELETE ";
+
+
     }
 
     if (GlobalCreateCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
+
+
         }
         grants += " CREATE ";
+
+
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
+
+
         }
         revokes += " CREATE ";
+
+
     }
 
     if (GlobalDropCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
+
+
         }
         grants += " DROP ";
+
+
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
+
+
         }
         revokes += " DROP ";
+
+
     }
 
     if (GlobalReloadCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
+
+
         }
         grants += " RELOAD ";
+
+
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
+
+
         }
         revokes += " RELOAD ";
+
+
     }
 
     if (GlobalShutdownCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
+
+
         }
         grants += " SHUTDOWN ";
+
+
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
+
+
         }
         revokes += " SHUTDOWN ";
+
+
     }
 
     if (GlobalProcessCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
+
+
         }
         grants += " PROCESS ";
+
+
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
+
+
         }
         revokes += " PROCESS ";
+
+
     }
 
     if (GlobalFileCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
+
+
         }
         grants += " FILE ";
+
+
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
+
+
         }
         revokes += " FILE ";
+
+
     }
 
     if (GlobalGrantCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
+
+
         }
         grants += " GRANT OPTION ";
+
+
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
+
+
         }
         revokes += " GRANT OPTION ";
+
+
     }
 
     if (GlobalReferencesCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
+
+
         }
         grants += " REFERENCES ";
+
+
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
+
+
         }
         revokes += " REFERENCES ";
+
+
     }
 
     if (GlobalIndexCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
+
+
         }
         grants += " INDEX ";
+
+
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
+
+
         }
         revokes += " INDEX ";
+
+
     }
 
     if (GlobalAlterCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
+
+
         }
         grants += " ALTER ";
+
+
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
+
+
         }
         revokes += " ALTER ";
+
+
     }
 
     if (GlobalShowDbCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
+
+
         }
         grants += " SHOW DATABASES ";
+
+
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
+
+
         }
         revokes += " SHOW DATABASES ";
+
+
     }
 
     if (GlobalSuperCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
+
+
         }
         grants += " SUPER ";
+
+
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
+
+
         }
         revokes += " SUPER ";
+
+
     }
 
     if (GlobalCreateTmpTableCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
+
+
         }
         grants += " CREATE TEMPORARY TABLES ";
+
+
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
+
+
         }
         revokes += " CREATE TEMPORARY TABLES ";
+
+
     }
 
     if (GlobalLockTablesCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
+
+
         }
         grants += " LOCK TABLES ";
+
+
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
+
+
         }
         revokes += " LOCK TABLES ";
+
+
     }
 
     if (GlobalExecuteCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
+
+
         }
         grants += " EXECUTE ";
+
+
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
+
+
         }
         revokes += " EXECUTE ";
+
+
     }
 
     if (GlobalReplSlaveCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
+
+
         }
         grants += " REPLICATION SLAVE ";
+
+
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
+
+
         }
         revokes += " REPLICATION SLAVE ";
+
+
     }
 
     if (GlobalReplClientCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
+
+
         }
         grants += " REPLICATION CLIENT ";
+
+
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
+
+
         }
         revokes += " REPLICATION CLIENT ";
+
+
     }
 
     if (GlobalCreateViewCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
+
+
         }
         grants += " CREATE VIEW ";
+
+
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
+
+
         }
         revokes += " CREATE VIEW ";
+
+
     }
 
     if (GlobalShowViewCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
+
+
         }
         grants += " SHOW VIEW ";
+
+
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
+
+
         }
         revokes += " SHOW VIEW ";
+
+
     }
 
     if (GlobalCreateRoutineCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
+
+
         }
         grants += " CREATE ROUTINE ";
+
+
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
+
+
         }
         revokes += " CREATE ROUTINE ";
+
+
     }
 
     if (GlobalAlterRoutineCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
+
+
         }
         grants += " ALTER ROUTINE ";
+
+
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
+
+
         }
         revokes += " ALTER ROUTINE ";
+
+
     }
 
     if (GlobalCreateUserCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
+
+
         }
         grants += " CREATE USER ";
+
+
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
+
+
         }
         revokes += " CREATE USER ";
+
+
     }
 
     if (GlobalEventCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
+
+
         }
         grants += " EVENT ";
+
+
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
+
+
         }
         revokes += " EVENT ";
+
+
     }
 
     if (GlobalTriggerCheckbox.isSelected()) {
         if (!grants.isEmpty()) {
             grants += ",";
+
+
         }
         grants += " TRIGGER ";
+
+
     } else {
         if (!revokes.isEmpty()) {
             revokes += ",";
+
+
         }
         revokes += " TRIGGER ";
-    }
 
-//    System.out.println("GRANT " + grants + " ON *.* TO '" + cleanSQL(editUser) + "'@'" + cleanSQL(editHost) + "'");
-//    System.out.println("REVOKE " + revokes + " ON *.* FROM '" + cleanSQL(editUser) + "'@'" + cleanSQL(editHost) + "'");
+
+    } //    System.out.println("GRANT " + grants + " ON *.* TO '" + cleanSQL(editUser) + "'@'" + cleanSQL(editHost) + "'");
+    //    System.out.println("REVOKE " + revokes + " ON *.* FROM '" + cleanSQL(editUser) + "'@'" + cleanSQL(editHost) + "'");
 
     try {
         Statement update;
+
+
         int ret = 0;
+
+
         if (!grants.isEmpty()) {
             update = connection.createStatement();
             ret += update.executeUpdate("GRANT " + grants + " ON *.* TO '" + cleanSQL(editUser) + "'@'" + cleanSQL(editHost) + "'");
+
+
         }
         if (!revokes.isEmpty()) {
             update = connection.createStatement();
             ret += update.executeUpdate("REVOKE " + revokes + " ON *.* FROM '" + cleanSQL(editUser) + "'@'" + cleanSQL(editHost) + "'");
+
+
         }
         if (ret == 0) {
             JOptionPane.showMessageDialog(UserListPanel, "Privileges Updated.");
+
+
         } else {
             JOptionPane.showMessageDialog(UserListPanel, "Privileges Not Updated.");
+
+
         }
     } catch (SQLException ex) {
         JOptionPane.showMessageDialog(UserListPanel, "GlobalPrivilegeSubmitButtonActionPerformed: " + ex.getMessage());
+
+
     }
 
 }//GEN-LAST:event_GlobalPrivilegeSubmitButtonActionPerformed
@@ -1969,7 +2238,6 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
     private javax.swing.JCheckBox DBGrant;
     private javax.swing.JCheckBox DBIndex;
     private javax.swing.JCheckBox DBInsert;
-    private javax.swing.JPanel DBListPanel;
     private javax.swing.JCheckBox DBLockTables;
     private javax.swing.JPanel DBPanel;
     private javax.swing.JLabel DBPanelTitle;
@@ -2001,6 +2269,7 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
     private javax.swing.JCheckBox GlobalIndexCheckbox;
     private javax.swing.JCheckBox GlobalInsertCheckbox;
     private javax.swing.JCheckBox GlobalLockTablesCheckbox;
+    private javax.swing.JPanel GlobalPanel;
     private javax.swing.JLabel GlobalPrivilegeLabel;
     private javax.swing.JButton GlobalPrivilegeSubmitButton;
     private javax.swing.JCheckBox GlobalProcessCheckbox;
@@ -2114,36 +2383,58 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
             GlobalCreateUserCheckbox.setSelected(privs.getBoolean("Create_user_priv"));
             GlobalEventCheckbox.setSelected(privs.getBoolean("Event_priv"));
             GlobalTriggerCheckbox.setSelected(privs.getBoolean("Trigger_priv"));
+
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(UserListPanel, "updateGlobalPrivileges: " + ex.getMessage());
+
+
         }
     }
 
     public static String cleanSQL(String arg) {
         String rtn = arg.replace("\\", "\\\\");
+
+
         return rtn.replace("'", "''");
+
+
     }
 
     private void updateUsersHosts() {
         try {
             if (hosts == null) {
                 hosts = new ArrayList<String>();
+
+
             } else {
                 hosts.clear();
+
+
             }
             Statement userHosts = connection.createStatement();
             ResultSet hostList = userHosts.executeQuery("SELECT Host FROM mysql.`user` WHERE User = '" + cleanSQL(editUser) + "' ORDER BY Host");
+
+
             while (hostList.next()) {
                 hosts.add(hostList.getString("Host"));
+
+
             }
 
             HostComboBox.setModel(new javax.swing.DefaultComboBoxModel(hosts.toArray()));
 
-            if (DBListPanel.isVisible()) {
+
+
+            if (GlobalPanel.isVisible()) {
                 editHost = (String) HostComboBox.getSelectedItem();
+
+
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(DBListPanel, "UpdateUsersHosts: " + ex.getMessage());
+            JOptionPane.showMessageDialog(GlobalPanel, "UpdateUsersHosts: " + ex.getMessage());
+
+
         }
     }
 
@@ -2151,8 +2442,12 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
         updateUsersHosts();
 
         DbHostCombobox.setModel(new javax.swing.DefaultComboBoxModel(hosts.toArray()));
+
+
         if (DBPanel.isVisible()) {
             editHost = (String) DbHostCombobox.getSelectedItem();
+
+
         }
     }
 
@@ -2161,22 +2456,31 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
 
         updateUsersHosts();
         TableHostCombobox.setModel(new javax.swing.DefaultComboBoxModel(hosts.toArray()));
+
+
         if (TablePanel.isVisible()) {
             editHost = (String) TableHostCombobox.getSelectedItem();
+
+
         }
     }
 
 	private void SelectDBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectDBActionPerformed
             editDatabase = getDBListValue();
+
+
             if (editDatabase.equals("")) {
-                JOptionPane.showMessageDialog(DBListPanel, "You must select a database to edit.");
+                JOptionPane.showMessageDialog(GlobalPanel, "You must select a database to edit.");
+
+
             } else {
                 DBPanelTitle.setText("Privileges for " + editUser + " on " + editDatabase);
                 DBTableListLabel.setText(editDatabase + "'s Tables");
                 getTables();
 
-                DBListPanel.setVisible(false);
-                setComponent(DBPanel);
+                GlobalPanel.setVisible(false);
+                setComponent(
+                        DBPanel);
                 DBPanel.setVisible(true);
 
                 getFrame().setMinimumSize(DbWindow);
@@ -2184,6 +2488,8 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
 
                 updateDbHosts();
                 getDBPrivs();
+
+
             }
 	}//GEN-LAST:event_SelectDBActionPerformed
 
@@ -2191,13 +2497,13 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
             editDatabase = "";
 
             DBPanel.setVisible(false);
-            setComponent(DBListPanel);
+            setComponent(
+                    GlobalPanel);
 
             getFrame().setMinimumSize(GlobalWindow);
             getFrame().setSize(GlobalWindow);
-            DBListPanel.setVisible(true);
+            GlobalPanel.setVisible(true);
 	}//GEN-LAST:event_BackToGlobalButtonActionPerformed
-
         private void DbHostComboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DbHostComboboxActionPerformed
             getDBPrivs();
         }//GEN-LAST:event_DbHostComboboxActionPerformed
@@ -2207,293 +2513,481 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
             String grants = "";
             String revokes = "";
 
+
+
             if (DBSelect.isSelected()) {
                 grants += " SELECT ";
+
+
             } else {
                 revokes += " SELECT ";
+
+
             }
 
             if (DBInsert.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
+
+
                 }
                 grants += " INSERT ";
+
+
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
+
+
                 }
                 revokes += " INSERT ";
+
+
             }
 
             if (DBDelete.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
+
+
                 }
                 grants += " DELETE ";
+
+
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
+
+
                 }
                 revokes += " DELETE ";
+
+
             }
 
             if (DBUpdate.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
+
+
                 }
                 grants += " UPDATE ";
+
+
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
+
+
                 }
                 revokes += " UPDATE ";
+
+
             }
 
             if (DBCreate.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
+
+
                 }
                 grants += " CREATE ";
+
+
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
+
+
                 }
                 revokes += " CREATE ";
+
+
             }
 
             if (DBDrop.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
+
+
                 }
                 grants += " DROP ";
+
+
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
+
+
                 }
                 revokes += " DROP ";
+
+
             }
 
             if (DBGrant.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
+
+
                 }
                 grants += " GRANT OPTION ";
+
+
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
+
+
                 }
                 revokes += " GRANT OPTION ";
+
+
             }
 
             if (DBIndex.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
+
+
                 }
                 grants += " INDEX ";
+
+
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
+
+
                 }
                 revokes += " INDEX ";
+
+
             }
 
             if (DBAlter.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
+
+
                 }
                 grants += " ALTER ";
+
+
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
+
+
                 }
                 revokes += " ALTER ";
+
+
             }
 
             if (DBCreateTempTables.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
+
+
                 }
                 grants += " CREATE TEMPORARY TABLES ";
+
+
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
+
+
                 }
                 revokes += " CREATE TEMPORARY TABLES ";
+
+
             }
 
             if (DBShowView.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
+
+
                 }
                 grants += " SHOW VIEW ";
+
+
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
+
+
                 }
                 revokes += " SHOW VIEW ";
+
+
             }
 
             if (DBCreateRoutine.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
+
+
                 }
                 grants += " CREATE ROUTINE ";
+
+
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
+
+
                 }
                 revokes += " CREATE ROUTINE ";
+
+
             }
 
             if (DBAlterRoutine.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
+
+
                 }
                 grants += " ALTER ROUTINE ";
+
+
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
+
+
                 }
                 revokes += " ALTER ROUTINE ";
+
+
             }
 
             if (DBExecute.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
+
+
                 }
                 grants += " EXECUTE ";
+
+
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
+
+
                 }
                 revokes += " EXECUTE ";
+
+
             }
 
             if (DBCreateView.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
+
+
                 }
                 grants += " CREATE VIEW ";
+
+
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
+
+
                 }
                 revokes += " CREATE VIEW ";
+
+
             }
 
             if (DBEvent.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
+
+
                 }
                 grants += " EVENT ";
+
+
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
+
+
                 }
                 revokes += " EVENT ";
+
+
             }
 
             if (DBTrigger.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
+
+
                 }
                 grants += " TRIGGER ";
+
+
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
+
+
                 }
                 revokes += " TRIGGER ";
+
+
             }
 
             if (DBLockTables.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
+
+
                 }
                 grants += " LOCK TABLES ";
+
+
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
+
+
                 }
                 revokes += " LOCK TABLES ";
+
+
             }
 
             if (DBReferences.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
+
+
                 }
                 grants += " REFERENCES ";
+
+
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
+
+
                 }
                 revokes += " REFERENCES ";
+
+
             }
 
             try {
                 Statement update;
+
+
                 int ret = 0;
+
+
                 if (!grants.isEmpty()) {
                     update = connection.createStatement();
                     ret += update.executeUpdate("GRANT " + grants + " ON " + cleanSQL(editDatabase) + ".* TO '" + cleanSQL(editUser) + "'@'" + cleanSQL(editHost) + "'");
+
+
                 }
                 if (!revokes.isEmpty()) {
                     update = connection.createStatement();
                     ret += update.executeUpdate("REVOKE " + revokes + " ON " + cleanSQL(editDatabase) + ".* FROM '" + cleanSQL(editUser) + "'@'" + cleanSQL(editHost) + "'");
+
+
                 }
                 if (ret == 0) {
                     JOptionPane.showMessageDialog(UserListPanel, "Privileges Updated.");
+
+
                 } else {
                     JOptionPane.showMessageDialog(UserListPanel, "Privileges Not Updated.");
+
+
                 }
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(UserListPanel, "DBUpdatePrivActionPerformed: " + ex.getMessage());
+
+
             }
         }//GEN-LAST:event_ApplyDBPrivButtonActionPerformed
 
         private void RenameUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RenameUserButtonActionPerformed
             editUser = UserListjList.getSelectedValue().toString();
             updateUsersHosts();
+
+
             if (!editUser.isEmpty()) {
                 JTextField username = new JTextField();
                 final JComponent[] inputs = new JComponent[]{
                     new JLabel("Enter New Username:"),
                     username
                 };
+
+
                 int cancel = JOptionPane.showConfirmDialog(null, inputs, "Change Password", JOptionPane.OK_CANCEL_OPTION);
+
+
                 if (cancel == JOptionPane.YES_OPTION) {
                     if (username.getText() != null && !username.getText().isEmpty()) {
                         try {
                             Statement query = connection.createStatement();
                             ResultSet checkName = query.executeQuery("SELECT DISTINCT User FROM mysql.`user` WHERE User = '" + cleanSQL(username.getText()) + "'");
+
+
                             if (checkName.next()) {
                                 JOptionPane.showMessageDialog(AddUserPanel, "Username \"" + username.getText() + "\" already exists.");
+
+
                             } else {
                                 Statement update;
+
+
                                 int ret = 0;
+
+
                                 for (String host : hosts) {
                                     update = connection.createStatement();
                                     ret += update.executeUpdate("RENAME USER '" + cleanSQL(editUser) + "'@'" + host + "' TO '" + cleanSQL(username.getText()) + "'@'" + host + "'");
+
+
                                 }
                                 if (ret == 0) {
                                     JOptionPane.showMessageDialog(UserListPanel, "Username Updated.");
+
+
                                 } else {
                                     JOptionPane.showMessageDialog(UserListPanel, "Username Not Updated.");
+
+
                                 }
                             }
                         } catch (SQLException ex) {
                             JOptionPane.showMessageDialog(UserListPanel, "RenameUserButtonActionPerformed: " + ex.getMessage());
+
+
                         }
                     }
                 }
             }
             updateUsers();
         }//GEN-LAST:event_RenameUserButtonActionPerformed
-
         private void EditTablePrivsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditTablePrivsActionPerformed
             editTable = getTableListValue();
+
+
             if (!editTable.isEmpty()) {
                 DBPanel.setVisible(false);
-                setComponent(TablePanel);
+                setComponent(
+                        TablePanel);
                 getFrame().setMinimumSize(TableWindow);
                 getFrame().setSize(TableWindow);
                 TablePanel.setVisible(true);
@@ -2501,6 +2995,8 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
                 updateTableHosts();
                 updateTablePrivs();
                 getColumns();
+
+
             }
         }//GEN-LAST:event_EditTablePrivsActionPerformed
 
@@ -2513,176 +3009,292 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
             String grants = "";
             String revokes = "";
 
+
+
             if (TableSelectCheckbox.isSelected()) {
                 grants += " SELECT ";
+
+
             } else {
                 revokes += " SELECT ";
+
+
             }
 
             if (TableInsertCheckbox.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
+
+
                 }
                 grants += " INSERT ";
+
+
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
+
+
                 }
                 revokes += " INSERT ";
+
+
             }
 
             if (TableUpdateCheckbox.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
+
+
                 }
                 grants += " UPDATE ";
+
+
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
+
+
                 }
                 revokes += " UPDATE ";
+
+
             }
 
             if (TableDeleteCheckbox.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
+
+
                 }
                 grants += " DELETE ";
+
+
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
+
+
                 }
                 revokes += " DELETE ";
+
+
             }
 
             if (TableCreateCheckbox.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
+
+
                 }
                 grants += " CREATE ";
+
+
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
+
+
                 }
                 revokes += " CREATE ";
+
+
             }
 
             if (TableDropCheckbox.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
+
+
                 }
                 grants += " DROP ";
+
+
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
+
+
                 }
                 revokes += " DROP ";
+
+
             }
 
             if (TableGrantCheckbox.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
+
+
                 }
                 grants += " GRANT OPTION ";
+
+
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
+
+
                 }
                 revokes += " GRANT OPTION ";
+
+
             }
 
             if (TableReferencesCheckbox.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
+
+
                 }
                 grants += " REFERENCES ";
+
+
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
+
+
                 }
                 revokes += " REFERENCES ";
+
+
             }
 
             if (TableIndexCheckbox.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
+
+
                 }
                 grants += " INDEX ";
+
+
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
+
+
                 }
                 revokes += " INDEX ";
+
+
             }
 
             if (TableAlterCheckbox.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
+
+
                 }
                 grants += " ALTER ";
+
+
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
+
+
                 }
                 revokes += " ALTER ";
+
+
             }
 
             if (TableCreateViewCheckbox.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
+
+
                 }
                 grants += " CREATE VIEW ";
+
+
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
+
+
                 }
                 revokes += " CREATE VIEW ";
+
+
             }
 
             if (TableShowViewCheckbox.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
+
+
                 }
                 grants += " SHOW VIEW ";
+
+
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
+
+
                 }
                 revokes += " SHOW VIEW ";
+
+
             }
 
             if (TableTriggerCheckbox.isSelected()) {
                 if (!grants.isEmpty()) {
                     grants += ",";
+
+
                 }
                 grants += " TRIGGER ";
+
+
             } else {
                 if (!revokes.isEmpty()) {
                     revokes += ",";
+
+
                 }
                 revokes += " TRIGGER ";
+
+
             }
 
 
 
             try {
                 Statement update;
+
+
                 int ret = 0;
+
+
                 if (!grants.isEmpty()) {
                     update = connection.createStatement();
                     ret += update.executeUpdate("GRANT " + grants + " ON " + cleanSQL(editDatabase) + "." + editTable + " TO '" + cleanSQL(editUser) + "'@'" + cleanSQL(editHost) + "'");
+
+
                 }
                 if (!revokes.isEmpty()) {
                     update = connection.createStatement();
                     ret += update.executeUpdate("REVOKE " + revokes + " ON " + cleanSQL(editDatabase) + "." + editTable + " FROM '" + cleanSQL(editUser) + "'@'" + cleanSQL(editHost) + "'");
+
+
                 }
                 if (ret == 0) {
                     JOptionPane.showMessageDialog(UserListPanel, "Privileges Updated.");
+
+
                 } else {
                     JOptionPane.showMessageDialog(UserListPanel, "Privileges Not Updated.");
+
+
                 }
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(UserListPanel, "ApplyTablePrivsButtonActionPerformed: " + ex.getMessage());
+
+
             }
         }//GEN-LAST:event_ApplyTablePrivsButtonActionPerformed
 
@@ -2690,7 +3302,8 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
             getTables();
 
             TablePanel.setVisible(false);
-            setComponent(DBPanel);
+            setComponent(
+                    DBPanel);
             DBPanel.setVisible(true);
 
             getFrame().setMinimumSize(DbWindow);
@@ -2717,57 +3330,88 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
         TableShowViewCheckbox.setSelected(false);
         TableTriggerCheckbox.setSelected(false);
 
+
+
         if (editHost != null && !editHost.isEmpty()) {
             try {
                 Statement updateTablePrivs = connection.createStatement();
                 ResultSet TablePrivs = updateTablePrivs.executeQuery("SELECT * from mysql.tables_priv WHERE user='" + editUser + "' AND host='" + editHost + "' AND db='" + editDatabase + "' AND Table_name='" + editTable + "';");
 
+
+
                 if (TablePrivs.next()) {
                     for (String token : TablePrivs.getString("Table_priv").split(",")) {
                         if (token.equalsIgnoreCase("Select")) {
                             TableSelectCheckbox.setSelected(true);
+
+
                         }
                         if (token.equalsIgnoreCase("Insert")) {
                             TableInsertCheckbox.setSelected(true);
+
+
                         }
                         if (token.equalsIgnoreCase("Update")) {
                             TableUpdateCheckbox.setSelected(true);
+
+
                         }
                         if (token.equalsIgnoreCase("Delete")) {
                             TableDeleteCheckbox.setSelected(true);
+
+
                         }
                         if (token.equalsIgnoreCase("Create")) {
                             TableCreateCheckbox.setSelected(true);
+
+
                         }
                         if (token.equalsIgnoreCase("Drop")) {
                             TableDropCheckbox.setSelected(true);
+
+
                         }
                         if (token.equalsIgnoreCase("Grant")) {
                             TableGrantCheckbox.setSelected(true);
+
+
                         }
                         if (token.equalsIgnoreCase("Reference")) {
                             TableReferencesCheckbox.setSelected(true);
+
+
                         }
                         if (token.equalsIgnoreCase("Index")) {
                             TableIndexCheckbox.setSelected(true);
+
+
                         }
                         if (token.equalsIgnoreCase("Alter")) {
                             TableAlterCheckbox.setSelected(true);
+
+
                         }
                         if (token.equalsIgnoreCase("Create View")) {
                             TableCreateViewCheckbox.setSelected(true);
+
+
                         }
                         if (token.equalsIgnoreCase("Show View")) {
                             TableShowViewCheckbox.setSelected(true);
+
+
                         }
                         if (token.equalsIgnoreCase("Trigger")) {
                             TableTriggerCheckbox.setSelected(true);
+
+
                         }
                     }
                 }
 
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(UserListPanel, "updateTablePrivs: " + ex.getMessage());
+
             }
         }
     }
