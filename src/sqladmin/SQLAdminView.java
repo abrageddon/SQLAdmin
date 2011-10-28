@@ -22,7 +22,7 @@ public class SQLAdminView extends FrameView {
 
         users = new ArrayList<String>();
         databases = new ArrayList<String>();
-		tables = new ArrayList<String>();
+        tables = new ArrayList<String>();
 
         initComponents();
 
@@ -39,7 +39,7 @@ public class SQLAdminView extends FrameView {
             updateUsers();
             setComponent(UserListPanel);
             UserListPanel.setVisible(true);
-			editServer = server;
+            editServer = server;
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(mainPanel, "Connect: " + ex.getMessage());
         }
@@ -1084,7 +1084,8 @@ public class SQLAdminView extends FrameView {
         UserListPanel.setVisible(false);
 //        statusMessageLabel.setText("Editing User: "+editUser);
         setComponent(DBListPanel);
-        getFrame().setMinimumSize(new Dimension(800, 400));
+        getFrame().setMinimumSize(new Dimension(800, 450));
+        getFrame().setSize(new Dimension(800, 450));
         updateUsersHosts();
         updateGlobalPrivileges();
         DBListPanel.setVisible(true);
@@ -1689,7 +1690,7 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
             update = connection.createStatement();
             ret += update.executeUpdate("GRANT " + grants + " ON *.* TO '" + cleanSQL(editUser) + "'@'" + cleanSQL(editHost) + "'");
         }
-        if(!revokes.isEmpty()){
+        if (!revokes.isEmpty()) {
             update = connection.createStatement();
             ret += update.executeUpdate("REVOKE " + revokes + " ON *.* FROM '" + cleanSQL(editUser) + "'@'" + cleanSQL(editHost) + "'");
         }
@@ -1803,14 +1804,14 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
     private javax.swing.JMenuBar menuBar;
     // End of variables declaration//GEN-END:variables
     private Connection connection;
-	private String editServer;
+    private String editServer;
     private ArrayList<String> users;
     private String editUser;
     private ArrayList<String> hosts;
     private String editHost;
     private ArrayList<String> databases;
     private String editDatabase;
-	private ArrayList<String> tables;
+    private ArrayList<String> tables;
 
     private void updateGlobalPrivileges() {
         try {
@@ -1878,6 +1879,7 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
     }
 
 	private void SelectDBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectDBActionPerformed
+
 		// TODO add your handling code here:
 		editDatabase = getDBListValue();
 		if (editDatabase.equals("")) {
@@ -1895,12 +1897,14 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
 	}//GEN-LAST:event_SelectDBActionPerformed
 
 	private void BackToDBsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDBsActionPerformed
-		// TODO add your handling code here:
-		editDatabase = "";
+            // TODO add your handling code here:
+            editDatabase = "";
 
-		DBPanel.setVisible(false);
-		setComponent(DBListPanel);
-		DBListPanel.setVisible(true);
+            DBPanel.setVisible(false);
+            setComponent(DBListPanel);
+
+            getFrame().setMinimumSize(new Dimension(800, 450));
+            getFrame().setSize(new Dimension(800, 450));
+            DBListPanel.setVisible(true);
 	}//GEN-LAST:event_BackToDBsActionPerformed
-
 }
