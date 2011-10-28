@@ -3,10 +3,9 @@
  */
 package sqladmin;
 
+import java.awt.Dimension;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import org.jdesktop.application.SingleFrameApplication;
 import org.jdesktop.application.FrameView;
@@ -178,11 +177,11 @@ public class SQLAdminView extends FrameView {
                 .addContainerGap()
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(ServerField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
+                    .addComponent(ServerField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
                     .addComponent(jLabel2)
-                    .addComponent(UserField, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
+                    .addComponent(UserField, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
                     .addComponent(jLabel3)
-                    .addComponent(PasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
+                    .addComponent(PasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
                     .addComponent(ConnectButton, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
@@ -203,7 +202,7 @@ public class SQLAdminView extends FrameView {
                 .addComponent(PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ConnectButton)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         menuBar.setName("menuBar"); // NOI18N
@@ -268,7 +267,7 @@ public class SQLAdminView extends FrameView {
                         .addComponent(jLabel4)
                         .addGap(181, 181, 181))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, UserListPanelLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, UserListPanelLayout.createSequentialGroup()
                         .addComponent(AddUserButton)
@@ -617,7 +616,7 @@ public class SQLAdminView extends FrameView {
                         .addGroup(DBListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(GlobalFileCheckbox)
                             .addComponent(GlobalReplSlaveCheckbox))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
                         .addComponent(GlobalPrivilegeSubmitButton))
                     .addComponent(dbListPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -674,6 +673,7 @@ public class SQLAdminView extends FrameView {
         UserListPanel.setVisible(false);
 
         setComponent(DBListPanel);
+        getFrame().setMinimumSize(new Dimension(700, 400));
         updateUsersHosts();
         updateGlobalPrivileges();
         DBListPanel.setVisible(true);
@@ -694,15 +694,18 @@ public class SQLAdminView extends FrameView {
 
     private void DeleteUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteUserButtonActionPerformed
         editUser = getUserListValue();
-        //TODO Delete user; not root
+        updateUsersHosts();
         if (!editUser.equals("root") && !editUser.isEmpty()) {
             int canDel = JOptionPane.showConfirmDialog(UserListPanel, "Delete User: " + editUser + "?", "Delete " + editUser, JOptionPane.YES_NO_OPTION);
             if (canDel == JOptionPane.YES_OPTION) {
                 try {
-                    Statement update = connection.createStatement();
-
+                    Statement update;
                     //Check for username in database already
-                    int ret = update.executeUpdate("DROP USER '" + editUser + "'");
+                    int ret = 0;
+                    for (String host:hosts){
+                        update = connection.createStatement();
+                        ret += update.executeUpdate("DROP USER '" + editUser + "'@'"+host+"'");
+                    }
                     if (ret == 0) {
                         JOptionPane.showMessageDialog(UserListPanel, "User Deleted.");
                     } else {
