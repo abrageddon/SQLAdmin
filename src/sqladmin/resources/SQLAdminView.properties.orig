@@ -27,6 +27,7 @@ AddUserCancel.text=Cancel
 jLabel8.text=Select a Database
 SelectDB.text=Edit Database Privilege
 backToUsers.text=Back to Users
+<<<<<<< HEAD
 GlobalPrivilegeLabel.text=Editing Global Privilege
 GlobalPrivilegeSubmitButton.text=Update Privileges
 GlobalSelectCheckbox.text=SELECT
@@ -57,6 +58,7 @@ GlobalCreateUserCheckbox.text=CREATE USER
 GlobalEventCheckbox.text=EVENT
 GlobalTriggerCheckbox.text=TRIGGER
 GlobalShutdownCheckbox.text=SHUTDOWN
+=======
 BackToDBs.text=Back to BDs
 DBPanelTitle.text=User's Privileges on DB
 DBUpdatePriv.text=Update Privileges
@@ -81,3 +83,4 @@ DBTrigger.text=TRIGGER
 DBLockTables.text=LOCK TABLES
 DBReferences.text=REFERENCES
 EditTablePrivs.text=Edit Table Privileges
+>>>>>>> db-panel
