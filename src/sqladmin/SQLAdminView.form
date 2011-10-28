@@ -366,7 +366,7 @@
     <Container class="javax.swing.JPanel" name="GlobalPanel">
       <Properties>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[759, 390]"/>
+          <Dimension value="[759, 415]"/>
         </Property>
         <Property name="name" type="java.lang.String" value="GlobalPanel" noResource="true"/>
       </Properties>
@@ -427,6 +427,10 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="RemoveHostButton" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="ShowGrantsButton" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
@@ -440,9 +444,8 @@
                               <Component id="GlobalCreateUserCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="GlobalEventCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="GlobalTriggerCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="GlobalPrivilegeSubmitButton" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="ChangePasswordButton" min="-2" max="-2" attributes="0"/>
-                              <Component id="ShowGrantsButton" min="-2" max="-2" attributes="0"/>
+                              <Component id="GlobalPrivilegeSubmitButton" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -544,14 +547,15 @@
                               <Component id="GlobalReplSlaveCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="GlobalFileCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="ShowGrantsButton" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="dbListPane" pref="338" max="32767" attributes="0"/>
+                      <Component id="dbListPane" pref="363" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="backToUsers" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="SelectDB" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="ShowGrantsButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>

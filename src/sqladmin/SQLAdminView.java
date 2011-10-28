@@ -137,7 +137,7 @@ public class SQLAdminView extends FrameView {
     private void getTables() {
         try {
             Statement getTables = connection.createStatement();
-            ResultSet tableSet = getTables.executeQuery("SHOW TABLES IN " + cleanSQL(editDatabase) );
+            ResultSet tableSet = getTables.executeQuery("SHOW TABLES IN " + cleanSQL(editDatabase));
             tables.clear();
             while (tableSet.next()) {
                 tables.add(tableSet.getString(1));
@@ -578,7 +578,7 @@ public class SQLAdminView extends FrameView {
                 .addContainerGap())
         );
 
-        GlobalPanel.setMinimumSize(new java.awt.Dimension(759, 390));
+        GlobalPanel.setMinimumSize(new java.awt.Dimension(759, 415));
         GlobalPanel.setName("GlobalPanel"); // NOI18N
 
         jLabel8.setText(resourceMap.getString("jLabel8.text")); // NOI18N
@@ -793,7 +793,10 @@ public class SQLAdminView extends FrameView {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(AddHostButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(RemoveHostButton)))
+                        .addComponent(RemoveHostButton))
+                    .addGroup(GlobalPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(ShowGrantsButton)))
                 .addGap(18, 18, 18)
                 .addGroup(GlobalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(GlobalPanelLayout.createSequentialGroup()
@@ -806,9 +809,8 @@ public class SQLAdminView extends FrameView {
                             .addComponent(GlobalCreateUserCheckbox)
                             .addComponent(GlobalEventCheckbox)
                             .addComponent(GlobalTriggerCheckbox)
-                            .addComponent(GlobalPrivilegeSubmitButton)
                             .addComponent(ChangePasswordButton)
-                            .addComponent(ShowGrantsButton))
+                            .addComponent(GlobalPrivilegeSubmitButton))
                         .addGap(18, 18, 18)
                         .addGroup(GlobalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(SelectDB, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -888,13 +890,14 @@ public class SQLAdminView extends FrameView {
                         .addGroup(GlobalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(GlobalPrivilegeSubmitButton)
                             .addComponent(GlobalReplSlaveCheckbox)
-                            .addComponent(GlobalFileCheckbox)))
-                    .addComponent(dbListPane, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE))
+                            .addComponent(GlobalFileCheckbox))
+                        .addGap(18, 18, 18)
+                        .addComponent(ShowGrantsButton))
+                    .addComponent(dbListPane, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(GlobalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(backToUsers)
-                    .addComponent(SelectDB)
-                    .addComponent(ShowGrantsButton)))
+                    .addComponent(SelectDB)))
         );
 
         DBPanel.setMinimumSize(new java.awt.Dimension(590, 441));
@@ -2127,7 +2130,7 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
     private String editTable;
     private ArrayList<String> columns;
     private Dimension UsersWindow = new Dimension(403, 265);
-    private Dimension GlobalWindow = new Dimension(759, 390);
+    private Dimension GlobalWindow = new Dimension(759, 415);
     private Dimension DbWindow = new Dimension(590, 441);
     private Dimension TableWindow = new Dimension(516, 347);
     private Dimension ColumnWindow = new Dimension(516, 347);
@@ -2172,6 +2175,8 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
             GlobalTriggerCheckbox.setSelected(privs.getBoolean("Trigger_priv"));
 
 
+            ShowGrantsButton.setText("Show Grants (" + editUser + "@" + editHost + ")");
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(UserListPanel, "updateGlobalPrivileges: " + ex.getMessage());
 
@@ -2192,36 +2197,23 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
         try {
             if (hosts == null) {
                 hosts = new ArrayList<String>();
-
-
             } else {
                 hosts.clear();
-
-
             }
             Statement userHosts = connection.createStatement();
             ResultSet hostList = userHosts.executeQuery("SELECT Host FROM mysql.`user` WHERE User = '" + cleanSQL(editUser) + "' ORDER BY Host");
 
-
             while (hostList.next()) {
                 hosts.add(hostList.getString("Host"));
-
-
             }
 
             HostComboBox.setModel(new javax.swing.DefaultComboBoxModel(hosts.toArray()));
-
-
-
             if (GlobalPanel.isVisible()) {
                 editHost = (String) HostComboBox.getSelectedItem();
-
-
+                ShowGrantsButton.setText("Show Grants (" + editUser + "@" + editHost + ")");
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(GlobalPanel, "UpdateUsersHosts: " + ex.getMessage());
-
-
         }
     }
 
@@ -2233,8 +2225,6 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
 
         if (DBPanel.isVisible()) {
             editHost = (String) DbHostCombobox.getSelectedItem();
-
-
         }
     }
 
@@ -2244,11 +2234,8 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
         updateUsersHosts();
         TableHostCombobox.setModel(new javax.swing.DefaultComboBoxModel(hosts.toArray()));
 
-
         if (TablePanel.isVisible()) {
             editHost = (String) TableHostCombobox.getSelectedItem();
-
-
         }
     }
 
@@ -2284,12 +2271,12 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
             editDatabase = "";
 
             DBPanel.setVisible(false);
-            setComponent(
-                    GlobalPanel);
+            setComponent(GlobalPanel);
 
             getFrame().setMinimumSize(GlobalWindow);
             getFrame().setSize(GlobalWindow);
             GlobalPanel.setVisible(true);
+            updateGlobalPrivileges();
 	}//GEN-LAST:event_BackToGlobalButtonActionPerformed
         private void DbHostComboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DbHostComboboxActionPerformed
             getDBPrivs();
