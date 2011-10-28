@@ -1880,14 +1880,18 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
 	private void SelectDBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectDBActionPerformed
 		// TODO add your handling code here:
 		editDatabase = getDBListValue();
-		DBPanelTitle.setText(editUser + "'s Privileges on " + editDatabase);
-		DBTableListLabel.setText(editDatabase + "'s Tables");
-		getTables();
-		getDBPrivs();
+		if (editDatabase.equals("")) {
+			JOptionPane.showMessageDialog(DBListPanel, "You must select a database to edit.");
+		} else {
+			DBPanelTitle.setText(editUser + "'s Privileges on " + editDatabase);
+			DBTableListLabel.setText(editDatabase + "'s Tables");
+			getTables();
+			getDBPrivs();
 
-		DBListPanel.setVisible(false);
-		setComponent(DBPanel);
-		DBPanel.setVisible(true);
+			DBListPanel.setVisible(false);
+			setComponent(DBPanel);
+			DBPanel.setVisible(true);
+		}
 	}//GEN-LAST:event_SelectDBActionPerformed
 
 	private void BackToDBsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDBsActionPerformed
