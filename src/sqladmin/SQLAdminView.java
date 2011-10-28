@@ -122,7 +122,7 @@ public class SQLAdminView extends FrameView {
     private void getTables() {
         try {
             Statement getTables = connection.createStatement();
-            ResultSet tableSet = getTables.executeQuery("show tables in "+editDatabase);
+            ResultSet tableSet = getTables.executeQuery("SHOW TABLES IN " + editDatabase);
             tables.clear();
             while (tableSet.next()) {
                 tables.add(tableSet.getString(1));
@@ -130,6 +130,18 @@ public class SQLAdminView extends FrameView {
             if (tables.isEmpty()) {
                 tables.add("No tables.");
             }
+            DBTablesList.setModel(new javax.swing.AbstractListModel() {
+
+                ArrayList<String> strings = tables;
+
+                public int getSize() {
+                    return strings.size();
+                }
+
+                public Object getElementAt(int i) {
+                    return strings.get(i);
+                }
+            });
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(UserListPanel, "getTables: " + ex.getMessage());
         }
@@ -138,7 +150,7 @@ public class SQLAdminView extends FrameView {
     private void getColumns() {
         try {
             Statement getTables = connection.createStatement();
-            ResultSet tableSet = getTables.executeQuery("SHOW COLUMNS FROM "+editDatabase+"."+editTable);
+            ResultSet tableSet = getTables.executeQuery("SHOW COLUMNS FROM " + editDatabase + "." + editTable);
             columns.clear();
             while (tableSet.next()) {
                 columns.add(tableSet.getString(1));
@@ -146,6 +158,18 @@ public class SQLAdminView extends FrameView {
             if (columns.isEmpty()) {
                 columns.add("No columns.");
             }
+            ColumnNameList.setModel(new javax.swing.AbstractListModel() {
+
+                ArrayList<String> strings = columns;
+
+                public int getSize() {
+                    return strings.size();
+                }
+
+                public Object getElementAt(int i) {
+                    return strings.get(i);
+                }
+            });
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(UserListPanel, "getColumns: " + ex.getMessage());
         }
@@ -2127,9 +2151,9 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
 
     private void updateUsersHosts() {
         try {
-            if (hosts == null){
+            if (hosts == null) {
                 hosts = new ArrayList<String>();
-            }else{
+            } else {
                 hosts.clear();
             }
             Statement userHosts = connection.createStatement();
