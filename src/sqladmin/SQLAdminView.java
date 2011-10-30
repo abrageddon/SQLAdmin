@@ -6,8 +6,6 @@ package sqladmin;
 import java.awt.Dimension;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.*;
 import org.jdesktop.application.SingleFrameApplication;
 import org.jdesktop.application.FrameView;
@@ -356,6 +354,8 @@ public class SQLAdminView extends FrameView {
         ColReferences = new javax.swing.JCheckBox();
         BackToTables = new javax.swing.JButton();
         ApplyColPrivs = new javax.swing.JButton();
+        ColHosts = new javax.swing.JComboBox();
+        label = new javax.swing.JLabel();
 
         mainPanel.setName("mainPanel"); // NOI18N
 
@@ -500,10 +500,10 @@ public class SQLAdminView extends FrameView {
                         .addComponent(AddUserButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                         .addComponent(DeleteUserButton))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
                     .addGroup(UserListPanelLayout.createSequentialGroup()
                         .addComponent(RenameUserButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 154, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 175, Short.MAX_VALUE)
                         .addComponent(EditUserButton)))
                 .addContainerGap())
         );
@@ -571,7 +571,7 @@ public class SQLAdminView extends FrameView {
                     .addComponent(AddUserPass, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddUserPanelLayout.createSequentialGroup()
                         .addComponent(AddUserCancel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 175, Short.MAX_VALUE)
                         .addComponent(SubmitAddUser))
                     .addComponent(jLabel5)
                     .addComponent(jLabel6)
@@ -1125,10 +1125,10 @@ public class SQLAdminView extends FrameView {
                         .addGap(18, 18, 18)
                         .addGroup(DBPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(DBTableListLabel)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)))
                     .addGroup(DBPanelLayout.createSequentialGroup()
                         .addComponent(BackToGlobalButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 195, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 192, Short.MAX_VALUE)
                         .addComponent(EditTablePrivs)))
                 .addContainerGap())
         );
@@ -1187,12 +1187,12 @@ public class SQLAdminView extends FrameView {
                                 .addGroup(DBPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(DBLockTables)
                                     .addComponent(DBExecute))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE))
                     .addGroup(DBPanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(DBTableListLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
                         .addGap(6, 6, 6)))
                 .addGroup(DBPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(BackToGlobalButton)
@@ -1322,10 +1322,10 @@ public class SQLAdminView extends FrameView {
                                 .addComponent(ApplyTablePrivsButton)
                                 .addGap(18, 18, 18)))
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE))
                     .addGroup(TablePanelLayout.createSequentialGroup()
                         .addComponent(BackToDatabaseButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 174, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 183, Short.MAX_VALUE)
                         .addComponent(EditColumnButton))
                     .addGroup(TablePanelLayout.createSequentialGroup()
                         .addContainerGap()
@@ -1418,6 +1418,16 @@ public class SQLAdminView extends FrameView {
             }
         });
 
+        ColHosts.setName("ColHosts"); // NOI18N
+        ColHosts.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ColHostsActionPerformed(evt);
+            }
+        });
+
+        label.setText(resourceMap.getString("label.text")); // NOI18N
+        label.setName("label"); // NOI18N
+
         javax.swing.GroupLayout ColumnPanelLayout = new javax.swing.GroupLayout(ColumnPanel);
         ColumnPanel.setLayout(ColumnPanelLayout);
         ColumnPanelLayout.setHorizontalGroup(
@@ -1426,18 +1436,22 @@ public class SQLAdminView extends FrameView {
                 .addContainerGap()
                 .addGroup(ColumnPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ColumnPanelLayout.createSequentialGroup()
-                        .addComponent(ColInsert)
-                        .addGap(18, 18, 18)
-                        .addComponent(ColReferences))
-                    .addComponent(ColPanelLabel)
-                    .addGroup(ColumnPanelLayout.createSequentialGroup()
-                        .addComponent(ColSelect)
-                        .addGap(18, 18, 18)
-                        .addComponent(ColUpdate))
-                    .addGroup(ColumnPanelLayout.createSequentialGroup()
                         .addComponent(BackToTables)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
-                        .addComponent(ApplyColPrivs)))
+                        .addComponent(ApplyColPrivs))
+                    .addComponent(ColPanelLabel)
+                    .addGroup(ColumnPanelLayout.createSequentialGroup()
+                        .addComponent(label)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ColHosts, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(ColumnPanelLayout.createSequentialGroup()
+                        .addComponent(ColSelect)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(ColInsert)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(ColUpdate)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(ColReferences)))
                 .addContainerGap())
         );
         ColumnPanelLayout.setVerticalGroup(
@@ -1445,15 +1459,17 @@ public class SQLAdminView extends FrameView {
             .addGroup(ColumnPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(ColPanelLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(ColumnPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(label)
+                    .addComponent(ColHosts, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(ColumnPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ColSelect)
-                    .addComponent(ColUpdate))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(ColumnPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ColInsert)
+                    .addComponent(ColUpdate)
                     .addComponent(ColReferences))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addGroup(ColumnPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BackToTables)
                     .addComponent(ApplyColPrivs))
@@ -2135,9 +2151,6 @@ private void ApplyGlobalPrivsButtonActionPerformed(java.awt.event.ActionEvent ev
         revokes += " TRIGGER ";
     }
 
-//    System.out.println("GRANT " + grants + " ON *.* TO '" + cleanSQL(editUser) + "'@'" + cleanSQL(editHost) + "'");
-//    System.out.println("REVOKE " + revokes + " ON *.* FROM '" + cleanSQL(editUser) + "'@'" + cleanSQL(editHost) + "'");
-
     int qph = 0;
     try {
         qph = Integer.valueOf(QueriesPerHour.getText());
@@ -2172,33 +2185,12 @@ private void ApplyGlobalPrivsButtonActionPerformed(java.awt.event.ActionEvent ev
             ret += update.executeUpdate("GRANT " + grants + " ON *.* TO '" + cleanSQL(editUser) + "'@'" + cleanSQL(editHost) + "'  WITH MAX_QUERIES_PER_HOUR "+qph+" MAX_UPDATES_PER_HOUR "+uph+" MAX_CONNECTIONS_PER_HOUR "+cph+" MAX_USER_CONNECTIONS "+uc);
         }else {
             update = connection.createStatement();
-            ret += update.executeUpdate("GRANT all ON *.* TO '" + cleanSQL(editUser) + "'@'" + cleanSQL(editHost) + "'  WITH MAX_QUERIES_PER_HOUR "+qph+" MAX_UPDATES_PER_HOUR "+uph+" MAX_CONNECTIONS_PER_HOUR "+cph+" MAX_USER_CONNECTIONS "+uc);
+            ret += update.executeUpdate("GRANT USAGE ON *.* TO '" + cleanSQL(editUser) + "'@'" + cleanSQL(editHost) + "'  WITH MAX_QUERIES_PER_HOUR "+qph+" MAX_UPDATES_PER_HOUR "+uph+" MAX_CONNECTIONS_PER_HOUR "+cph+" MAX_USER_CONNECTIONS "+uc);
         }
         if (!revokes.isEmpty()) {
             update = connection.createStatement();
             ret += update.executeUpdate("REVOKE " + revokes + " ON *.* FROM '" + cleanSQL(editUser) + "'@'" + cleanSQL(editHost) + "'");
         }
-
-//        if (!QueriesPerHour.getText().isEmpty()) {
-//
-//            update = connection.createStatement();
-//            update.executeUpdate("UPDATE mysql.user SET max_questions='" + qph + "' WHERE user='" + cleanSQL(editUser) + "'");
-//        }
-//        if (!ConnectionsPerHour.getText().isEmpty()) {
-//
-//            update = connection.createStatement();
-//            update.executeUpdate("UPDATE mysql.user SET max_connections='" + cph + "' WHERE user='" + cleanSQL(editUser) + "'");
-//        }
-//        if (!UpdatesPerHour.getText().isEmpty()) {
-//
-//            update = connection.createStatement();
-//            update.executeUpdate("UPDATE mysql.user SET max_updates='" + uph + "' WHERE user='" + cleanSQL(editUser) + "'");
-//        }
-//        if (!UserConnections.getText().isEmpty()) {
-//
-//            update = connection.createStatement();
-//            update.executeUpdate("UPDATE mysql.user SET max_user_connections='" + uc + "' WHERE user='" + cleanSQL(editUser) + "'");
-//        }
 
         if (ret == 0) {
             JOptionPane.showMessageDialog(UserListPanel, "Privileges Updated.");
@@ -2228,6 +2220,7 @@ private void ApplyGlobalPrivsButtonActionPerformed(java.awt.event.ActionEvent ev
     private javax.swing.JButton BackToTables;
     private javax.swing.JButton BackToUsers;
     private javax.swing.JButton ChangePasswordButton;
+    private javax.swing.JComboBox ColHosts;
     private javax.swing.JCheckBox ColInsert;
     private javax.swing.JLabel ColPanelLabel;
     private javax.swing.JCheckBox ColReferences;
@@ -2343,6 +2336,7 @@ private void ApplyGlobalPrivsButtonActionPerformed(java.awt.event.ActionEvent ev
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel label;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenuBar menuBar;
     // End of variables declaration//GEN-END:variables
@@ -2471,6 +2465,17 @@ private void ApplyGlobalPrivsButtonActionPerformed(java.awt.event.ActionEvent ev
             editHost = (String) TableHostCombobox.getSelectedItem();
         }
     }
+	
+	private void updateColHosts() {
+		
+		updateUsersHosts();
+		ColHosts.setModel(new javax.swing.DefaultComboBoxModel(hosts.toArray()));
+		ColHosts.setSelectedIndex(0);
+		
+		if (ColumnPanel.isVisible()) {
+			editHost = (String) ColHosts.getSelectedItem();
+		}
+	}
 
 	private void SelectDBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectDBActionPerformed
             editDatabase = getDBListValue();
@@ -3058,7 +3063,8 @@ private void ApplyGlobalPrivsButtonActionPerformed(java.awt.event.ActionEvent ev
                 getFrame().setMinimumSize(ColumnWindow);
                 getFrame().setSize(ColumnWindow);
                 ColumnPanel.setVisible(true);
-                ColPanelLabel.setText(editUser + "'s Privileges on " + editDatabase + "." + editTable + "." + editColumn);
+                ColPanelLabel.setText(editUser+"@"+editHost + "'s Privileges on " + editDatabase + "." + editTable + "." + editColumn);
+				updateColHosts();
                 getColPrivs();
             }
 	}//GEN-LAST:event_EditColumnButtonActionPerformed
@@ -3131,6 +3137,10 @@ private void ApplyGlobalPrivsButtonActionPerformed(java.awt.event.ActionEvent ev
                 JOptionPane.showMessageDialog(UserListPanel, "updateColPrivs: " + e.getMessage());
             }
 	}//GEN-LAST:event_ApplyColPrivsActionPerformed
+
+	private void ColHostsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ColHostsActionPerformed
+		getColPrivs();
+	}//GEN-LAST:event_ColHostsActionPerformed
 
     private void updateTablePrivs() {
         editHost = (String) TableHostCombobox.getSelectedItem();
@@ -3206,6 +3216,7 @@ private void ApplyGlobalPrivsButtonActionPerformed(java.awt.event.ActionEvent ev
 
     private void getColPrivs() {
         try {
+			editHost = ColHosts.getSelectedItem().toString();
             Statement colPrivsSt = connection.createStatement();
             ResultSet colPrivs = colPrivsSt.executeQuery("SELECT * FROM mysql.columns_priv WHERE Host='" + cleanSQL(editHost) + "' AND Db='" + cleanSQL(editDatabase) + "' AND User='" + cleanSQL(editUser) + "' AND Table_name='" + cleanSQL(editTable) + "' AND Column_name='" + cleanSQL(editColumn) + "';");
 
