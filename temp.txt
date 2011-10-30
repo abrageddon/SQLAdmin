@@ -1,0 +1,16 @@
+GRANT SELECT (
+`genre_id`
+) ON  `moviedb`.`genres_in_movies` TO  'testuser'@'localhost';
+
+
+GRANT SELECT (`genre_id`), UPDATE (`genre_id`),DROP ,TRIGGER ON
+`moviedb`.`genres_in_movies` TO  'testuser'@'localhost';
+
+revoke select (genre_id) on moviedb.genres_in_movies from testuser@localhost;
+
+GRANT ALL ON customer.* TO 'francis'@'localhost'
+    ->     WITH MAX_QUERIES_PER_HOUR 20
+    ->          MAX_UPDATES_PER_HOUR 10
+    ->          MAX_CONNECTIONS_PER_HOUR 5
+    ->          MAX_USER_CONNECTIONS 2;
+max_questions	max_updates	max_connections	max_user_connections
