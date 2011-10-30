@@ -2142,28 +2142,7 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
         revokes += " TRIGGER ";
     }
 	
-//	String QueriesPerHourAmt = QueriesPerHour.getText();
-//	String ConnectionsPerHourAmt = ConnectionsPerHour.getText();
-//	String UpdatesPerHourAmt = UpdatesPerHour.getText();
-//	String UserConnectionsAmt = UserConnections.getText();
-//	String postfix = "";
-//	if (!QueriesPerHourAmt.isEmpty()) {
-//		postfix += " MAX_QUERIES_PER_HOUR " + QueriesPerHourAmt;
-//	}
-//	if (!ConnectionsPerHourAmt.isEmpty()) {
-//		postfix += " MAX_CONNECTIONS_PER_HOUR " + ConnectionsPerHourAmt;
-//	}
-//	if (!UpdatesPerHourAmt.isEmpty()) {
-//		postfix += " MAX_UPDATES_PER_HOUR " + UpdatesPerHourAmt;
-//	}
-//	if (!UserConnectionsAmt.isEmpty()) {
-//		postfix += " MAX_USER_CONNECTIONS " + UserConnectionsAmt;
-//	}
-//	if (!postfix.isEmpty()) {
-//		postfix = " WITH" + postfix;
-//	}
-	
-//    System.out.println("GRANT " + grants + " ON *.* TO '" + cleanSQL(editUser) + "'@'" + cleanSQL(editHost) + "'" + postfix);
+//    System.out.println("GRANT " + grants + " ON *.* TO '" + cleanSQL(editUser) + "'@'" + cleanSQL(editHost) + "'");
 //    System.out.println("REVOKE " + revokes + " ON *.* FROM '" + cleanSQL(editUser) + "'@'" + cleanSQL(editHost) + "'");
 
     try {
@@ -2181,19 +2160,19 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
 		
 		if (!QueriesPerHour.getText().isEmpty()) {
 			update = connection.createStatement();
-			ret += update.executeUpdate("UPDATE mysql.user SET max_questions='"+QueriesPerHour.getText()+"' WHERE user='"+editUser+"'");
+			update.executeUpdate("UPDATE mysql.user SET max_questions='"+QueriesPerHour.getText()+"' WHERE user='"+editUser+"'");
 		}
 		if (!ConnectionsPerHour.getText().isEmpty()) {
 			update = connection.createStatement();
-			ret += update.executeUpdate("UPDATE mysql.user SET max_connections='"+ConnectionsPerHour.getText()+"' WHERE user='"+editUser+"'");
+			update.executeUpdate("UPDATE mysql.user SET max_connections='"+ConnectionsPerHour.getText()+"' WHERE user='"+editUser+"'");
 		}
 		if (!UpdatesPerHour.getText().isEmpty()) {
 			update = connection.createStatement();
-			ret += update.executeUpdate("UPDATE mysql.user SET max_updates='"+UpdatesPerHour.getText()+"' WHERE user='"+editUser+"'");
+			update.executeUpdate("UPDATE mysql.user SET max_updates='"+UpdatesPerHour.getText()+"' WHERE user='"+editUser+"'");
 		}
 		if (!UserConnections.getText().isEmpty()) {
 			update = connection.createStatement();
-			ret += update.executeUpdate("UPDATE mysql.user SET max_user_connections='"+UserConnections.getText()+"' WHERE user='"+editUser+"'");
+			update.executeUpdate("UPDATE mysql.user SET max_user_connections='"+UserConnections.getText()+"' WHERE user='"+editUser+"'");
 		}
 		
         if (ret == 0) {
