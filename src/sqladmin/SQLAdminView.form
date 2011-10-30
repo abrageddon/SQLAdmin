@@ -366,7 +366,7 @@
     <Container class="javax.swing.JPanel" name="GlobalPanel">
       <Properties>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[880, 481]"/>
+          <Dimension value="[800, 529]"/>
         </Property>
         <Property name="name" type="java.lang.String" value="GlobalPanel" noResource="true"/>
       </Properties>
@@ -405,7 +405,6 @@
                               <Component id="GlobalUpdateCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Component id="backToUsers" min="-2" max="-2" attributes="0"/>
                       <Component id="GlobalPrivilegeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
@@ -428,15 +427,18 @@
                           <Component id="RemoveHostButton" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="ShowGrantsButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="BackToUsers" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel12" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="ShowGrantsButton" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
@@ -451,7 +453,7 @@
                               <Component id="GlobalCreateUserCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="GlobalEventCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="GlobalTriggerCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="GlobalPrivilegeSubmitButton" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="ApplyGlobalPrivsButton" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Component id="ChangePasswordButton" alignment="0" max="32767" attributes="1"/>
                               <Component id="UserConnections" alignment="0" pref="162" max="32767" attributes="1"/>
                               <Component id="ConnectionsPerHour" alignment="0" max="32767" attributes="1"/>
@@ -461,7 +463,7 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="SelectDB" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="dbListPane" alignment="0" pref="347" max="32767" attributes="0"/>
+                              <Component id="dbListPane" alignment="0" pref="267" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -557,47 +559,40 @@
                               <Component id="GlobalReplSlaveCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="GlobalFileCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="ShowGrantsButton" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="QueriesPerHour" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="UpdatesPerHour" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="ConnectionsPerHour" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
+                          <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="QueriesPerHour" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="UpdatesPerHour" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="ConnectionsPerHour" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                               <Component id="UserConnections" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="ShowGrantsButton" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="dbListPane" pref="429" max="32767" attributes="0"/>
+                      <Component id="dbListPane" pref="477" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="backToUsers" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="BackToUsers" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="SelectDB" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="444" max="32767" attributes="0"/>
-                  <Component id="GlobalPrivilegeSubmitButton" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="492" max="32767" attributes="0"/>
+                  <Component id="ApplyGlobalPrivsButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -639,13 +634,13 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SelectDBActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="backToUsers">
+        <Component class="javax.swing.JButton" name="BackToUsers">
           <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="backToUsers.text"/>
-            <Property name="name" type="java.lang.String" value="backToUsers" noResource="true"/>
+            <Property name="text" type="java.lang.String" resourceKey="BackToUsers.text"/>
+            <Property name="name" type="java.lang.String" value="BackToUsers" noResource="true"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backToUsersActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BackToUsersActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="GlobalPrivilegeLabel">
@@ -660,13 +655,13 @@
             <Property name="name" type="java.lang.String" value="GlobalCreateCheckbox" noResource="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="GlobalPrivilegeSubmitButton">
+        <Component class="javax.swing.JButton" name="ApplyGlobalPrivsButton">
           <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="GlobalPrivilegeSubmitButton.text"/>
-            <Property name="name" type="java.lang.String" value="GlobalPrivilegeSubmitButton" noResource="true"/>
+            <Property name="text" type="java.lang.String" resourceKey="ApplyGlobalPrivsButton.text"/>
+            <Property name="name" type="java.lang.String" value="ApplyGlobalPrivsButton" noResource="true"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="GlobalPrivilegeSubmitButtonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ApplyGlobalPrivsButtonActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JCheckBox" name="GlobalSelectCheckbox">
@@ -1571,8 +1566,8 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="BackToTables" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="136" max="32767" attributes="0"/>
-                          <Component id="UpdateColPrivs" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="149" max="32767" attributes="0"/>
+                          <Component id="ApplyColPrivs" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -1594,10 +1589,10 @@
                       <Component id="ColInsert" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="ColReferences" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="70" max="32767" attributes="0"/>
+                  <EmptySpace pref="72" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="BackToTables" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="UpdateColPrivs" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="ApplyColPrivs" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -1644,13 +1639,13 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BackToTablesActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="UpdateColPrivs">
+        <Component class="javax.swing.JButton" name="ApplyColPrivs">
           <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="UpdateColPrivs.text"/>
-            <Property name="name" type="java.lang.String" value="UpdateColPrivs" noResource="true"/>
+            <Property name="text" type="java.lang.String" resourceKey="ApplyColPrivs.text"/>
+            <Property name="name" type="java.lang.String" value="ApplyColPrivs" noResource="true"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UpdateColPrivsActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ApplyColPrivsActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
