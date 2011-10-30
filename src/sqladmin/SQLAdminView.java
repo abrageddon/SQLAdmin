@@ -3084,13 +3084,13 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
 				grantString += g + " (" + editColumn + "), ";
 			}
 			
-			if (!revokeString.isEmpty()) {
-				revokeString = revokeString.substring(0, revokeString.length() - 2);
-				ret += revoke.executeUpdate("REVOKE " + revokeString + " ON " + editDatabase + "." + editTable + " FROM " + editUser + "@" + editHost);
-			}
 			if (!grantString.isEmpty()) {
 				grantString = grantString.substring(0, grantString.length() - 2);
 				ret += grant.executeUpdate("GRANT " + grantString + " ON " + editDatabase + "." + editTable + " TO " + editUser + "@" + editHost);
+			}
+			if (!revokeString.isEmpty()) {
+				revokeString = revokeString.substring(0, revokeString.length() - 2);
+				ret += revoke.executeUpdate("REVOKE " + revokeString + " ON " + editDatabase + "." + editTable + " FROM " + editUser + "@" + editHost);
 			}
 			if (ret == 0) {
                     JOptionPane.showMessageDialog(UserListPanel, "Privileges Updated.");
