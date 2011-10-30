@@ -14,11 +14,11 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="ServerField" alignment="1" pref="385" max="32767" attributes="0"/>
+                      <Component id="ServerField" alignment="1" pref="369" max="32767" attributes="0"/>
                       <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="UserField" alignment="0" pref="385" max="32767" attributes="0"/>
+                      <Component id="UserField" alignment="0" pref="369" max="32767" attributes="0"/>
                       <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="PasswordField" alignment="0" pref="385" max="32767" attributes="0"/>
+                      <Component id="PasswordField" alignment="0" pref="369" max="32767" attributes="0"/>
                       <Component id="ConnectButton" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -42,7 +42,7 @@
                   <Component id="PasswordField" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="ConnectButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="29" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -890,12 +890,12 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="DBTableListLabel" min="-2" max="-2" attributes="0"/>
-                              <Component id="jScrollPane2" pref="216" max="32767" attributes="0"/>
+                              <Component id="jScrollPane2" pref="153" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="BackToGlobalButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="247" max="32767" attributes="0"/>
+                          <EmptySpace pref="195" max="32767" attributes="0"/>
                           <Component id="EditTablePrivs" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -969,13 +969,13 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace pref="74" max="32767" attributes="0"/>
+                          <EmptySpace pref="11" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="DBTableListLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane2" pref="365" max="32767" attributes="1"/>
+                          <Component id="jScrollPane2" pref="301" max="32767" attributes="1"/>
                           <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -1229,13 +1229,13 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="BackToDatabaseButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="155" max="32767" attributes="0"/>
+                          <EmptySpace pref="174" max="32767" attributes="0"/>
                           <Component id="EditColumnButton" min="-2" max="-2" attributes="1"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="TablePanelLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="207" max="32767" attributes="0"/>
+                          <EmptySpace pref="235" max="32767" attributes="0"/>
                           <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -1424,6 +1424,9 @@
             <Property name="text" type="java.lang.String" resourceKey="EditColumnButton.text"/>
             <Property name="name" type="java.lang.String" value="EditColumnButton" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EditColumnButtonActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="BackToDatabaseButton">
           <Properties>
@@ -1448,6 +1451,116 @@
             <Property name="text" type="java.lang.String" resourceKey="jLabel11.text"/>
             <Property name="name" type="java.lang.String" value="jLabel11" noResource="true"/>
           </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JPanel" name="ColumnPanel">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="ColumnPanel" noResource="true"/>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="ColInsert" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="ColReferences" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="ColPanelLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="ColSelect" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="ColUpdate" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="BackToTables" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="85" max="32767" attributes="0"/>
+                          <Component id="UpdateColPrivs" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="ColPanelLabel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="ColSelect" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="ColUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="ColInsert" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="ColReferences" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="BackToTables" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="UpdateColPrivs" alignment="1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="ColPanelLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="ColPanelLabel.text"/>
+            <Property name="name" type="java.lang.String" value="ColPanelLabel" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="ColSelect">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="ColSelect.text"/>
+            <Property name="name" type="java.lang.String" value="ColSelect" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="ColInsert">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="ColInsert.text"/>
+            <Property name="name" type="java.lang.String" value="ColInsert" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="ColUpdate">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="ColUpdate.text"/>
+            <Property name="name" type="java.lang.String" value="ColUpdate" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="ColReferences">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="ColReferences.text"/>
+            <Property name="name" type="java.lang.String" value="ColReferences" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="BackToTables">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="BackToTables.text"/>
+            <Property name="name" type="java.lang.String" value="BackToTables" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BackToTablesActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="UpdateColPrivs">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="UpdateColPrivs.text"/>
+            <Property name="name" type="java.lang.String" value="UpdateColPrivs" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UpdateColPrivsActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

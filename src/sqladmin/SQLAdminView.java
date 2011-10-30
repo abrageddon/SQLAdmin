@@ -203,6 +203,14 @@ public class SQLAdminView extends FrameView {
         }
         return "";
     }
+	
+	private String getColumnListValue() {
+		if (ColumnNameList.getSelectedIndex() != -1) {
+			return ColumnNameList.getSelectedValue().toString();
+		} else {
+			return "";
+		}
+	}
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -332,6 +340,14 @@ public class SQLAdminView extends FrameView {
         BackToDatabaseButton = new javax.swing.JButton();
         ApplyTablePrivsButton = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
+        ColumnPanel = new javax.swing.JPanel();
+        ColPanelLabel = new javax.swing.JLabel();
+        ColSelect = new javax.swing.JCheckBox();
+        ColInsert = new javax.swing.JCheckBox();
+        ColUpdate = new javax.swing.JCheckBox();
+        ColReferences = new javax.swing.JCheckBox();
+        BackToTables = new javax.swing.JButton();
+        UpdateColPrivs = new javax.swing.JButton();
 
         mainPanel.setName("mainPanel"); // NOI18N
 
@@ -375,11 +391,11 @@ public class SQLAdminView extends FrameView {
                 .addContainerGap()
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(ServerField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
+                    .addComponent(ServerField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
                     .addComponent(jLabel2)
-                    .addComponent(UserField, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
+                    .addComponent(UserField, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
                     .addComponent(jLabel3)
-                    .addComponent(PasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
+                    .addComponent(PasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
                     .addComponent(ConnectButton, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
@@ -400,7 +416,7 @@ public class SQLAdminView extends FrameView {
                 .addComponent(PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ConnectButton)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         menuBar.setName("menuBar"); // NOI18N
@@ -1047,10 +1063,10 @@ public class SQLAdminView extends FrameView {
                         .addGap(18, 18, 18)
                         .addGroup(DBPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(DBTableListLabel)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)))
                     .addGroup(DBPanelLayout.createSequentialGroup()
                         .addComponent(BackToGlobalButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 247, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 195, Short.MAX_VALUE)
                         .addComponent(EditTablePrivs)))
                 .addContainerGap())
         );
@@ -1109,12 +1125,12 @@ public class SQLAdminView extends FrameView {
                                 .addGroup(DBPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(DBLockTables)
                                     .addComponent(DBExecute))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE))
                     .addGroup(DBPanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(DBTableListLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
                         .addGap(6, 6, 6)))
                 .addGroup(DBPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(BackToGlobalButton)
@@ -1188,6 +1204,11 @@ public class SQLAdminView extends FrameView {
 
         EditColumnButton.setText(resourceMap.getString("EditColumnButton.text")); // NOI18N
         EditColumnButton.setName("EditColumnButton"); // NOI18N
+        EditColumnButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditColumnButtonActionPerformed(evt);
+            }
+        });
 
         BackToDatabaseButton.setText(resourceMap.getString("BackToDatabaseButton.text")); // NOI18N
         BackToDatabaseButton.setName("BackToDatabaseButton"); // NOI18N
@@ -1242,12 +1263,12 @@ public class SQLAdminView extends FrameView {
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE))
                     .addGroup(TablePanelLayout.createSequentialGroup()
                         .addComponent(BackToDatabaseButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 174, Short.MAX_VALUE)
                         .addComponent(EditColumnButton))
                     .addGroup(TablePanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(TablePanelLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 207, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 235, Short.MAX_VALUE)
                         .addComponent(jLabel11)))
                 .addContainerGap())
         );
@@ -1299,6 +1320,82 @@ public class SQLAdminView extends FrameView {
                     .addGroup(TablePanelLayout.createSequentialGroup()
                         .addComponent(EditColumnButton)
                         .addContainerGap())))
+        );
+
+        ColumnPanel.setName("ColumnPanel"); // NOI18N
+
+        ColPanelLabel.setText(resourceMap.getString("ColPanelLabel.text")); // NOI18N
+        ColPanelLabel.setName("ColPanelLabel"); // NOI18N
+
+        ColSelect.setText(resourceMap.getString("ColSelect.text")); // NOI18N
+        ColSelect.setName("ColSelect"); // NOI18N
+
+        ColInsert.setText(resourceMap.getString("ColInsert.text")); // NOI18N
+        ColInsert.setName("ColInsert"); // NOI18N
+
+        ColUpdate.setText(resourceMap.getString("ColUpdate.text")); // NOI18N
+        ColUpdate.setName("ColUpdate"); // NOI18N
+
+        ColReferences.setText(resourceMap.getString("ColReferences.text")); // NOI18N
+        ColReferences.setName("ColReferences"); // NOI18N
+
+        BackToTables.setText(resourceMap.getString("BackToTables.text")); // NOI18N
+        BackToTables.setName("BackToTables"); // NOI18N
+        BackToTables.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackToTablesActionPerformed(evt);
+            }
+        });
+
+        UpdateColPrivs.setText(resourceMap.getString("UpdateColPrivs.text")); // NOI18N
+        UpdateColPrivs.setName("UpdateColPrivs"); // NOI18N
+        UpdateColPrivs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdateColPrivsActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout ColumnPanelLayout = new javax.swing.GroupLayout(ColumnPanel);
+        ColumnPanel.setLayout(ColumnPanelLayout);
+        ColumnPanelLayout.setHorizontalGroup(
+            ColumnPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ColumnPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(ColumnPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ColumnPanelLayout.createSequentialGroup()
+                        .addComponent(ColInsert)
+                        .addGap(18, 18, 18)
+                        .addComponent(ColReferences))
+                    .addComponent(ColPanelLabel)
+                    .addGroup(ColumnPanelLayout.createSequentialGroup()
+                        .addComponent(ColSelect)
+                        .addGap(18, 18, 18)
+                        .addComponent(ColUpdate))
+                    .addGroup(ColumnPanelLayout.createSequentialGroup()
+                        .addComponent(BackToTables)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                        .addComponent(UpdateColPrivs)))
+                .addContainerGap())
+        );
+        ColumnPanelLayout.setVerticalGroup(
+            ColumnPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ColumnPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ColPanelLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(ColumnPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(ColumnPanelLayout.createSequentialGroup()
+                        .addGroup(ColumnPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ColSelect)
+                            .addComponent(ColUpdate))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(ColumnPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ColInsert)
+                            .addComponent(ColReferences))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BackToTables))
+                    .addComponent(UpdateColPrivs))
+                .addContainerGap())
         );
 
         setComponent(mainPanel);
@@ -2011,8 +2108,15 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
     private javax.swing.JButton ApplyTablePrivsButton;
     private javax.swing.JButton BackToDatabaseButton;
     private javax.swing.JButton BackToGlobalButton;
+    private javax.swing.JButton BackToTables;
     private javax.swing.JButton ChangePasswordButton;
+    private javax.swing.JCheckBox ColInsert;
+    private javax.swing.JLabel ColPanelLabel;
+    private javax.swing.JCheckBox ColReferences;
+    private javax.swing.JCheckBox ColSelect;
+    private javax.swing.JCheckBox ColUpdate;
     private javax.swing.JList ColumnNameList;
+    private javax.swing.JPanel ColumnPanel;
     private javax.swing.JButton ConnectButton;
     private javax.swing.JCheckBox DBAlter;
     private javax.swing.JCheckBox DBAlterRoutine;
@@ -2097,6 +2201,7 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
     private javax.swing.JCheckBox TableShowViewCheckbox;
     private javax.swing.JCheckBox TableTriggerCheckbox;
     private javax.swing.JCheckBox TableUpdateCheckbox;
+    private javax.swing.JButton UpdateColPrivs;
     private javax.swing.JTextField UserField;
     private javax.swing.JPanel UserListPanel;
     private javax.swing.JList UserListjList;
@@ -2129,6 +2234,7 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
     private ArrayList<String> tables;
     private String editTable;
     private ArrayList<String> columns;
+	private String editColumn;
     private Dimension UsersWindow = new Dimension(403, 265);
     private Dimension GlobalWindow = new Dimension(759, 415);
     private Dimension DbWindow = new Dimension(590, 441);
@@ -2817,6 +2923,84 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
             }
         }//GEN-LAST:event_ShowGrantsButtonActionPerformed
 
+	private void EditColumnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditColumnButtonActionPerformed
+		editColumn = getColumnListValue();
+		if (!editColumn.isEmpty()) {
+			TablePanel.setVisible(false);
+			setComponent(ColumnPanel);
+			ColumnPanel.setVisible(true);
+			ColPanelLabel.setText(editUser +"'s Privileges on " + editDatabase +"."+editTable+"."+editColumn);
+			getColPrivs();
+		}
+	}//GEN-LAST:event_EditColumnButtonActionPerformed
+
+	private void BackToTablesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToTablesActionPerformed
+		ColumnPanel.setVisible(false);
+		setComponent(TablePanel);
+		TablePanel.setVisible(true);
+		editColumn = "";
+	}//GEN-LAST:event_BackToTablesActionPerformed
+
+	private void UpdateColPrivsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateColPrivsActionPerformed
+		ArrayList<String> revokes = new ArrayList<String>();
+		ArrayList<String> grants = new ArrayList<String>();
+		
+		if (ColSelect.isSelected()) {
+			grants.add("SELECT");
+		} else {
+			revokes.add("SELECT");
+		}
+		
+		if (ColInsert.isSelected()) {
+			grants.add("INSERT");
+		} else {
+			revokes.add("INSERT");
+		}
+		
+		if (ColUpdate.isSelected()) {
+			grants.add("UPDATE");
+		} else {
+			revokes.add("UPDATE");
+		}
+		
+		if (ColReferences.isSelected()) {
+			grants.add("REFERENCES");
+		} else {
+			revokes.add("REFERENCES");
+		}
+		
+		try {
+			int ret = 0;
+			Statement revoke = connection.createStatement();
+			Statement grant = connection.createStatement();
+			String revokeString = "";
+			String grantString = "";
+			
+			for (String r : revokes) {
+				revokeString += r + " (" + editColumn + "), ";
+			}
+			for (String g : grants) {
+				grantString += g + " (" + editColumn + "), ";
+			}
+			
+			if (!revokeString.isEmpty()) {
+				revokeString = revokeString.substring(0, revokeString.length() - 2);
+				ret += revoke.executeUpdate("REVOKE " + revokeString + " ON " + editDatabase + "." + editTable + " FROM " + editUser + "@" + editHost);
+			}
+			if (!grantString.isEmpty()) {
+				grantString = grantString.substring(0, grantString.length() - 2);
+				ret += grant.executeUpdate("GRANT " + grantString + " ON " + editDatabase + "." + editTable + " TO " + editUser + "@" + editHost);
+			}
+			if (ret == 0) {
+                    JOptionPane.showMessageDialog(UserListPanel, "Privileges Updated.");
+                } else {
+                    JOptionPane.showMessageDialog(UserListPanel, "Privileges Not Updated.");
+                }
+		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(UserListPanel, "updateColPrivs: " + e.getMessage());
+		}
+	}//GEN-LAST:event_UpdateColPrivsActionPerformed
+
     private void updateTablePrivs() {
         editHost = (String) TableHostCombobox.getSelectedItem();
 
@@ -2833,8 +3017,6 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
         TableCreateViewCheckbox.setSelected(false);
         TableShowViewCheckbox.setSelected(false);
         TableTriggerCheckbox.setSelected(false);
-
-
 
         if (editHost != null && !editHost.isEmpty()) {
             try {
@@ -2890,4 +3072,36 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
             }
         }
     }
+
+	private void getColPrivs() {
+		try {
+			Statement colPrivsSt = connection.createStatement();
+			ResultSet colPrivs = colPrivsSt.executeQuery("SELECT * FROM mysql.columns_priv WHERE Host='"+editHost+"' AND Db='"+ editDatabase +"' AND User='" +editUser+"' AND Table_name='"+editTable+"' AND Column_name='" +editColumn+"';");
+			
+			ColSelect.setSelected(false);
+			ColInsert.setSelected(false);
+			ColUpdate.setSelected(false);
+			ColReferences.setSelected(false);
+			
+			if (colPrivs.next()) {
+				for (String priv : colPrivs.getString("Column_priv").split(",")) {
+					if (priv.equalsIgnoreCase("Select")) {
+						ColSelect.setSelected(true);
+					}
+					if (priv.equalsIgnoreCase("Insert")) {
+						ColInsert.setSelected(true);
+					}
+					if (priv.equalsIgnoreCase("Update")) {
+						ColUpdate.setSelected(true);
+					}
+					if (priv.equalsIgnoreCase("References")) {
+						ColReferences.setSelected(true);
+					}
+				}
+			}
+		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(UserListPanel, "updateColPrivs: " + e.getMessage());
+		}
+	}
+
 }
