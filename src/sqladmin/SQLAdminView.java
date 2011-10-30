@@ -356,6 +356,8 @@ public class SQLAdminView extends FrameView {
         ColReferences = new javax.swing.JCheckBox();
         BackToTables = new javax.swing.JButton();
         UpdateColPrivs = new javax.swing.JButton();
+        ColHosts = new javax.swing.JComboBox();
+        label = new javax.swing.JLabel();
 
         mainPanel.setName("mainPanel"); // NOI18N
 
@@ -399,11 +401,11 @@ public class SQLAdminView extends FrameView {
                 .addContainerGap()
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(ServerField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
+                    .addComponent(ServerField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
                     .addComponent(jLabel2)
-                    .addComponent(UserField, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
+                    .addComponent(UserField, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
                     .addComponent(jLabel3)
-                    .addComponent(PasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
+                    .addComponent(PasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
                     .addComponent(ConnectButton, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
@@ -424,7 +426,7 @@ public class SQLAdminView extends FrameView {
                 .addComponent(PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ConnectButton)
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         menuBar.setName("menuBar"); // NOI18N
@@ -970,7 +972,7 @@ public class SQLAdminView extends FrameView {
                         .addGroup(GlobalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel13)
                             .addComponent(UserConnections, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(dbListPane, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE))
+                    .addComponent(dbListPane, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(GlobalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(backToUsers)
@@ -1421,6 +1423,16 @@ public class SQLAdminView extends FrameView {
             }
         });
 
+        ColHosts.setName("ColHosts"); // NOI18N
+        ColHosts.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ColHostsActionPerformed(evt);
+            }
+        });
+
+        label.setText(resourceMap.getString("label.text")); // NOI18N
+        label.setName("label"); // NOI18N
+
         javax.swing.GroupLayout ColumnPanelLayout = new javax.swing.GroupLayout(ColumnPanel);
         ColumnPanel.setLayout(ColumnPanelLayout);
         ColumnPanelLayout.setHorizontalGroup(
@@ -1429,6 +1441,10 @@ public class SQLAdminView extends FrameView {
                 .addContainerGap()
                 .addGroup(ColumnPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ColumnPanelLayout.createSequentialGroup()
+                        .addComponent(BackToTables)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
+                        .addComponent(UpdateColPrivs))
+                    .addGroup(ColumnPanelLayout.createSequentialGroup()
                         .addComponent(ColInsert)
                         .addGap(18, 18, 18)
                         .addComponent(ColReferences))
@@ -1436,11 +1452,11 @@ public class SQLAdminView extends FrameView {
                     .addGroup(ColumnPanelLayout.createSequentialGroup()
                         .addComponent(ColSelect)
                         .addGap(18, 18, 18)
-                        .addComponent(ColUpdate))
-                    .addGroup(ColumnPanelLayout.createSequentialGroup()
-                        .addComponent(BackToTables)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
-                        .addComponent(UpdateColPrivs)))
+                        .addComponent(ColUpdate)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)
+                        .addComponent(label)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ColHosts, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         ColumnPanelLayout.setVerticalGroup(
@@ -1451,12 +1467,14 @@ public class SQLAdminView extends FrameView {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(ColumnPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ColSelect)
-                    .addComponent(ColUpdate))
+                    .addComponent(ColUpdate)
+                    .addComponent(ColHosts, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(label))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(ColumnPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ColInsert)
                     .addComponent(ColReferences))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                 .addGroup(ColumnPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BackToTables)
                     .addComponent(UpdateColPrivs))
@@ -2195,6 +2213,7 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
     private javax.swing.JButton BackToGlobalButton;
     private javax.swing.JButton BackToTables;
     private javax.swing.JButton ChangePasswordButton;
+    private javax.swing.JComboBox ColHosts;
     private javax.swing.JCheckBox ColInsert;
     private javax.swing.JLabel ColPanelLabel;
     private javax.swing.JCheckBox ColReferences;
@@ -2313,6 +2332,7 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel label;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenuBar menuBar;
     // End of variables declaration//GEN-END:variables
@@ -2441,6 +2461,17 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
             editHost = (String) TableHostCombobox.getSelectedItem();
         }
     }
+	
+	private void updateColHosts() {
+		
+		updateUsersHosts();
+		ColHosts.setModel(new javax.swing.DefaultComboBoxModel(hosts.toArray()));
+		ColHosts.setSelectedIndex(0);
+		
+		if (ColumnPanel.isVisible()) {
+			editHost = (String) ColHosts.getSelectedItem();
+		}
+	}
 
 	private void SelectDBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectDBActionPerformed
             editDatabase = getDBListValue();
@@ -3028,7 +3059,8 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
                 getFrame().setMinimumSize(ColumnWindow);
                 getFrame().setSize(ColumnWindow);
                 ColumnPanel.setVisible(true);
-                ColPanelLabel.setText(editUser + "'s Privileges on " + editDatabase + "." + editTable + "." + editColumn);
+                ColPanelLabel.setText(editUser+"@"+editHost + "'s Privileges on " + editDatabase + "." + editTable + "." + editColumn);
+				updateColHosts();
                 getColPrivs();
             }
 	}//GEN-LAST:event_EditColumnButtonActionPerformed
@@ -3101,6 +3133,10 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
                 JOptionPane.showMessageDialog(UserListPanel, "updateColPrivs: " + e.getMessage());
             }
 	}//GEN-LAST:event_UpdateColPrivsActionPerformed
+
+	private void ColHostsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ColHostsActionPerformed
+		getColPrivs();
+	}//GEN-LAST:event_ColHostsActionPerformed
 
     private void updateTablePrivs() {
         editHost = (String) TableHostCombobox.getSelectedItem();
@@ -3176,6 +3212,7 @@ private void GlobalPrivilegeSubmitButtonActionPerformed(java.awt.event.ActionEve
 
     private void getColPrivs() {
         try {
+			editHost = ColHosts.getSelectedItem().toString();
             Statement colPrivsSt = connection.createStatement();
             ResultSet colPrivs = colPrivsSt.executeQuery("SELECT * FROM mysql.columns_priv WHERE Host='" + cleanSQL(editHost) + "' AND Db='" + cleanSQL(editDatabase) + "' AND User='" + cleanSQL(editUser) + "' AND Table_name='" + cleanSQL(editTable) + "' AND Column_name='" + cleanSQL(editColumn) + "';");
 
