@@ -14,11 +14,11 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="ServerField" alignment="1" pref="369" max="32767" attributes="0"/>
+                      <Component id="ServerField" alignment="1" pref="385" max="32767" attributes="0"/>
                       <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="UserField" alignment="0" pref="369" max="32767" attributes="0"/>
+                      <Component id="UserField" alignment="0" pref="385" max="32767" attributes="0"/>
                       <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="PasswordField" alignment="0" pref="369" max="32767" attributes="0"/>
+                      <Component id="PasswordField" alignment="0" pref="385" max="32767" attributes="0"/>
                       <Component id="ConnectButton" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -42,7 +42,7 @@
                   <Component id="PasswordField" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="ConnectButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="62" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -366,7 +366,7 @@
     <Container class="javax.swing.JPanel" name="GlobalPanel">
       <Properties>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[759, 415]"/>
+          <Dimension value="[880, 481]"/>
         </Property>
         <Property name="name" type="java.lang.String" value="GlobalPanel" noResource="true"/>
       </Properties>
@@ -439,19 +439,10 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="QueriesPerHour" min="-2" max="-2" attributes="0"/>
-                          <Component id="UpdatesPerHour" min="-2" max="-2" attributes="0"/>
-                          <Component id="ConnectionsPerHour" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="UserConnections" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="GlobalReplClientCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="GlobalCreateViewCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="GlobalShowViewCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -460,15 +451,17 @@
                               <Component id="GlobalCreateUserCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="GlobalEventCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="GlobalTriggerCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                  <Component id="GlobalPrivilegeSubmitButton" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="ChangePasswordButton" alignment="1" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="GlobalPrivilegeSubmitButton" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="ChangePasswordButton" alignment="0" max="32767" attributes="1"/>
+                              <Component id="UserConnections" alignment="0" pref="162" max="32767" attributes="1"/>
+                              <Component id="ConnectionsPerHour" alignment="0" max="32767" attributes="1"/>
+                              <Component id="UpdatesPerHour" alignment="0" max="32767" attributes="1"/>
+                              <Component id="QueriesPerHour" alignment="0" max="32767" attributes="1"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="SelectDB" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="dbListPane" alignment="0" pref="225" max="32767" attributes="0"/>
+                              <Component id="dbListPane" alignment="0" pref="347" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -589,12 +582,12 @@
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="UserConnections" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
+                              <Component id="UserConnections" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Component id="dbListPane" pref="417" max="32767" attributes="0"/>
+                      <Component id="dbListPane" pref="429" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -603,7 +596,7 @@
                   </Group>
               </Group>
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="431" max="32767" attributes="0"/>
+                  <EmptySpace pref="444" max="32767" attributes="0"/>
                   <Component id="GlobalPrivilegeSubmitButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -1553,6 +1546,9 @@
     </Container>
     <Container class="javax.swing.JPanel" name="ColumnPanel">
       <Properties>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[456, 182]"/>
+        </Property>
         <Property name="name" type="java.lang.String" value="ColumnPanel" noResource="true"/>
       </Properties>
 
@@ -1575,7 +1571,7 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="BackToTables" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="85" max="32767" attributes="0"/>
+                          <EmptySpace pref="136" max="32767" attributes="0"/>
                           <Component id="UpdateColPrivs" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -1589,21 +1585,19 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="ColPanelLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="ColSelect" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="ColUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="ColInsert" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="ColReferences" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="BackToTables" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="UpdateColPrivs" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="ColSelect" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="ColUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="ColInsert" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="ColReferences" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="70" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="BackToTables" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="UpdateColPrivs" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
